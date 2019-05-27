@@ -1,8 +1,15 @@
-document.getElementById("newList").addEventListener("click", createList);
+document.getElementById("newListBtn").addEventListener("click", createList);
+
+list = [{
+    id: 0,
+    name: "tittel"
+}];
 
 function createList() {
     var newList = document.createElement("div");
     newList.className = "liste";
+    var countClasses = document.getElementsByClassName("liste").length;
+    newList.id = "liste" + countClasses;
 
     var newListHeader = document.createElement("div");
     newListHeader.className = "header";
@@ -13,19 +20,4 @@ function createList() {
     newListHeader.appendChild(newListHeaderText);
     newList.appendChild(newListHeader);
     document.getElementById("wrapper").appendChild(newList);
-
-    var btnList = document.getElementById("btnList");
-    
-    function newPosition() {
-
-        var countClasses = document.getElementsByClassName("liste").length;
-        var newListbtn = document.getElementById("newListbtn");
-        btnList.removeChild(newListbtn);
-        newList.appendChild(newListbtn);
-
-        console.log(countClasses);
-        
-    };
-
-    newPosition();
 };
