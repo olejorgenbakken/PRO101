@@ -49,7 +49,7 @@ wrapper {
     flex-direction: row;
 }
 
-.liste {
+.list, .newList {
     position: relative;
     border: solid 1px black;
     min-width: 280px;
@@ -67,12 +67,17 @@ wrapper {
     margin-left: 15px;
 }
 
+.newList {
+    flex-basis: 0;
+}
+
 .card {
     position: relative;
     text-align: left;
     background-color: white;
     color: black;
     width: 100%;
+    height: auto;
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -87,6 +92,10 @@ wrapper {
     margin-left: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.newList {
+    background-color: transparent;
 }
 
 .card .header {

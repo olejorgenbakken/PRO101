@@ -1,9 +1,17 @@
-var list = [{
+var table = [{
     id: 0,
+    name: "Tavle",
+    numberOfLists: 2,
+}]
+
+// create list
+var list = [{
+    id: "list" + 0,
     name: "list",
 }];
 
-var users = [{
+// create user
+var user = [{
     userName: "OJ",
     email: "olejorgenbakken@gmail.com"
 }, {
@@ -18,14 +26,15 @@ var card = [{
     list: list[0].id,
     dateCreated: getTime(),
     timeLimit: document.getElementById("newCardTimeInput").value,
-    cardMembers: users,
+    cardMembers: user,
     description: document.getElementById("newCardDescriptionInput").value,
 
 }];
 
-// Adding eventlistener to newList
+// Adding eventlisteners
 document.getElementById("newListBtn").addEventListener("click", createList);
-var newCardSubmit = document.getElementById("newCardSubmit").addEventListener("click", createCard);
+var newCardSubmit = document.getElementById("newCardSubmit");
+newCardSubmit.addEventListener("click");
 
 // get time and date
 function getTime() {
@@ -39,7 +48,7 @@ function getTime() {
 
 // adding card with input values
 function createCard(e) {
-    if (e.keyCode == 13){
+    if (e.keyCode == 13 || newCardSubmit){
 
         // count cards
         var countCards = document.getElementsByClassName("card").length;
@@ -51,13 +60,11 @@ function createCard(e) {
             list: list[0].id,
             dateCreated: getTime(),
             timeLimit: document.getElementById("newCardTimeInput").value,
-            cardMembers: users.name,
+            cardMembers: user.name,
             description: document.getElementById("newCardDescriptionInput").value,
         });
 
-        console.log(card[countCards].id);
-
-        var cardsList = document.getElementById("liste" + card[countCards].list);
+        var cardsList = document.getElementById(card[countCards].list);
 
         var newCard = document.createElement("div");
         var newCardHeader = document.createElement("div");
@@ -92,22 +99,40 @@ function createCard(e) {
         newCardDateCreated.appendChild(newCardDateCreatedText);
         newCardFooter.appendChild(newCardTimeLimit);
         newCardTimeLimit.appendChild(newCardTimeLimitText);
+
+        console.log(cardsList);
     }
 };
 
+
 function createList() {
+    
+    // count lists
+    var countLists = document.getElementsByClassName("list").length;
+    
+    // push into array
+    list.push({
+        id: "list" + countLists,
+        name: "liste " + countLists,
+    });
+
+    console.log(list[countLists].id);
+
     var newList = document.createElement("div");
-    newList.className = "liste";
-    var countCards = document.getElementsByClassName("liste").length;
-    newList.id = "liste" + countCards;
-
     var newListHeader = document.createElement("div");
-    newListHeader.className = "header";
-
     var newListHeaderText = document.createElement("h2");
-    newListHeaderText.textContent = "Ny liste";
+    var newListBtn = document.createElement("button");
 
-    newListHeader.appendChild(newListHeaderText);
+    newList.className = "list";
+    newListHeader.className = "header";
+    newListBtn.className = "newListBtn";
+
+    newListHeaderText.innerText = list[countLists].name;
+    console.log(list[countLists].name);
+
+    wrapper.appendChild(newList);
     newList.appendChild(newListHeader);
-    document.getElementById("wrapper").appendChild(newList);
+    newList.appendChild(newListBtn);
+    newListHeader.appendChild(newListHeaderText);
+
 };
