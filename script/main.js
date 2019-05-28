@@ -55,6 +55,7 @@ document.getElementById("submitMember").addEventListener("click", function(){
                 memberInput.value = "";
                 addMember.appendChild(createElement).innerHTML = newValue;
                 alert("Member added");
+                return;
             }
         }
         alert("Wrong name");
