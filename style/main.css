@@ -21,3 +21,24 @@ h3 {
 li {
     list-style: none;
 }
+
+#page-header {
+    width: 100vw;
+    background-color: red;
+    height: 75px;
+    padding: 10px 0;
+}
+
+#page-nav {
+    background-color: white;
+    height: 50px;
+}
+
+#page-nav ul {
+    float: right;
+}
+
+#page-nav ul li {
+    float: left;
+    margin-right: 20px;
+}

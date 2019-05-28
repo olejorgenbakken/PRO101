@@ -19,7 +19,12 @@ var registreredUsers = [
 //Legge til medlem i prosjekt
 //Implementer at admin blir automatisk pushet inn i array
 
-var membersInProject = ["Admin"];
+var membersInProject = [
+    {
+        userName: "Admin",
+        email: "admin@admin.com"
+    }
+];
 
 var memberButton = document.createElement("BUTTON");
 document.getElementById("container").appendChild(memberButton);
@@ -29,25 +34,26 @@ memberButton.addEventListener("click", function(){
     document.getElementById("addMember").style.display = "block";
 });
 
-
 document.getElementById("submitMember").addEventListener("click", function(){
     var memberInput = document.getElementsByTagName("INPUT").memberName;
-    if(membersInProject.includes(memberInput.value)) {
-        alert("Member exists");
-    }else{
-        var newValue = memberInput.value;
-        memberInput.value = "";
-        for(var i = 0; i < registreredUsers.length; i++){
-            if(newValue === registreredUsers[i].userName || newValue === registreredUsers[i].email) {
-                membersInProject.push(newValue);
-                console.log(membersInProject);
-                var createElement = document.createElement("P");
-                memberInput.value = "";
-                addMember.appendChild(createElement).innerHTML = newValue;
-                alert("Member added");
-                return;
-            }
+    var newValue = memberInput.value;
+    for(var i = 0; i < membersInProject.length; i++) {
+        if(newValue == membersInProject[i].userName || newValue == membersInProject[i].email) {
+            alert("User already added");
+            memberInput.value = "";
+            return;
         }
-        alert("Wrong name");
     }
+    for(var i = 0; i < registreredUsers.length; i++){
+        if(newValue === registreredUsers[i].userName || newValue === registreredUsers[i].email) {
+            membersInProject.push(registreredUsers[i]);
+            console.log(membersInProject);
+            var createElement = document.createElement("P");
+            memberInput.value = "";
+            addMember.appendChild(createElement).innerHTML = newValue;
+            alert("Member added");
+            return;
+        }
+    }
+    alert("Wrong name");
 });
