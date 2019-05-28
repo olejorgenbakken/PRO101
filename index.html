@@ -41,17 +41,22 @@
                 </div>
                 <!-- beskrivelse end -->
 
+                <!-- footer start -->
                 <footer>
                     <div class="tidsfrist">
                         
                     </div>
                 </footer>
+                <!-- footer end -->
 
             </div>
             <!-- card end -->
 
             <div class="newCard">
-                <input type="button" class="newCardBtn" value="nytt kort">
+                <input id="newCardNameInput" class="newCardName" value="Tittel" type="text" onkeypress="return createCard(event)">
+                <input id="newCardTimeInput" class="newCardTime" placeholder="Tidsfrist" type="date">
+                <input id="newCardDescriptionInput" class="newCardDescription" placeholder="Beskrivelse" value="" type="text" onkeypress="return createCard(event)">
+                <input id="newCardSubmit" class="submit" type="button" value="lag kort" onclick="return createCard(event)">
             </div>
 
         </div>
