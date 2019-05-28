@@ -19,7 +19,7 @@ var user = [{
     email: "filip@online.no",
 }];
 
-// create array
+// create card
 var card = [{
     id: "kort" + 0,
     name: document.getElementById("newCardNameInput").value,
@@ -31,6 +31,8 @@ var card = [{
 
 }];
 
+
+
 // Adding eventlisteners
 document.getElementById("newListBtn").addEventListener("click", createList);
 var newCardSubmit = document.getElementById("newCardSubmit");
@@ -39,9 +41,9 @@ newCardSubmit.addEventListener("click");
 // get time and date
 function getTime() {
     var today = new Date();
-    var date = "År: " + today.getFullYear() + " Måned: " + (today.getMonth() + 1) + " Dag: " + today.getDate();
-    var time = "Time: " + today.getHours() + " Minutt: " + today.getMinutes() + " Sekunder: " + today.getSeconds();
-    var dateTime = date + ' ' + time;
+    var date = "Date: " + today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+    var time = "Time: " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + '\n ' + time;
 
     return dateTime;
 }
@@ -52,7 +54,7 @@ function createCard(e) {
 
         // count cards
         var countCards = document.getElementsByClassName("card").length;
-
+        
         // push into array
         card.push({
             id:"kort" + countCards,
@@ -99,8 +101,6 @@ function createCard(e) {
         newCardDateCreated.appendChild(newCardDateCreatedText);
         newCardFooter.appendChild(newCardTimeLimit);
         newCardTimeLimit.appendChild(newCardTimeLimitText);
-
-        console.log(cardsList);
     }
 };
 
@@ -109,7 +109,7 @@ function createList() {
     
     // count lists
     var countLists = document.getElementsByClassName("list").length;
-    
+
     // push into array
     list.push({
         id: "list" + countLists,
@@ -135,4 +135,5 @@ function createList() {
     newList.appendChild(newListBtn);
     newListHeader.appendChild(newListHeaderText);
 
+    
 };
