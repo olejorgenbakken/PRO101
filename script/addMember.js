@@ -16,18 +16,8 @@ var registreredUsers = [
         email: "julian@julian.com"
     }
 ];
-
-
+//Legge til medlem i prosjekt
 //Implementer at admin blir automatisk pushet inn i array
-/*
-var membersInProject = [];
-
-for (var i = 0; i < registreredUsers.length; i++) {
-    var createOption = document.createElement("OPTION");
-    var addMember = document.getElementById("addMember");
-    addMember.appendChild(createOption).innerText = registreredUsers[i].userName;
-}
-*/
 
 var membersInProject = ["Admin"];
 
