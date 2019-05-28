@@ -8,6 +8,8 @@ var list = [
   }
 ];
 
+
+
 var i = 0;
 
  function addItem(){
