@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +9,19 @@
     <link rel="stylesheet" type="text/css" href="style/responsive.css">
     <title>PRO101 | Gruppe 17</title>
 </head>
+
 <body>
-  
-    <header>
-        <h1>tavle</h1>
+
+    <header id="masterHeader">
+        
     </header>
 
     <!-- wrapper start -->
     <wrapper id="wrapper">
 
-        <!-- list start -->
-        <div class="list" id="list0">
-
-            <!-- list header start -->
-            <div class="header">
-                <h2>list</h2>
-            </div>
-            <!-- list header end -->
-
-            <div class="newCard">
-                <input id="newCardNameInput" class="newCardName" value="Tittel" type="text" onkeypress="createCard(event)">
-                <input id="newCardTimeInput" class="newCardTime" placeholder="Tidsfrist" type="date">
-                <input id="newCardDescriptionInput" class="newCardDescription" placeholder="Beskrivelse" value="" type="text" onkeypress="createCard(event)">
-                <input id="newCardSubmit" class="submit" type="button" value="lag kort" onclick="createCard(event)">
-            </div>
-
-        </div>
-        <!-- list end -->
-
-        <div class="newList" id="list1">
-            <div class="newListBtn" id="newListBtn">
-                <input type="button" id="newListBtnBtn" value="ny list">
-            </div>
-
-            <div class="newCard">
-                <input id="newCardNameInput" class="newCardName" value="Tittel" type="text" onkeypress="createCard(event)">
-                <input id="newCardTimeInput" class="newCardTime" placeholder="Tidsfrist" type="date">
-                <input id="newCardDescriptionInput" class="newCardDescription" placeholder="Beskrivelse" value="" type="text"
-                    onkeypress="createCard(event)">
-                <input id="newCardSubmit" class="submit" type="button" value="lag kort" onclick="createCard(event)">
-            </div>
-        </div>
-
     </wrapper>
-    <!-- wrapper end -->
 
-<script src="script/main.js"></script>
+    <script src="script/main.js"></script>
 </body>
+
 </html>

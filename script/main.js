@@ -1,139 +1,165 @@
-var table = [{
-    id: 0,
-    name: "Tavle",
-    numberOfLists: 2,
-}]
-
-// create list
-var list = [{
-    id: "list" + 0,
-    name: "list",
-}];
-
-// create user
-var user = [{
-    userName: "OJ",
-    email: "olejorgenbakken@gmail.com"
-}, {
-    userName: "Filip",
-    email: "filip@online.no",
-}];
-
-// create card
-var card = [{
-    id: "kort" + 0,
-    name: document.getElementById("newCardNameInput").value,
-    list: list[0].id,
-    dateCreated: getTime(),
-    timeLimit: document.getElementById("newCardTimeInput").value,
-    cardMembers: user,
-    description: document.getElementById("newCardDescriptionInput").value,
-
-}];
-
-
-
-// Adding eventlisteners
-document.getElementById("newListBtn").addEventListener("click", createList);
-var newCardSubmit = document.getElementById("newCardSubmit");
-newCardSubmit.addEventListener("click");
-
-// get time and date
-function getTime() {
+// tid og dato
+function getTime(input) {
     var today = new Date();
-    var date = "Date: " + today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-    var time = "Time: " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var date = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+    var time = today.getHours() + "." + today.getMinutes() + "." + today.getSeconds();
     var dateTime = date + '\n ' + time;
 
-    return dateTime;
+    switch (input) {
+        case "date": return date;
+        case "time": return time;
+        case "dateTime": return dateTime;
+    }
 }
 
-// adding card with input values
-function createCard(e) {
-    if (e.keyCode == 13 || newCardSubmit){
+//lag tavle
+var tavle = [{
+    id: 0,
+    navn: "Tavle",
+    antallLister: 0,
+}];
 
-        // count cards
-        var countCards = document.getElementsByClassName("card").length;
-        
-        // push into array
-        card.push({
-            id:"kort" + countCards,
-            name: document.getElementById("newCardNameInput").value,
-            list: list[0].id,
-            dateCreated: getTime(),
-            timeLimit: document.getElementById("newCardTimeInput").value,
-            cardMembers: user.name,
-            description: document.getElementById("newCardDescriptionInput").value,
-        });
+// lag liste
+var liste = [{}];
 
-        var cardsList = document.getElementById(card[countCards].list);
+// lag bruker
+var bruker = [{
+    brukernavn: "OJ",
+    mail: "olejorgenbakken@gmail.com"
+}, {
+    brukernavn: "Filip",
+    mail: "filip@online.no",
+}];
 
-        var newCard = document.createElement("div");
-        var newCardHeader = document.createElement("div");
-        var newCardHeaderText = document.createElement("h2");
-        var newCardDescription = document.createElement("div");
-        var newCardDescriptionText = document.createElement("p");
-        var newCardFooter = document.createElement("footer");
-        var newCardDateCreated = document.createElement("div");
-        var newCardDateCreatedText = document.createElement("h3");
-        var newCardTimeLimit = document.createElement("div");
-        var newCardTimeLimitText = document.createElement("h2");
+// lag kort
+var kort = [];
+/*
+function listeID {
+    var antallLister = document.getElementsByClassName("liste").length;
+    return antallLister;
+}
+function antallKort() {
+    var antallKort = document.getElementsByClassName("kort").length;
+    return antallKort;
+}
+*/
+function lagTavle() {
+    var masterHeader = document.getElementById("masterHeader");
+    var tavleNavn = document.createElement("h1");
+    tavleNavn.innerText = tavle[0].navn;
 
-        newCard.className = "card";
-        newCardHeader.className = "header";
-        newCardDescription.className = "description";
-        newCardDateCreated.className = "dateCreated";
-        newCardTimeLimit.className = "tidsfrist";
+    masterHeader.appendChild(tavleNavn);
+}
 
-        newCardHeaderText.innerText = card[countCards].name;
-        newCardDescriptionText.innerText = card[countCards].description;
-        newCardDateCreatedText.innerText = card[countCards].dateCreated;
-        newCardTimeLimitText.innerText = card[countCards].timeLimit;
-        
-        cardsList.appendChild(newCard);
-        newCard.appendChild(newCardHeader);
-        newCard.appendChild(newCardDescription);
-        newCard.appendChild(newCardFooter);
-        newCard.appendChild(newCardDateCreated);
-        newCardHeader.appendChild(newCardHeaderText);
-        newCardDescription.appendChild(newCardDescriptionText);
-        newCardFooter.appendChild(newCardDateCreated);
-        newCardDateCreated.appendChild(newCardDateCreatedText);
-        newCardFooter.appendChild(newCardTimeLimit);
-        newCardTimeLimit.appendChild(newCardTimeLimitText);
-    }
-};
+lagTavle();
 
+var listerCounter = 0;
 
-function createList() {
-    
-    // count lists
-    var countLists = document.getElementsByClassName("list").length;
+function lagListe() {
 
-    // push into array
-    list.push({
-        id: "list" + countLists,
-        name: "liste " + countLists,
+    var listeID = listerCounter;
+    listerCounter++;
+
+    var listeNavn = "liste" + listeID;
+
+    liste.push({
+        id: listeID,
+        navn: "liste" + listeID,
     });
 
-    console.log(list[countLists].id);
+    var wrapper = document.getElementById("wrapper");
 
-    var newList = document.createElement("div");
-    var newListHeader = document.createElement("div");
-    var newListHeaderText = document.createElement("h2");
-    var newListBtn = document.createElement("button");
+    var nyListe = document.createElement("div");
+    var nyListeLagKortForm = document.createElement("form");
 
-    newList.className = "list";
-    newListHeader.className = "header";
-    newListBtn.className = "newListBtn";
+    nyListe.className = "liste";
+    nyListe.id = listeNavn;
 
-    newListHeaderText.innerText = list[countLists].name;
-    console.log(list[countLists].name);
+    wrapper.appendChild(nyListe);
+    nyListe.appendChild(nyListeLagKortForm);
 
-    wrapper.appendChild(newList);
-    newList.appendChild(newListHeader);
-    newList.appendChild(newListBtn);
-    newListHeader.appendChild(newListHeaderText);
+    for (i = 0; i < 4; i++) {
+        nyListeLagKortForm.id = "lagKortListe" + liste[listeID].id;
+        var nyListeLagKortInput = document.createElement("input");
+        nyListeLagKortInput.className = "nyttKortInput";
+        nyListeLagKortInput.id = i;
+        nyListeLagKortForm.appendChild(nyListeLagKortInput);
 
-    
+        if (nyListeLagKortInput.id == 3) {
+            nyListeLagKortInput.id = "nyKortKnapp" + liste[listeID].id;
+            nyListeLagKortInput.type = "button";
+            nyListeLagKortInput.value = "Lag kort";
+            nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
+
+            return nyListeLagKortInput;
+        } else if (nyListeLagKortInput.id == 2) {
+            nyListeLagKortInput.id = "nyttKortTidsfrist" + liste[listeID].id;
+            nyListeLagKortInput.type = "date";
+        } else if (nyListeLagKortInput.id == 1) {
+            nyListeLagKortInput.id = "nyttKortBeskrivelse" + liste[listeID].id;
+            nyListeLagKortInput.placeholder = "Beskrivelse";
+        } else if (nyListeLagKortInput.id == 0) {
+            nyListeLagKortInput.id = "nyttKortNavn" + liste[listeID].id;
+            nyListeLagKortInput.placeholder = "Tittel";
+        }
+    }
+}
+
+lagListe();
+lagListe();
+
+var kortID = 0;
+
+function lagKort(listeID) {
+    var kortetsListe = "liste" + listeID;
+    kort.push({
+        id: kortID,
+        navn: "kort" + kortID,
+        beskrivelse: "beskrivelse",
+        listePosisjon: liste[listeID],
+        lagd: getTime("date"),
+        tidsfrist: getTime("dateTime"),
+        brukere: bruker,
+    });
+
+
+    var nyttKort = document.createElement("div");
+    var nyttKortHeader = document.createElement("div");
+    var nyttKortHeaderTekst = document.createElement("h2");
+    var nyttKortBeskrivelse = document.createElement("div");
+    var nyttKortBeskrivelseTekst = document.createElement("p");
+    var nyttKortFooter = document.createElement("div");
+    var nyttKortLagd = document.createElement("div");
+    var nyttKortLagdTekst = document.createElement("h3");
+    var nyttKortBrukere = document.createElement("div");
+    var nyttKortTidsfrist = document.createElement("div");
+    var nyttKortTidsfristTekst = document.createElement("h3");
+
+    nyttKort.id = kortID;
+    nyttKort.className = "kort";
+    nyttKortHeader.className = "kort_header";
+    nyttKortBeskrivelse.className = "kort_beskrivelse";
+    nyttKortFooter.className = "kort_footer";
+    nyttKortLagd.className = "footer_lagd";
+    nyttKortTidsfrist.className = "footer_tidsfrist";
+
+    var listePosisjon = document.getElementById(kortetsListe);
+    listePosisjon.appendChild(nyttKort);
+    nyttKort.appendChild(nyttKortHeader);
+    nyttKort.appendChild(nyttKortBeskrivelse);
+    nyttKort.appendChild(nyttKortFooter);
+    nyttKortHeader.appendChild(nyttKortHeaderTekst);
+    nyttKortBeskrivelse.appendChild(nyttKortBeskrivelseTekst);
+    nyttKortFooter.appendChild(nyttKortLagd);
+    nyttKortFooter.appendChild(nyttKortBrukere);
+    nyttKortFooter.appendChild(nyttKortTidsfrist);
+    nyttKortLagd.appendChild(nyttKortLagdTekst);
+    nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
+
+    nyttKortHeaderTekst.innerText = kort[kortID].navn;
+    nyttKortBeskrivelseTekst.innerText = kort[kortID].beskrivelse;
+    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
+    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
+
+    kortID++;
 };
