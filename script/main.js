@@ -72,6 +72,7 @@ function lagListe() {
 
     var listeID = listerCounter;
     listerCounter++;
+    tavle[0].antallLister = listerCounter;
 
     var listeNavn = "liste" + listeID;
 
@@ -90,6 +91,12 @@ function lagListe() {
 
     wrapper.appendChild(nyListe);
     nyListe.appendChild(nyListeLagKortForm);
+    
+    var slettListe = document.createElement("button");
+    slettListe.innerText = "slett liste";
+    slettListe.className = "lukkKort";
+    slettListe.setAttribute("onclick", " return slettListe(" + listeID + ")");
+    nyListe.appendChild(slettListe);
 
     for (i = 0; i < 4; i++) {
         nyListeLagKortForm.id = "lagKortListe" + liste[listeID].id;
@@ -118,8 +125,13 @@ function lagListe() {
     }
 }
 
-lagListe();
-lagListe();
+function slettListe(listeID) {
+    var liste = document.getElementById("liste" + listeID);
+    console.log(liste.parentNode.childNodes);
+    console.log(liste);
+    console.log("liste" + listeID);
+    liste.parentNode.removeChild("liste" + listeID);
+}
 
 var kortID = 0;
 
