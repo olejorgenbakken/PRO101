@@ -16,7 +16,7 @@ function getTime(input) {
 var tavle = [];
 
 // lag liste
-var liste = [{}];
+var liste = [];
 
 // lag bruker
 var bruker = [];
@@ -153,6 +153,7 @@ function lagKort(listeID) {
 
     nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
+    nyttKort.setAttribute("onclick", " return redigerKort(" + kortID + ")");
     nyttKortHeader.className = "kort_header";
     nyttKortBeskrivelse.className = "kort_beskrivelse";
     nyttKortFooter.className = "kort_footer";
@@ -202,4 +203,9 @@ function slettKort(kortID) {
     var kort = document.getElementById("kort" + kortID);
 
     kort.parentNode.removeChild(kort);
+}
+
+function redigerKort(kortID) {
+    var kort = document.getElementById("kort" + kortID);
+    console.log(i);
 }
