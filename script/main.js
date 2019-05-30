@@ -1,3 +1,15 @@
+var firebaseConfig = {
+    apiKey: "api-key",
+    authDomain: "project-id.firebaseapp.com",
+    databaseURL: "https://project-id.firebaseio.com",
+    projectId: "project-id",
+    storageBucket: "project-id.appspot.com",
+    messagingSenderId: "sender-id",
+    appID: "app-id",
+  };
+
+firebase.initializeApp(firebaseConfig);
+
 // tid og dato
 function getTime(input) {
     var today = new Date();
@@ -62,7 +74,7 @@ function lagSide() {
     headerTekst.innerText = tavle[0].navn;
     nyListeKnappTekst.innerText = "X";
     navTekst.innerText = "navigasjon";
-}
+};
 
 lagSide();
 
@@ -72,6 +84,8 @@ function lagListe() {
 
     var listeID = listerCounter;
     listerCounter++;
+
+    tavle[0].antallLister = listerCounter;
 
     var listeNavn = "liste" + listeID;
 
