@@ -213,25 +213,19 @@ function slettKort(kortID) {
 function redigerHeader(kortID) {
     kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
 
-    var nyTittel = prompt("HEY");
+    var nyTittel = prompt("Ny tittel");
     kort[kortID].navn = nyTittel;
 
     
     kortTittelContainer.innerText = kort[kortID].navn;
-
-    console.log(kortTittelContainer);
-    console.log(kort[kortID].navn);
 }
 
 function redigerBeskrivelse(kortID) {
     kortBeskrivelseContainer = document.getElementById("kort_beskrivelse_tekst" + kortID);
 
-    var nyBeskrivelse = prompt("HEY");
+    var nyBeskrivelse = prompt("Ny beskrivelse");
     kort[kortID].beskrivelse = nyBeskrivelse;
 
 
     kortBeskrivelseContainer.innerText = kort[kortID].beskrivelse;
-
-    console.log(kortBeskrivelseContainer);
-    console.log(kort[kortID].beskrivelse);
 }
