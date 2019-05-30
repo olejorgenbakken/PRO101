@@ -63,6 +63,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     font-size: 12px;
 }
 
+.form #log_in{
+    font-family: "roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background:#FFC400;
+    width: 40%;
+    border: 0;
+    padding: 10px;
+    color: gray;
+    font-size: 15px;
+    cursor: vertical-text;
+    border-radius: 50px;
+    text-decoration: none;
+
+}
+
 .form .message a{
     color:gray;
     text-decoration: none;
