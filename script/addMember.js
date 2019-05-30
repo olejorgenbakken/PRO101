@@ -23,6 +23,22 @@ var membersInProject = [
     {
         userName: "Admin",
         email: "admin@admin.com"
+    },
+    {
+        userName: "Filip",
+        email: "filip@filip.com"
+    },
+    {
+        userName: "OJ",
+        email: "oj@oj.com"
+    },
+    {
+        userName: "Sofie",
+        email: "sofie@sofie.com"
+    },
+    {
+        userName: "Julian",
+        email: "julian@julian.com"
     }
 ];
 
