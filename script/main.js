@@ -1,16 +1,4 @@
-var firebaseConfig = {
-    apiKey: "api-key",
-    authDomain: "project-id.firebaseapp.com",
-    databaseURL: "https://project-id.firebaseio.com",
-    projectId: "project-id",
-    storageBucket: "project-id.appspot.com",
-    messagingSenderId: "sender-id",
-    appID: "app-id",
-  };
-
-firebase.initializeApp(firebaseConfig);
-
-// tid og dato
+// tid og dat
 function getTime(input) {
     var today = new Date();
     var date = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
