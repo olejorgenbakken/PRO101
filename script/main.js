@@ -127,10 +127,7 @@ function lagListe() {
 
 function slettListe(listeID) {
     var liste = document.getElementById("liste" + listeID);
-    console.log(liste.parentNode.childNodes);
-    console.log(liste);
-    console.log("liste" + listeID);
-    liste.parentNode.removeChild("liste" + listeID);
+    liste.remove("liste" + listeID);
 }
 
 var kortID = 0;
