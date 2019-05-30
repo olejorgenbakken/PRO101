@@ -121,7 +121,7 @@ function lagListe() {
         } else if (nyListeLagKortInput.id == 0) {
             nyListeLagKortInput.id = "nyttKortNavn" + liste[listerCounter].id;
             nyListeLagKortInput.placeholder = "Tittel";
-            nyListeLagKortInput.value = "Tittel"
+            nyListeLagKortInput.value = "Gjøremål"
         }
     }
 }
@@ -203,4 +203,3 @@ function slettKort(kortID) {
 
     kort.parentNode.removeChild(kort);
 }
-
