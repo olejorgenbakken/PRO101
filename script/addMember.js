@@ -1,3 +1,4 @@
+//Firebase Config
 var registreredUsers = [
     {
         userName: "Filip",

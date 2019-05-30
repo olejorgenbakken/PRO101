@@ -14,6 +14,18 @@ var firebaseConfig = {
 
   var db = firebase.firestore();
 
+    var nyttKort = document.createElement("div");
+    var nyttKortHeader = document.createElement("div");
+    var nyttKortHeaderTekst = document.createElement("h2");
+    var nyttKortBeskrivelse = document.createElement("div");
+    var nyttKortBeskrivelseTekst = document.createElement("p");
+    var nyttKortFooter = document.createElement("div");
+    var nyttKortLagd = document.createElement("div");
+    var nyttKortLagdTekst = document.createElement("h3");
+    var nyttKortBrukere = document.createElement("div");
+    var nyttKortTidsfrist = document.createElement("div");
+    var nyttKortTidsfristTekst = document.createElement("h3");
+
 // tid og dat
 function getTime(input) {
     var today = new Date();
@@ -26,6 +38,21 @@ function getTime(input) {
         case "time": return time;
         case "dateTime": return dateTime;
     }
+}
+
+function getKort(){
+    var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste-1").collection("kort").doc("Gjøremål-1");
+    kortRef.get().then(function(doc){
+        if (doc.exists) {
+            console.log("Document data: ", doc.data().navn);
+            console.log("Document data: ", doc.data().beskrivelse);
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 }
 
 //lag tavle
@@ -168,19 +195,6 @@ function lagKort(listeID) {
 
     kortCounter = kortID;
     kortID++
-
-    var nyttKort = document.createElement("div");
-    var nyttKortHeader = document.createElement("div");
-    var nyttKortHeaderTekst = document.createElement("h2");
-    var nyttKortBeskrivelse = document.createElement("div");
-    var nyttKortBeskrivelseTekst = document.createElement("p");
-    var nyttKortFooter = document.createElement("div");
-    var nyttKortLagd = document.createElement("div");
-    var nyttKortLagdTekst = document.createElement("h3");
-    var nyttKortBrukere = document.createElement("div");
-    var nyttKortTidsfrist = document.createElement("div");
-    var nyttKortTidsfristTekst = document.createElement("h3");
-
     nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
     nyttKort.setAttribute("onclick", " return redigerKort(" + kortID + ")");
