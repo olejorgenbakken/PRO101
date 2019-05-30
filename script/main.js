@@ -60,7 +60,7 @@ function lagSide() {
     nyListeKnapp.appendChild(nyListeKnappTekst);
 
     headerTekst.innerText = tavle[0].navn;
-    nyListeKnappTekst.innerText = "X";
+    nyListeKnappTekst.innerText = "+";
     navTekst.innerText = "navigasjon";
 }
 
