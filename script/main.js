@@ -188,3 +188,4 @@ function slettKort(kortID) {
 
     kort.parentNode.removeChild(kort);
 }
+
