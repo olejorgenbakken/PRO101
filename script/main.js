@@ -13,45 +13,58 @@ function getTime(input) {
 }
 
 //lag tavle
-var tavle = [{
-    id: 0,
-    navn: "Tavle",
-    antallLister: 0,
-}];
+var tavle = [];
 
 // lag liste
 var liste = [{}];
 
 // lag bruker
-var bruker = [{
-    brukernavn: "OJ",
-    mail: "olejorgenbakken@gmail.com"
-}, {
-    brukernavn: "Filip",
-    mail: "filip@online.no",
-}];
+var bruker = [];
 
 // lag kort
 var kort = [];
-/*
-function listeID {
-    var antallLister = document.getElementsByClassName("liste").length;
-    return antallLister;
-}
-function antallKort() {
-    var antallKort = document.getElementsByClassName("kort").length;
-    return antallKort;
-}
-*/
-function lagTavle() {
-    var masterHeader = document.getElementById("masterHeader");
-    var tavleNavn = document.createElement("h1");
-    tavleNavn.innerText = tavle[0].navn;
 
-    masterHeader.appendChild(tavleNavn);
+function lagSide() {
+    tavle.push({
+        id: 0,
+        navn: "Tavle",
+        antallLister: 0,
+    })
+
+    var body = document.getElementsByTagName("body")[0];
+    var header = document.createElement("header");
+    var wrapper = document.createElement("wrapper");
+    var footer = document.createElement("footer");
+    var nav = document.createElement("nav");
+    var navTekst = document.createElement("h2");
+    var headerTekst = document.createElement("h1");
+    var nyListeKnapp = document.createElement("div");
+    var nyListeKnappTekst = document.createElement("p");
+
+    header.id = "tavleHeader";
+    header.className = "header";
+    nav.id = "navigasjon";
+    wrapper.id = "wrapper";
+    footer.id = "tavleFooter";
+    nyListeKnapp.id = "nyListeKnapp";
+    nyListeKnappTekst.id = "nyListeKnappX";
+    nyListeKnapp.setAttribute("onclick", " return lagListe()");
+
+    body.appendChild(header);
+    body.appendChild(wrapper);
+    body.appendChild(footer);
+    header.appendChild(headerTekst);
+    header.appendChild(nav);
+    nav.appendChild(navTekst);
+    wrapper.appendChild(nyListeKnapp);
+    nyListeKnapp.appendChild(nyListeKnappTekst);
+
+    headerTekst.innerText = tavle[0].navn;
+    nyListeKnappTekst.innerText = "X";
+    navTekst.innerText = "navigasjon";
 }
 
-lagTavle();
+lagSide();
 
 var listerCounter = 0;
 
@@ -135,7 +148,7 @@ function lagKort(listeID) {
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
 
-    nyttKort.id = kortID;
+    nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortBeskrivelse.className = "kort_beskrivelse";
@@ -161,5 +174,17 @@ function lagKort(listeID) {
     nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
     nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
 
+    var slettKort = document.createElement("div");
+    slettKort.innerText = "slett kort";
+    slettKort.className = "lukkKort";
+    slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
+    nyttKort.appendChild(slettKort);
+
     kortID++;
 };
+
+function slettKort(kortID) {
+    var kort = document.getElementById("kort" + kortID);
+
+    kort.parentNode.removeChild(kort);
+}
