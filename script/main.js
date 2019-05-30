@@ -16,7 +16,7 @@ function getTime(input) {
 var tavle = [];
 
 // lag liste
-var liste = [];
+var liste = [{}];
 
 // lag bruker
 var bruker = [];
