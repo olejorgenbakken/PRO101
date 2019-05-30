@@ -66,13 +66,13 @@ function lagSide() {
 
 lagSide();
 
-var listerCounter = 0;
+var listeCounter = 0;
 
 function lagListe() {
 
-    var listeID = listerCounter;
-    listerCounter++;
-    tavle[0].antallLister = listerCounter;
+    var listeID = listeCounter;
+    listeCounter++;
+    tavle[0].antallLister = listeCounter;
 
     var listeNavn = "liste" + listeID;
 
@@ -136,8 +136,7 @@ var kortID = 0;
 function lagKort(listeID) {
     var kortetsListe = "liste" + listeID;
 
-    kortCounter = kortID;
-    kortID++
+    var kortCounter = kortID;
 
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
@@ -153,9 +152,13 @@ function lagKort(listeID) {
 
     nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
-    nyttKort.setAttribute("onclick", " return redigerKort(" + kortID + ")");
     nyttKortHeader.className = "kort_header";
+    nyttKortHeader.id = "kort_tittel" + kortID;
+    nyttKortHeader.setAttribute("onclick", " return redigerHeader(" + kortID + ")");
+    nyttKortHeaderTekst.id = "kort_tittel_tekst" + kortID;
     nyttKortBeskrivelse.className = "kort_beskrivelse";
+    nyttKortBeskrivelse.id = "kort_beskrivelse_tekst" + kortID;
+    nyttKortBeskrivelse.setAttribute("onclick", " return redigerBeskrivelse(" + kortID + ")");
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
     nyttKortTidsfrist.className = "footer_tidsfrist";
@@ -174,14 +177,14 @@ function lagKort(listeID) {
     nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
-    var nyttKortHeaderBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
+    var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
     var nyttKortTidsfristTekstInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
 
     kort.push({
         id: kortID,
         navn: nyttKortHeaderTekstInput,
-        beskrivelse: nyttKortHeaderBeskrivelseInput,
-        listePosisjon: liste[listeID],
+        beskrivelse: nyttKortBeskrivelseInput,
+        listePosisjon: liste[listeID].id,
         lagd: getTime("date"),
         tidsfrist: nyttKortTidsfristTekstInput,
         brukere: bruker,
@@ -197,6 +200,8 @@ function lagKort(listeID) {
     slettKort.className = "lukkKort";
     slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
     nyttKort.appendChild(slettKort);
+
+    kortID++
 };
 
 function slettKort(kortID) {
@@ -205,7 +210,28 @@ function slettKort(kortID) {
     kort.parentNode.removeChild(kort);
 }
 
-function redigerKort(kortID) {
-    var kort = document.getElementById("kort" + kortID);
-    console.log(i);
+function redigerHeader(kortID) {
+    kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
+
+    var nyTittel = prompt("HEY");
+    kort[kortID].navn = nyTittel;
+
+    
+    kortTittelContainer.innerText = kort[kortID].navn;
+
+    console.log(kortTittelContainer);
+    console.log(kort[kortID].navn);
+}
+
+function redigerBeskrivelse(kortID) {
+    kortBeskrivelseContainer = document.getElementById("kort_beskrivelse_tekst" + kortID);
+
+    var nyBeskrivelse = prompt("HEY");
+    kort[kortID].beskrivelse = nyBeskrivelse;
+
+
+    kortBeskrivelseContainer.innerText = kort[kortID].beskrivelse;
+
+    console.log(kortBeskrivelseContainer);
+    console.log(kort[kortID].beskrivelse);
 }
