@@ -24,6 +24,8 @@ var bruker = [];
 // lag kort
 var kort = [];
 
+// Lager en wrapper med listene, og en knapp, knappen og headeren er tenkt at skal bort fra funksjonen
+// og inn i HTMLen.
 function lagSide() {
     tavle.push({
         id: 0,
@@ -44,7 +46,7 @@ function lagSide() {
     header.id = "tavleHeader";
     header.className = "header";
     nav.id = "navigasjon";
-    wrapper.id = "wrapper";
+    wrapper.id = "lister";
     footer.id = "tavleFooter";
     nyListeKnapp.id = "nyListeKnapp";
     nyListeKnappTekst.id = "nyListeKnappX";
@@ -66,28 +68,29 @@ function lagSide() {
 
 lagSide();
 
+// variabler for å telle antall lister og sette kortenes ID
 var listeCounter = 0;
+var kortID = 0;
 
+// lager en ny liste med mulighet for å lage flere kort
 function lagListe() {
 
     var listeID = listeCounter;
     listeCounter++;
     tavle[0].antallLister = listeCounter;
 
-    var listeNavn = "liste" + listeID;
-
     liste.push({
         id: listeID,
         navn: "liste" + listeID,
     });
 
-    var wrapper = document.getElementById("wrapper");
+    var wrapper = document.getElementById("lister");
 
     var nyListe = document.createElement("div");
     var nyListeLagKortForm = document.createElement("form");
 
     nyListe.className = "liste";
-    nyListe.id = listeNavn;
+    nyListe.id = "liste" + listeID;
 
     wrapper.appendChild(nyListe);
     nyListe.appendChild(nyListeLagKortForm);
@@ -98,6 +101,8 @@ function lagListe() {
     slettListe.setAttribute("onclick", " return slettListe(" + listeID + ")");
     nyListe.appendChild(slettListe);
 
+    // denne loopen lager alle fire inputene (man burde kanskje fjerne denne, og implementere den bedre
+    // men den fungerer for now...)
     for (i = 0; i < 4; i++) {
         nyListeLagKortForm.id = "lagKortListe" + liste[listeID].id;
         var nyListeLagKortInput = document.createElement("input");
@@ -126,18 +131,16 @@ function lagListe() {
     }
 }
 
+// slett lister
 function slettListe(listeID) {
     var liste = document.getElementById("liste" + listeID);
     liste.remove("liste" + listeID);
 }
 
-var kortID = 0;
-
+// lag et kort. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
+// i lag liste funksjonen
 function lagKort(listeID) {
-    var kortetsListe = "liste" + listeID;
-
-    var kortCounter = kortID;
-
+    var listePosisjon = document.getElementById("liste" + listeID);
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
     var nyttKortHeaderTekst = document.createElement("h2");
@@ -149,12 +152,13 @@ function lagKort(listeID) {
     var nyttKortBrukere = document.createElement("div");
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
+    var slettKort = document.createElement("div");
 
     nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
-    nyttKortHeader.setAttribute("onclick", " return redigerHeader(" + kortID + ")");
+    nyttKortHeader.setAttribute("onclick", " return redigerTittel(" + kortID + ")");
     nyttKortHeaderTekst.id = "kort_tittel_tekst" + kortID;
     nyttKortBeskrivelse.className = "kort_beskrivelse";
     nyttKortBeskrivelse.id = "kort_beskrivelse_tekst" + kortID;
@@ -162,8 +166,8 @@ function lagKort(listeID) {
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
     nyttKortTidsfrist.className = "footer_tidsfrist";
+    slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
 
-    var listePosisjon = document.getElementById(kortetsListe);
     listePosisjon.appendChild(nyttKort);
     nyttKort.appendChild(nyttKortHeader);
     nyttKort.appendChild(nyttKortBeskrivelse);
@@ -175,6 +179,7 @@ function lagKort(listeID) {
     nyttKortFooter.appendChild(nyttKortTidsfrist);
     nyttKortLagd.appendChild(nyttKortLagdTekst);
     nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
+    nyttKort.appendChild(slettKort);
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
     var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
@@ -190,42 +195,32 @@ function lagKort(listeID) {
         brukere: bruker,
     });
 
-    nyttKortHeaderTekst.innerText = kort[kortCounter].navn;
-    nyttKortBeskrivelseTekst.innerText = kort[kortCounter].beskrivelse;
-    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortCounter].lagd;
-    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortCounter].tidsfrist;
-
-    var slettKort = document.createElement("div");
+    nyttKortHeaderTekst.innerText = kort[kortID].navn;
+    nyttKortBeskrivelseTekst.innerText = kort[kortID].beskrivelse;
+    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
+    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
     slettKort.innerText = "slett kort";
     slettKort.className = "lukkKort";
-    slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
-    nyttKort.appendChild(slettKort);
 
     kortID++
 };
 
+// slett kort
 function slettKort(kortID) {
     var kort = document.getElementById("kort" + kortID);
-
     kort.parentNode.removeChild(kort);
 }
 
-function redigerHeader(kortID) {
+// redigerer kortenes tittel og beskrivelse
+function redigerTittel(kortID) {
     kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
-
     var nyTittel = prompt("Ny tittel");
     kort[kortID].navn = nyTittel;
-
-    
     kortTittelContainer.innerText = kort[kortID].navn;
 }
-
 function redigerBeskrivelse(kortID) {
     kortBeskrivelseContainer = document.getElementById("kort_beskrivelse_tekst" + kortID);
-
     var nyBeskrivelse = prompt("Ny beskrivelse");
     kort[kortID].beskrivelse = nyBeskrivelse;
-
-
     kortBeskrivelseContainer.innerText = kort[kortID].beskrivelse;
 }
