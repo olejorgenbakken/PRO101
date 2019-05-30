@@ -99,28 +99,29 @@ function lagListe() {
     nyListe.appendChild(slettListe);
 
     for (i = 0; i < 4; i++) {
-        nyListeLagKortForm.id = "lagKortListe" + liste[listeID].id;
+        nyListeLagKortForm.id = "lagKortListe" + liste[listerCounter].id;
         var nyListeLagKortInput = document.createElement("input");
         nyListeLagKortInput.className = "nyttKortInput";
         nyListeLagKortInput.id = i;
         nyListeLagKortForm.appendChild(nyListeLagKortInput);
 
         if (nyListeLagKortInput.id == 3) {
-            nyListeLagKortInput.id = "nyKortKnapp" + liste[listeID].id;
+            nyListeLagKortInput.id = "nyKortKnapp" + liste[listerCounter].id;
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.value = "Lag kort";
             nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
 
             return nyListeLagKortInput;
         } else if (nyListeLagKortInput.id == 2) {
-            nyListeLagKortInput.id = "nyttKortTidsfrist" + liste[listeID].id;
+            nyListeLagKortInput.id = "nyttKortTidsfrist" + liste[listerCounter].id;
             nyListeLagKortInput.type = "date";
         } else if (nyListeLagKortInput.id == 1) {
-            nyListeLagKortInput.id = "nyttKortBeskrivelse" + liste[listeID].id;
+            nyListeLagKortInput.id = "nyttKortBeskrivelse" + liste[listerCounter].id;
             nyListeLagKortInput.placeholder = "Beskrivelse";
         } else if (nyListeLagKortInput.id == 0) {
-            nyListeLagKortInput.id = "nyttKortNavn" + liste[listeID].id;
+            nyListeLagKortInput.id = "nyttKortNavn" + liste[listerCounter].id;
             nyListeLagKortInput.placeholder = "Tittel";
+            nyListeLagKortInput.value = "Tittel"
         }
     }
 }
@@ -134,16 +135,9 @@ var kortID = 0;
 
 function lagKort(listeID) {
     var kortetsListe = "liste" + listeID;
-    kort.push({
-        id: kortID,
-        navn: "kort" + kortID,
-        beskrivelse: "beskrivelse",
-        listePosisjon: liste[listeID],
-        lagd: getTime("date"),
-        tidsfrist: getTime("dateTime"),
-        brukere: bruker,
-    });
 
+    kortCounter = kortID;
+    kortID++
 
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
@@ -178,18 +172,30 @@ function lagKort(listeID) {
     nyttKortLagd.appendChild(nyttKortLagdTekst);
     nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
 
-    nyttKortHeaderTekst.innerText = kort[kortID].navn;
-    nyttKortBeskrivelseTekst.innerText = kort[kortID].beskrivelse;
-    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
-    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
+    var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
+    var nyttKortHeaderBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
+    var nyttKortTidsfristTekstInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
+
+    kort.push({
+        id: kortID,
+        navn: nyttKortHeaderTekstInput,
+        beskrivelse: nyttKortHeaderBeskrivelseInput,
+        listePosisjon: liste[listeID],
+        lagd: getTime("date"),
+        tidsfrist: nyttKortTidsfristTekstInput,
+        brukere: bruker,
+    });
+
+    nyttKortHeaderTekst.innerText = kort[kortCounter].navn;
+    nyttKortBeskrivelseTekst.innerText = kort[kortCounter].beskrivelse;
+    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortCounter].lagd;
+    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortCounter].tidsfrist;
 
     var slettKort = document.createElement("div");
     slettKort.innerText = "slett kort";
     slettKort.className = "lukkKort";
     slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
     nyttKort.appendChild(slettKort);
-
-    kortID++;
 };
 
 function slettKort(kortID) {
