@@ -142,6 +142,18 @@ function lagListe() {
             nyListeLagKortInput.value = "Gjøremål"
         }
     }
+    for(i = 0; i < liste.length; i++){
+        db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
+            .doc(liste[i].navn).set({
+                id: listeID,
+                navn: "liste" + listeID,
+            }).then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+        });
+    }
 }
 
 function slettListe(listeID) {
@@ -203,6 +215,23 @@ function lagKort(listeID) {
         tidsfrist: nyttKortTidsfristTekstInput,
         brukere: bruker,
     });
+    for(i = 0; i < kort.length; i++){
+        db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
+            .doc(liste[i].navn).collection("kort").doc(kort[i].navn + "-" + kort[i].id).set({
+                id: kortID,
+                navn: nyttKortHeaderTekstInput,
+                beskrivelse: nyttKortHeaderBeskrivelseInput,
+                listePosisjon: liste[listeID],
+                lagd: getTime("date"),
+                tidsfrist: nyttKortTidsfristTekstInput,
+                brukere: bruker,
+            }).then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+        });
+    }
 
     nyttKortHeaderTekst.innerText = kort[kortCounter].navn;
     nyttKortBeskrivelseTekst.innerText = kort[kortCounter].beskrivelse;
