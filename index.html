@@ -23,14 +23,36 @@
 
         
 
-        <div class = "card-" ></div> 
+        <div class = "card-" onmousedown="dragStart()"></div>
+     <div class="dropZone">
+  <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+    This div is draggable
+  </div>
+</div>
+
+        <div class="dropZone"></div>
+        <div class="dropZone"></div>
+        <div class="dropZone"></div>
+
+  <div id="simpleList" class="list-group">
+    <div class="list-group-item">This is sortable</div>
+    <div class="list-group-item">It works with Bootstrap...</div>
+    <div class="list-group-item">...out of the box.</div>
+    <div class="list-group-item">It has support for touch devices.</div>
+    <div class="list-group-item">Just drag some elements around.</div>
+  </div>
+
+        <div class="sortdiv1">
+            <div class ="dragMe"></div>
+            <div class ="dragMe"></div>
+            <div class ="dragMe"></div>
+            <div class ="dragMe"></div>
+            <div class ="dragMe"></div>
+        </div>
 
 
-        <ul id = "items_two">
-                <li>item 1</li>
-                <li>item 2</li>
-                <li>item 3 </li>
-        </ul>
+
+
 
         <script src="./script/Drag_&_Drop.js" async defer></script>
         <script src="./Libraries/Sortable.min.js"></script>
