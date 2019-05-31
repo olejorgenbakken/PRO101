@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/responsive.css">
+    <title>PRO101 | Gruppe 17</title>
+</head>
+
+<body>
+    <header id="page-header">
+        <nav id="page-nav">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a id="profileText" href=""></a><img width="50px" height="50px" id="profileImg"></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <div style="display: none;" id="addMember">
+            <input placeholder="Email or Username" name="memberName">
+            <input id="submitMember" type="submit" value="Add member">
+        </div>
+    </div>
+    <div id="memberSelection"></div>
+    <div id="membersAdded"></div>
+    <wrapper id="wrapper">
+        <nav id="navigasjon">
+
+        </nav>
+        <div id="lag_tavle">
+
+        </div>
+
+        <div id="lag_liste">
+
+        </div>
+
+        <div id="lister">
+
+        </div>
+    </wrapper>
+
+    <div style="width: 50px; height: 50px; border: 1px solid black;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <img id="drag1" src="assets/img/000000.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+
+    <footer>
+
+    </footer>
+    <script src="script/kortoglister.js"></script>
+    <script src="script/addMember.js"></script>
+    <script src="script/profile.js"></script>
+    <script src="script/addMemberToProjects.js"></script>
+    <script src="script/tavle.js"></script>
+    <script src="script/dragndrop.js"></script>
+
+</body>
+
+
+</html>
