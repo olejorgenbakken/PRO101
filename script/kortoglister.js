@@ -26,59 +26,26 @@ var kort = [];
 
 // Lager en wrapper med listene, og en knapp, knappen og headeren er tenkt at skal bort fra funksjonen
 // og inn i HTMLen.
-function lagSide() {
-    tavle.push({
-        id: 0,
-        navn: "Tavle",
-        antallLister: 0,
-    })
-
-    var body = document.getElementsByTagName("body")[0];
-    var header = document.createElement("header");
-    var wrapper = document.createElement("wrapper");
-    var footer = document.createElement("footer");
-    var nav = document.createElement("nav");
-    var navTekst = document.createElement("h2");
-    var headerTekst = document.createElement("h1");
+function lagListeKnapp() {
     var nyListeKnapp = document.createElement("div");
     var nyListeKnappTekst = document.createElement("p");
-
-    header.id = "tavleHeader";
-    header.className = "header";
-    nav.id = "navigasjon";
-    wrapper.id = "lister";
-    footer.id = "tavleFooter";
     nyListeKnapp.id = "nyListeKnapp";
     nyListeKnappTekst.id = "nyListeKnappX";
     nyListeKnapp.setAttribute("onclick", " return lagListe()");
-
-    body.appendChild(header);
-    body.appendChild(wrapper);
-    body.appendChild(footer);
-    header.appendChild(headerTekst);
-    header.appendChild(nav);
-    nav.appendChild(navTekst);
+    var wrapper = document.getElementById("lag_liste");
     wrapper.appendChild(nyListeKnapp);
     nyListeKnapp.appendChild(nyListeKnappTekst);
-
-    headerTekst.innerText = tavle[0].navn;
     nyListeKnappTekst.innerText = "+";
-    navTekst.innerText = "navigasjon";
 }
 
-lagSide();
+lagListeKnapp();
 
 // variabler for å telle antall lister og sette kortenes ID
-var listeCounter = 0;
+var listeID = 0;
 var kortID = 0;
 
 // lager en ny liste med mulighet for å lage flere kort
 function lagListe() {
-
-    var listeID = listeCounter;
-    listeCounter++;
-    tavle[0].antallLister = listeCounter;
-
     liste.push({
         id: listeID,
         navn: "liste" + listeID,
@@ -140,6 +107,7 @@ function lagListe() {
             nyListeLagKortInput.setAttribute("onkeypress", " return redigerListeTittel(" + listeID + ")");
         }
     }
+    listeID++;
 }
 
 // slett lister
