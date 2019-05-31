@@ -1,17 +1,3 @@
-// tid og dato
-function getTime(input) {
-    var today = new Date();
-    var date = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-    var time = today.getHours() + "." + today.getMinutes() + "." + today.getSeconds();
-    var dateTime = date + '\n ' + time;
-
-    switch (input) {
-        case "date": return date;
-        case "time": return time;
-        case "dateTime": return dateTime;
-    }
-}
-
 var prosjekter = [];
 
 //lag tavle
@@ -77,32 +63,8 @@ function lagTavle() {
     tavleID++;
 }
 
-// slett lister
+// slett tavle
 function slettTavle(tavleID) {
     var tavle = document.getElementById("tavle" + tavleID);
     tavle.remove("tavle" + tavleID);
-}
-
-// slett kort
-function slettKort(kortID) {
-    var kort = document.getElementById("kort" + kortID);
-    kort.parentNode.removeChild(kort);
-}
-
-// redigerer kortenes tittel og beskrivelse
-function redigerListeTittel(listeID) {
-    listeTittelContainer = document.getElementById("nyKortTittel" + listeID);
-    liste[listeID].navn = listeTittelContainer.value;
-    console.log(liste[listeID].navn);
-}
-function redigerTittel(kortID) {
-    kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
-    kort[kortID].navn = kortTittelContainer.value;
-    console.log(kort[kortID].navn);
-}
-
-function redigerBeskrivelse(kortID) {
-    kortBeskrivelseContiner = document.getElementById("kort_beskrivelse_tekst" + kortID);
-    kort[kortID].beskrivelse = kortBeskrivelseContiner.value;
-    console.log(kort[kortID].beskrivelse);
 }
