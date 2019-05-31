@@ -191,7 +191,7 @@ function lagKort(listeID) {
 
     kort.push({
         id: kortID,
-        navn: nyttKortHeaderTekstInput,
+        navn: nyttKortHeaderTekstInput + kortID,
         beskrivelse: nyttKortBeskrivelseInput,
         listePosisjon: liste[listeID].id,
         lagd: getTime("date"),
