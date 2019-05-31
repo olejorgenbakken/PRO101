@@ -1,18 +1,3 @@
-//Firebase Config
-var firebaseConfig = {
-    apiKey: "AIzaSyCREyJtPwHTNRLFUgWyQcApGuZ4nTW3aiY",
-    authDomain: "pro101-425fc.firebaseapp.com",
-    databaseURL: "https://pro101-425fc.firebaseio.com",
-    projectId: "pro101-425fc",
-    storageBucket: "pro101-425fc.appspot.com",
-    messagingSenderId: "1025947228994",
-    appId: "1:1025947228994:web:69460f41a6cc0060"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-
-  var db = firebase.firestore();
 
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
@@ -39,32 +24,7 @@ function getTime(input) {
         case "dateTime": return dateTime;
     }
 }
-function getKort(){
-    var listeRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0");
-    listeRef.get().then(function(doc){
-        if(doc.exists){
-            
-        }
-    });
-    var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0").collection("kort").doc("Gjøremål");
-    kortRef.get().then(function(doc){
-        if (doc.exists) {
-            var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID);
-            nyttKortHeaderTekstInput.innerText = doc.data().navn;
-            var nyttKortHeaderBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID);
-            nyttKortHeaderBeskrivelseInput.innerText = doc.data().beskrivelse;
-            nyttKortBeskrivelse.appendChild(nyttKortHeaderBeskrivelseInput);
-            nyttKortHeaderTekst.appendChild(nyttKortHeaderTekstInput);
-            nyttKort.appendChild(nyttKortHeaderTekst);
-            nyttKort.appendChild(nyttKortBeskrivelse);
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-}
+
 //lag tavle
 var tavle = [];
 
@@ -113,7 +73,6 @@ function lagSide() {
     nav.appendChild(navTekst);
     wrapper.appendChild(nyListeKnapp);
     nyListeKnapp.appendChild(nyListeKnappTekst);
-
     headerTekst.innerText = tavle[0].navn;
     nyListeKnappTekst.innerText = "+";
     navTekst.innerText = "navigasjon";
@@ -127,7 +86,6 @@ var kortID = 0;
 
 // lager en ny liste med mulighet for å lage flere kort
 function lagListe() {
-
     var listeID = listeCounter;
     listeCounter++;
     tavle[0].antallLister = listeCounter;
@@ -192,19 +150,7 @@ function lagListe() {
             nyListeLagKortInput.type = "text";
             nyListeLagKortInput.setAttribute("onkeypress", " return redigerListeTittel(" + listeID + ")");
         }
-        for(i = 0; i < liste.length; i++){
-            db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
-                .doc(liste[i].navn).set({
-                    id: listeID,
-                    navn: "liste" + listeID,
-                }).then(function() {
-                    console.log("Document successfully written!");
-                })
-                .catch(function(error) {
-                    console.error("Error writing document: ", error);
-            });
     }
-}
 }
 
 // slett lister
@@ -272,23 +218,6 @@ function lagKort(listeID) {
         tidsfrist: nyttKortTidsfristTekstInput,
         brukere: bruker,
     });
-    for(i = 0; i < kort.length; i++){
-        db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
-            .doc(liste[i].navn).collection("kort").doc(kort[i].navn).set({
-                id: kortID,
-                navn: nyttKortHeaderTekstInput,
-                beskrivelse: nyttKortHeaderBeskrivelseInput,
-                listePosisjon: liste[listeID],
-                lagd: getTime("date"),
-                tidsfrist: nyttKortTidsfristTekstInput,
-                brukere: bruker,
-            }).then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-        });
-    }
 
     nyttKortHeaderTekst.value = kort[kortID].navn;
     nyttKortBeskrivelseTekst.value = kort[kortID].beskrivelse;
