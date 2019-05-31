@@ -124,6 +124,8 @@ lagListe();
 var kortID = 0;
 
 function lagKort(listeID) {
+
+
     var kortetsListe = "liste" + listeID;
     kort.push({
         id: kortID,
@@ -137,6 +139,7 @@ function lagKort(listeID) {
 
 
     var nyttKort = document.createElement("div");
+    nyttKort.setAttribute("draggable", "true");
     var nyttKortHeader = document.createElement("div");
     var nyttKortHeaderTekst = document.createElement("h2");
     var nyttKortBeskrivelse = document.createElement("div");
@@ -181,6 +184,10 @@ function lagKort(listeID) {
     nyttKort.appendChild(slettKort);
 
     kortID++;
+
+
+    console.log(kortID);
+
 };
 
 function slettKort(kortID) {
