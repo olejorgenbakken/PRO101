@@ -183,8 +183,8 @@ function lagKort(listeID) {
     slettKort.value = "slett kort";
     slettKort.className = "lukkKort";
 
-    kortID++
-};
+    kortID++;
+}
 
 // slett kort
 function slettKort(kortID) {

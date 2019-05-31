@@ -35,20 +35,21 @@ document.addEventListener("dragenter", function (event) {
 });
 
 document.addEventListener("dragover", function (event) {
+    
     event.dataTransfer.dropEffect == "move";
     if(event.target.className === "kort"){
         console.log(event.target);
 
     }
-})
+});
 
 document.addEventListener("drop", function (event){
     console.log(1);
     event.preventDefault();
-   for(listy in liste.length){
+
 
        
-   }
+
 
 },false);
 
