@@ -3,19 +3,15 @@
     padding: 0;
 }
 
+#wrapper{
+    display: flex;
+}
+
 #lister {
     display: flex;
     flex-direction: row;
    
 
-}
-
-#nyListeKnapp {
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    margin-left: 50px;
-  
 }
 
 header {
@@ -26,7 +22,7 @@ header {
 }
 
 nav {
-    width: 140px;
+    width: 20px;
 
 }
 
@@ -46,7 +42,7 @@ nav {
 }
 
 input {
-    padding-top: 100px;
+    padding-top: 2px;
     padding-bottom: 5px;
     width: 100%;
 }
@@ -70,4 +66,15 @@ input {
 
 
 
+}
+
+#nyListeKnapp {
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin-top: 20;
+    margin-left: 20;
+  
 }
