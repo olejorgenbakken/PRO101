@@ -82,6 +82,7 @@ function lagListe() {
     liste.push({
         id: listeID,
         navn: "liste" + listeID,
+        antallKort: kortID,
     });
 
     var wrapper = document.getElementById("lister");
@@ -94,39 +95,40 @@ function lagListe() {
 
     wrapper.appendChild(nyListe);
     nyListe.appendChild(nyListeLagKortForm);
-    
-    var slettListe = document.createElement("button");
-    slettListe.innerText = "slett liste";
-    slettListe.className = "lukkKort";
-    slettListe.setAttribute("onclick", " return slettListe(" + listeID + ")");
-    nyListe.appendChild(slettListe);
 
     // denne loopen lager alle fire inputene (man burde kanskje fjerne denne, og implementere den bedre
     // men den fungerer for now...)
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 5; i++) {
         nyListeLagKortForm.id = "lagKortListe" + liste[listeID].id;
         var nyListeLagKortInput = document.createElement("input");
         nyListeLagKortInput.className = "nyttKortInput";
         nyListeLagKortInput.id = i;
         nyListeLagKortForm.appendChild(nyListeLagKortInput);
 
-        if (nyListeLagKortInput.id == 3) {
+        if (nyListeLagKortInput.id == 4){
+            nyListeLagKortInput.id = "slettListe" + liste[listeID].id;
+            nyListeLagKortInput.value = "slett liste";
+            nyListeLagKortInput.type = "button";
+            nyListeLagKortInput.className = "slettListe";
+            nyListeLagKortInput.setAttribute("onclick", " return slettListe(" + listeID + ")");
+        }
+        else if (nyListeLagKortInput.id == 3) {
             nyListeLagKortInput.id = "nyKortKnapp" + liste[listeID].id;
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.value = "Lag kort";
             nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
-
-            return nyListeLagKortInput;
         } else if (nyListeLagKortInput.id == 2) {
             nyListeLagKortInput.id = "nyttKortTidsfrist" + liste[listeID].id;
             nyListeLagKortInput.type = "date";
         } else if (nyListeLagKortInput.id == 1) {
             nyListeLagKortInput.id = "nyttKortBeskrivelse" + liste[listeID].id;
             nyListeLagKortInput.placeholder = "Beskrivelse";
+            nyListeLagKortInput.type = "text";
         } else if (nyListeLagKortInput.id == 0) {
             nyListeLagKortInput.id = "nyttKortNavn" + liste[listeID].id;
             nyListeLagKortInput.placeholder = "Tittel";
-            nyListeLagKortInput.value = "Gjøremål"
+            nyListeLagKortInput.value = "Gjøremål";
+            nyListeLagKortInput.type = "text";
         }
     }
 }
@@ -143,26 +145,28 @@ function lagKort(listeID) {
     var listePosisjon = document.getElementById("liste" + listeID);
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
-    var nyttKortHeaderTekst = document.createElement("h2");
+    var nyttKortHeaderTekst = document.createElement("input");
     var nyttKortBeskrivelse = document.createElement("div");
-    var nyttKortBeskrivelseTekst = document.createElement("p");
+    var nyttKortBeskrivelseTekst = document.createElement("input");
     var nyttKortFooter = document.createElement("div");
     var nyttKortLagd = document.createElement("div");
     var nyttKortLagdTekst = document.createElement("h3");
     var nyttKortBrukere = document.createElement("div");
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
-    var slettKort = document.createElement("div");
+    var slettKort = document.createElement("input");
+    slettKort.type = "button";
 
     nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
-    nyttKortHeader.setAttribute("onclick", " return redigerTittel(" + kortID + ")");
+    nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + kortID + ")");
     nyttKortHeaderTekst.id = "kort_tittel_tekst" + kortID;
     nyttKortBeskrivelse.className = "kort_beskrivelse";
-    nyttKortBeskrivelse.id = "kort_beskrivelse_tekst" + kortID;
-    nyttKortBeskrivelse.setAttribute("onclick", " return redigerBeskrivelse(" + kortID + ")");
+    nyttKortBeskrivelse.id = "kort_beskrivelse" + kortID;
+    nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + kortID + ")");
+    nyttKortBeskrivelseTekst.id = "kort_beskrivelse_tekst" + kortID;
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
     nyttKortTidsfrist.className = "footer_tidsfrist";
@@ -195,11 +199,11 @@ function lagKort(listeID) {
         brukere: bruker,
     });
 
-    nyttKortHeaderTekst.innerText = kort[kortID].navn;
-    nyttKortBeskrivelseTekst.innerText = kort[kortID].beskrivelse;
+    nyttKortHeaderTekst.value = kort[kortID].navn;
+    nyttKortBeskrivelseTekst.value = kort[kortID].beskrivelse;
     nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
     nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
-    slettKort.innerText = "slett kort";
+    slettKort.value = "slett kort";
     slettKort.className = "lukkKort";
 
     kortID++
@@ -214,13 +218,11 @@ function slettKort(kortID) {
 // redigerer kortenes tittel og beskrivelse
 function redigerTittel(kortID) {
     kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
-    var nyTittel = prompt("Ny tittel");
-    kort[kortID].navn = nyTittel;
-    kortTittelContainer.innerText = kort[kortID].navn;
+    kort[kortID].navn = kortTittelContainer.value;
+    console.log(kort[kortID].navn);
 }
 function redigerBeskrivelse(kortID) {
-    kortBeskrivelseContainer = document.getElementById("kort_beskrivelse_tekst" + kortID);
-    var nyBeskrivelse = prompt("Ny beskrivelse");
-    kort[kortID].beskrivelse = nyBeskrivelse;
-    kortBeskrivelseContainer.innerText = kort[kortID].beskrivelse;
+    kortBeskrivelseContiner = document.getElementById("kort_beskrivelse_tekst" + kortID);
+    kort[kortID].beskrivelse = kortBeskrivelseContiner.value;
+    console.log(kort[kortID].beskrivelse);
 }
