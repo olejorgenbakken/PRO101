@@ -11,36 +11,7 @@ function getTime(input) {
         case "dateTime": return dateTime;
     }
 }
-/*function getKort(){
-    var listeRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0");
-    listeRef.get().then(function(doc){
-        if(doc.exists){
-            console.log(doc.data().navn);
-            var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0").collection("kort").doc("Gjøremål");
-            kortRef.get().then(function(doc){
-            if (doc.exists) {
-                var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeCounter);
-                nyttKortHeaderTekstInput.innerText = doc.data().navn;
-                var nyttKortHeaderBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeCounter);
-                nyttKortHeaderBeskrivelseInput.innerText = doc.data().beskrivelse;
-                nyttKortBeskrivelse.appendChild(nyttKortHeaderBeskrivelseInput);
-                nyttKortHeaderTekst.appendChild(nyttKortHeaderTekstInput);
-                nyttKort.appendChild(nyttKortHeaderTekst);
-                nyttKort.appendChild(nyttKortBeskrivelse);
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        })
-        }else{
-            console.log("No such document");
-        }
-    }).catch(function(error){
-        console.log("Error getting document:", error);
-    });
-}*/
+
 var prosjekter = [];
 
 //lag tavle
@@ -57,10 +28,24 @@ var kort = [];
 
 // variabler for å telle antall lister og sette kortenes ID
 var prosjektID = 0;
+var tavleID = 0;
+
+function lagTavleKnapp() {
+    var nyTavleKnapp = document.createElement("div");
+    var nyTavleKnappTekst = document.createElement("p");
+    nyTavleKnapp.id = "nyListeKnapp";
+    nyTavleKnappTekst.id = "nyTavleKnappX";
+    nyTavleKnapp.setAttribute("onclick", " return lagTavle()");
+    var wrapper = document.getElementById("lag_tavle");
+    wrapper.appendChild(nyTavleKnapp);
+    nyTavleKnapp.appendChild(nyTavleKnappTekst);
+    nyTavleKnappTekst.innerText = "+ tavleknapp";
+}
+
+lagTavleKnapp();
 
 // lager en ny liste med mulighet for å lage flere kort
 function lagTavle() {
-    tavleID++;
 
     tavle.push({
         id: tavleID,
@@ -68,37 +53,32 @@ function lagTavle() {
         antallTavler: tavleID,
     });
 
-    var wrapper = document.getElementById("tavler");
+    var wrapper = document.getElementById("lag_tavle");
+
+    console.log(wrapper);
 
     var nyTavle = document.createElement("div");
     var nyTavleLagKortForm = document.createElement("form");
     var nyTavleTittel = document.createElement("input");
-    
+    var slettTavle = document.createElement("input");
+    slettTavle.type = "button";
+    slettTavle.innerText = "Slett tavle";
 
     nyTavle.className = "tavle";
     nyTavle.id = "tavle" + tavleID;
     nyTavleTittel.value = tavle[tavleID].navn;
+    slettTavle.setAttribute("onclick", " return slettTavle(" + tavleID + ")");
 
     wrapper.appendChild(nyTavle);
-    nyListe.appendChild(nyTavleLagKortForm);
+    nyTavleLagKortForm.appendChild(nyTavleTittel);
+    nyTavle.appendChild(slettTavle);
+    nyTavle.appendChild(nyTavleLagKortForm);
 
-    /*
-        for(i = 0; i < liste.length; i++){
-            db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
-                .doc(liste[i].navn).set({
-                    id: listeID,
-                    navn: "liste" + listeID,
-                }).then(function() {
-                    console.log("Document successfully written!");
-                })
-                .catch(function(error) {
-                    console.error("Error writing document: ", error);
-            });
-        }*/
+    tavleID++;
 }
 
 // slett lister
-function slettListe(tavleID) {
+function slettTavle(tavleID) {
     var tavle = document.getElementById("tavle" + tavleID);
     tavle.remove("tavle" + tavleID);
 }
