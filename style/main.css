@@ -3,12 +3,7 @@
     padding: 0;
 }
 
-#wrapper {
-    width: 100%;
-}
-
-#wrapper {
-    width: 80%;
+#lister {
     display: flex;
     flex-direction: row;
 }

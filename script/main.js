@@ -44,7 +44,8 @@ function getKort(){
     var listeRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0");
     listeRef.get().then(function(doc){
         if(doc.exists){
-            
+
+
         }
     });
     var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0").collection("kort").doc("Gjøremål");
@@ -127,8 +128,6 @@ function lagListe() {
 
     var listeID = listerCounter;
     listerCounter++;
-    tavle[0].antallLister = listerCounter;
-
     tavle[0].antallLister = listerCounter;
 
     var listeNavn = "liste" + listeID;
