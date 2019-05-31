@@ -41,11 +41,23 @@ function getTime(input) {
 }
 
 function getKort(){
-    var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste-1").collection("kort").doc("Gjøremål-1");
+    var listeRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0");
+    listeRef.get().then(function(doc){
+        if(doc.exists){
+            
+        }
+    });
+    var kortRef = db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister").doc("liste0").collection("kort").doc("Gjøremål");
     kortRef.get().then(function(doc){
         if (doc.exists) {
-            console.log("Document data: ", doc.data().navn);
-            console.log("Document data: ", doc.data().beskrivelse);
+            var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID);
+            nyttKortHeaderTekstInput.innerText = doc.data().navn;
+            var nyttKortHeaderBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID);
+            nyttKortHeaderBeskrivelseInput.innerText = doc.data().beskrivelse;
+            nyttKortBeskrivelse.appendChild(nyttKortHeaderBeskrivelseInput);
+            nyttKortHeaderTekst.appendChild(nyttKortHeaderTekstInput);
+            nyttKort.appendChild(nyttKortHeaderTekst);
+            nyttKort.appendChild(nyttKortBeskrivelse);
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -232,7 +244,7 @@ function lagKort(listeID) {
     });
     for(i = 0; i < kort.length; i++){
         db.collection("projects").doc("project-1").collection("tavler").doc("tavle-1").collection("lister")
-            .doc(liste[i].navn).collection("kort").doc(kort[i].navn + "-" + kort[i].id).set({
+            .doc(liste[i].navn).collection("kort").doc(kort[i].navn).set({
                 id: kortID,
                 navn: nyttKortHeaderTekstInput,
                 beskrivelse: nyttKortHeaderBeskrivelseInput,
