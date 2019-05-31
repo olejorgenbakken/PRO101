@@ -9,45 +9,51 @@
         <div class="login-page">
         <div class="form">
             
-            <form class="register-form">
-            <input type="text" placeholder="username"/>
-            <input type="text" placeholder="password"/>
-            <input type="text" placeholder="email"/>
-            <button onclick="window.open('index.html')">Create</button>
+            <!--<form class="register-form">-->
+            <input id="regUsername" type="text" placeholder="username"/>
+            <input id="regPassword" type="password" placeholder="password"/>
+            <input id="regEmail" type="email" placeholder="email"/>
+            <button onclick="regUser()">Create</button>
 
             <p class="message">Already registered? <a href="#">Log in</a>
             </p>
         
-            </form>
+            <!--</form>-->
 
-            <form class="login-form">
-                <input type="text" placeholder="username">
-                <input type="text" placeholder="password">
-                <button onclick="window.open('index.html')">login</button>
+            <!--<form class="login-form">-->
+                <input id="logUsername" type="text" placeholder="username">
+                <input id="logPassword" type="password" placeholder="password">
+                <button onclick="logIn()">login</button>
                 <a id = "log_in" href="index.html"> log in</a>
                 <p class="message">Not registered? <a href="#">Register</a>
                 </p>
-            </form>
+            <!--</form>-->
 
-            
-            <script src="//code.jquery.com/jquery-3.4.1.min.js">
+            <!--Firebase-->
+            <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+         <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+         <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+        <script src="//code.jquery.com/jquery-3.4.1.min.js">
             
             </script>
 
 
-            <script>
+            <!--<script>
             $('.message').click(function() {
             $('form').animate ({height: "toggle", opacity: "toggle"}, "slow");
 
             });
-            </script>
+            </script>-->
 
             
 
             </div>
             </div>
       
-        <script src="js/login.js"></script>
+        <script src="script/login.js"></script>
     </body>
 
 </html>

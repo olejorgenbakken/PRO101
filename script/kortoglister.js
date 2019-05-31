@@ -1,3 +1,16 @@
+
+    var nyttKort = document.createElement("div");
+    var nyttKortHeader = document.createElement("div");
+    var nyttKortHeaderTekst = document.createElement("h2");
+    var nyttKortBeskrivelse = document.createElement("div");
+    var nyttKortBeskrivelseTekst = document.createElement("p");
+    var nyttKortFooter = document.createElement("div");
+    var nyttKortLagd = document.createElement("div");
+    var nyttKortLagdTekst = document.createElement("h3");
+    var nyttKortBrukere = document.createElement("div");
+    var nyttKortTidsfrist = document.createElement("div");
+    var nyttKortTidsfristTekst = document.createElement("h3");
+
 // tid og dato
 function getTime(input) {
     var today = new Date();
@@ -203,6 +216,7 @@ function redigerTittel(kortID) {
     kort[kortID].navn = kortTittelContainer.value;
     console.log(kort[kortID].navn);
 }
+
 function redigerBeskrivelse(kortID) {
     kortBeskrivelseContiner = document.getElementById("kort_beskrivelse_tekst" + kortID);
     kort[kortID].beskrivelse = kortBeskrivelseContiner.value;
