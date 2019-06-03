@@ -13,12 +13,6 @@
     padding: 2.5%;
 }
 
-.row h2 {
-    text-align: center;
-    color: white;
-    margin-bottom: 10px;
-}
-
 .col-push-1 {
     width: 8.33%;
     display: block;
