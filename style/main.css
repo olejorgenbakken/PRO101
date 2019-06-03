@@ -5,6 +5,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    background-image: url("https://images.unsplash.com/photo-1550223367-30786247c593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1946&q=80");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
 h1 {
     font-size: 2.4rem;
 }
@@ -27,19 +34,24 @@ header {
     height: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
-    position: fixed;
-    background-color: black;
+    position: absolute;
+    z-index: 1;
 }
 
-wrapper {
-    position: absolute;
+.shape {
     z-index: -1;
-    width: 100%;
-    padding-top: 120px;
-    background-color: steelblue;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    position: absolute;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+#logo-shape {
+    top: -600px;
+    left: -600px;
+    width: 900px;
+    height: 900px;
+    border-radius: 100%;
+    background: rgb(58,134,180);
+    background: linear-gradient(90deg, rgba(58,134,180,1) 0%, rgba(29,49,253,1) 61%, rgba(252,69,69,1) 100%); 
 }
 
 #logo {
@@ -52,8 +64,25 @@ wrapper {
     height: 100%;
 }
 
-.yellow {
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.txt-white {
+    color: white;
+}
+.txt-yellow {
     color: orange;
+}
+.bg-transparent {
+    background-color: transparent;
 }
 
 .center {
@@ -61,17 +90,86 @@ wrapper {
     flex-direction: column;
 }
 
+#fill-screen {
+    height: 105vh;
+}
+
 #slogan {
-    width: 100%;
-    max-width: 700px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    color: white;
+    width: 90%;
+    max-width: 670px;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: relative;
+    opacity: 0;
+    padding-top: 160px;
+    margin-bottom: 50px;
+    top: 15px;
+    transition: .6s ease;
+    font-weight: 500;
 }
 
 #slogan h1 {
-    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
-@media only screen and (max-width: 600px) {
-  }
+form {
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+form input, button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    padding: 12px;
+    border: none;
+}
+
+form input {
+    background-color: white;
+}
+
+form button {
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: violet;
+    color: white;
+    cursor: pointer;
+}
+
+form span {
+    cursor: pointer;
+}
+
+.message {
+    margin-top: 5px;
+    color: white;
+}
+
+#register {
+    display: none;
+}
+
+@media only screen and (max-width: 450px) {
+    header {
+        height: 60px;
+        text-align: center;
+    }
+    #logo {
+        left: 0;
+    }
+    #slogan {
+        padding-top: 110px;
+        margin-bottom: 10px;
+    }
+    #slogan h1 {
+        font-size: 2rem;
+    }
+}
