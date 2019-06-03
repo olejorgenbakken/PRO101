@@ -1,28 +1,63 @@
 body{
     background: #2073B2;
+    background-image: url(/assets/img/friends.png);
+    background-size: cover;
+    background-position: center center;
+    filter: opacity(80);
 }
 
-.header{
-    width: 50%;
-    padding: 60px;
-    margin: 70px;
-}
-
-p{
-    font-size: 60px;
-    color: white;
-}
-
-.about{
-    width: 30%;
-    padding: 40px;
-    margin: 70px;
-}
-p2{
-    font-size: 12px;
+#about p{
     color: white;
     font-family: open sans-serif;
 }
+#p1{
+    font-size: 60px;
+    width: 50%;
+    padding: 40px;
+    margin: 70px;
+}
+#p2{
+    width: 30%;
+    padding: 40px;
+    margin: 70px;
+    font-size: 12px;
+}
 
+.form{
+    background: white;
+    width: 250px;
+    margin: 200px;
+    padding: 20px;
+    text-align: center;
+    opacity: 45%;
+}
 
+/*
+#form1{
+    background: white;
+    width: 250px;
+    margin: 200px;
+    padding: 20px;
+    text-align: center;
+    opacity: 45%;
+}
+
+#form2{
+    background: white;
+    width: 250px;
+    margin: 200px;
+    padding: 20px;
+    text-align: center;
+    opacity: 45%;
+}
+
+#form3{
+    background: white;
+    width: 250px;
+    margin: 200px;
+    padding: 20px;
+    text-align: center;
+    opacity: 45%;
+}
+*/
 
