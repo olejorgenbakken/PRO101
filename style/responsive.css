@@ -10,6 +10,13 @@
 
 .row {
     width: 100%;
+    padding: 2.5%;
+}
+
+.row h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .col-push-1 {

@@ -7,7 +7,9 @@
 }
 
 body {
-    background-color: rgb(31, 100, 179);
+    background-image: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -41,18 +43,6 @@ header {
 header img {
     height: 100%;
 }
-/*
-wrapper {
-    background-image: url(assets\img\bakgrunn.jpg);
-    background-size: cover;
-    width: 95%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    padding-top: 140px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}*/
 
 .yellow {
     color: orange;
@@ -88,23 +78,25 @@ wrapper {
     margin-bottom: 8px;
     padding: 15px;
     box-sizing: border-box;
+    text-transform: capitalize;
 }
 
 .form button {
+    background: rgb(43, 33, 182);
     width: 70%;
-    text-transform: uppercase;
-    font-weight: 600;
-    background: darkblue;
     border: 0;
-    padding: 10px;
-    color: white;
-    font-size: 15px;
     border-radius: 50px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: .3s linear;
 }
 
 .form button:hover,
 .form button:active {
     background: blue;
+    cursor: pointer;
 
 }
 
@@ -114,11 +106,19 @@ wrapper {
     color: white;
 }
 
-.form .message a {
+.form span {
     color: orange;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 .form .register-form {
     display: block;
+}
+
+.project {
+    width: 95%;
+    margin-left: 2.5%;
+    height: 70px;
+    background-color: white;
+    border-radius: 10px;
 }
