@@ -142,12 +142,15 @@ function lagKort(listeID) {
     var nyttKortLagd = document.createElement("div");
     var nyttKortLagdTekst = document.createElement("h3");
     var nyttKortBrukere = document.createElement("div");
+    var nyttKortMedlemmerDiv = document.createElement("div");
+    var nyttKortMedlemmer = document.createElement("select");
+    var nyttKortMedlemmerOption = document.createElement("option");
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
     var slettKort = document.createElement("input");
     slettKort.type = "button";
 
-    nyttKort.id = "kort" + kortID;
+    nyttKort.id = "kort " + kortID;
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
@@ -157,23 +160,42 @@ function lagKort(listeID) {
     nyttKortBeskrivelse.id = "kort_beskrivelse" + kortID;
     nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + kortID + ")");
     nyttKortBeskrivelseTekst.id = "kort_beskrivelse_tekst" + kortID;
+    nyttKortMedlemmerDiv.className = "dropDownDiv";
+
+    nyttKortMedlemmerOption.id = "option";
+    console.log(nyttKortMedlemmerOption);
+    nyttKortMedlemmerOption.setAttribute("value", "dummyvalue");
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
     nyttKortTidsfrist.className = "footer_tidsfrist";
     slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
 
     listePosisjon.appendChild(nyttKort);
+    console.log(listePosisjon);
     nyttKort.appendChild(nyttKortHeader);
     nyttKort.appendChild(nyttKortBeskrivelse);
     nyttKort.appendChild(nyttKortFooter);
     nyttKortHeader.appendChild(nyttKortHeaderTekst);
     nyttKortBeskrivelse.appendChild(nyttKortBeskrivelseTekst);
+    nyttKort.appendChild(nyttKortMedlemmerDiv);
+    nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
+
+    for(var j = 0; j < membersInProject.length; j++){
+            nyttKortMedlemmerOption.id = "medlem" + j;
+            console.log(j);
+             nyttKortMedlemmerOption.innerText = membersInProject[j].userName;
+                nyttKortMedlemmer.appendChild(nyttKortMedlemmerOption);
+                             console.log(nyttKortMedlemmer);
+
+    }
+
     nyttKortFooter.appendChild(nyttKortLagd);
     nyttKortFooter.appendChild(nyttKortBrukere);
     nyttKortFooter.appendChild(nyttKortTidsfrist);
     nyttKortLagd.appendChild(nyttKortLagdTekst);
     nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
     nyttKort.appendChild(slettKort);
+
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
     var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
