@@ -1,8 +1,12 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 #wrapper{
     display: flex;
 }
@@ -23,51 +27,121 @@ header {
 
 nav {
     width: 20px;
-
+=======
+body {
+    background-image: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
-.liste {
-    display: flex;
-    flex-direction: column;
-    padding-right: 5px;
-    padding-left: 5px;
-    width: 50px;
-    min-width: 250px;
+h1 {
+    font-size: 1.5rem;
 }
 
-.kort {
+h2 {
+    font-size: 1.2rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+>>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
+
+p, a {
+    font-size: 1rem;
+    color: inherit;
+}
+
+header {
+    height: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
-    height: 100%;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
 }
 
+header img {
+    height: 100%;
+}
+
+<<<<<<< HEAD
 input {
     padding-top: 2px;
     padding-bottom: 5px;
     width: 100%;
+=======
+.yellow {
+    color: orange;
+    font-size: 1em;
+>>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 }
 
-#roundDesign {
+#slogan {
+    color: white;
+}
+
+.background-image {
+    width: 100vw;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 50;
+    z-index: -999;
+}
 
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.form input {
+    background: rgb(236, 231, 231);
+    width: 70%;
+    border: 0;
+    border-radius: 50px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+.form button {
+    background: rgb(43, 33, 182);
+    width: 70%;
+    border: 0;
+    border-radius: 50px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: .3s linear;
+}
+
+.form button:hover,
+.form button:active {
+    background: blue;
+    cursor: pointer;
 
 }
 
-#roundDesign2 {
-    top: 900;
-    z-index: 10;
-    position: absolute;
-    right: 0;
-    opacity: 50;
-
-
-
+.form .message {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
 }
 
+.form span {
+    color: orange;
+    cursor: pointer;
+}
+
+<<<<<<< HEAD
 #nyListeKnapp {
     position: absolute;
     left: 0;
@@ -77,4 +151,16 @@ input {
     margin-top: 20;
     margin-left: 20;
   
+=======
+.form .register-form {
+    display: block;
+}
+
+.project {
+    width: 95%;
+    margin-left: 2.5%;
+    height: 70px;
+    background-color: white;
+    border-radius: 10px;
+>>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 }

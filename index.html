@@ -7,28 +7,75 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="stylesheet" type="text/css" href="style/responsive.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
     <title>PRO101 | Gruppe 17</title>
 </head>
 
 <body>
+<<<<<<< HEAD
     <wrapper id="wrapper">
         <nav id="navigasjon">
+=======
+    <header>
+        <div id="logo">
+            <img src="assets/img/logo.png">
+        </div>
+    </header>
+    <!--<wrapper id="wrapper">
+        <div id="text1">
+            <h1>Lorem</h1>
+        </div>
+    </wrapper>-->
+    <div class="container background-image">
+        <div class="row">
+            <div class="col-small-12">
+                <h1 id="slogan" class="text-center">Make your group project more <span class="yellow">structured</span>,
+                    more <span class="yellow">creative</span>,
+                    more <span class="yellow">fun</span></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-small-12">
+                <div class="form">
 
-        </nav>
+                    <form class="register-form" id="register">
+                        <input type="text" placeholder="username" />
+                        <input type="password" placeholder="password" />
+                        <input type="email" placeholder="email" />
+                        <button onclick="window.open('index.html')">Create account</button>
+>>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 
-        <div id="lag_liste">
+                        <p class="message">Already registered? <span onclick="return showLogin()">Log in</span></p>
 
+                    </form>
+
+                    <form class="login-form" id="login">
+                        <input type="text" placeholder="username">
+                        <input type="password" placeholder="password">
+                        <button onclick="window.open('index.html')">Log in</button>
+                        <p class="message">Not registered? <span onclick="return showRegister()">Register</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <div id="lister">
+        <div class="row">
+            <h2>Recent projects</h2>
+            <div class="project">
+                <div class="project-image">
 
+                </div>
+                <div class="project-name">
+
+                </div>
+                <div class="project-maker">
+
+                </div>
+            </div>
         </div>
-    </wrapper>
-    <footer>
-
-    </footer>
-    <script src="script/kortoglister.js"></script>
+    </div>
+<script src="script/index.js"></script>
 </body>
-
 
 </html>
