@@ -6,28 +6,6 @@
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-#wrapper{
-    display: flex;
-}
-
-#lister {
-    display: flex;
-    flex-direction: row;
-   
-
-}
-
-header {
-    position: relative;
-    width: 15%;
-    height: 90px;
-
-}
-
-nav {
-    width: 20px;
-=======
 body {
     background-image: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
     background-position: top center;
@@ -45,7 +23,6 @@ h2 {
 h3 {
     font-size: 1.1rem;
 }
->>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 
 p, a {
     font-size: 1rem;
@@ -67,16 +44,9 @@ header img {
     height: 100%;
 }
 
-<<<<<<< HEAD
-input {
-    padding-top: 2px;
-    padding-bottom: 5px;
-    width: 100%;
-=======
 .yellow {
     color: orange;
     font-size: 1em;
->>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 }
 
 #slogan {
@@ -141,17 +111,6 @@ input {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-#nyListeKnapp {
-    position: absolute;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    margin-top: 20;
-    margin-left: 20;
-  
-=======
 .form .register-form {
     display: block;
 }
@@ -162,5 +121,4 @@ input {
     height: 70px;
     background-color: white;
     border-radius: 10px;
->>>>>>> 1ddd66f560c4876bd0f2078e9805f0c8825f1cde
 }
