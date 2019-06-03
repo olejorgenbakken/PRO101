@@ -68,6 +68,8 @@ function lagListe() {
     var wrapper = document.getElementById("lister");
 
     var nyListe = document.createElement("div");
+    nyListe.setAttribute("ondrop", "drop(event)");
+    nyListe.setAttribute("ondragover", "allowDrop(event)");
     var nyListeLagKortForm = document.createElement("form");
     var nyListeTittel = document.createElement("input");
     
@@ -148,6 +150,8 @@ function lagKort(listeID) {
     slettKort.type = "button";
 
     nyttKort.id = "kort" + kortID;
+    nyttKort.setAttribute("draggable", true);
+    nyttKort.setAttribute("ondragstart", "drag(event)");
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
