@@ -1,175 +1,77 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.container {
-    height: 100vh;
-    width: 100%;
-}
-
-body {
-    background: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
-p, a {
-    font-size: 1rem;
-    color: inherit;
+span {
+    font-size: inherit;
 }
 
 header {
-    z-index: 1;
-    height: 100px;
+    width: 100%;
+    height: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
     position: fixed;
-    text-align: center;
-    background-color: rgba(0,0,0,0.3);
+    background-color: black;
 }
 
-header img {
+wrapper {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    padding-top: 120px;
+    background-color: steelblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#logo {
+    position: relative;
+    height: 100%;
+    left: 40px;
+}
+
+#logo img {
     height: 100%;
 }
 
 .yellow {
     color: orange;
-    font-size: 1em;
-}
-.white {
-    color: white;
-}
-.text-center {
-    text-align: center;
-}
-.uppercase {
-    text-transform: uppercase;
-}
-
-#slogan {
-    color: white;
-    width: 350px;
-    align-self: center;
-}
-
-.background-image {
-    width: 100vw;
-    position: absolute;
-    z-index: -999;
 }
 
 .center {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
 }
 
-.form {
-    display: flex;
+#slogan {
     width: 100%;
-    max-width: 500px;
-    position: relative;
-    text-align: center;
-}
-
-.form input {
-    background: rgb(236, 231, 231);
-    width: 70%;
-    border: 0;
-    border-radius: 50px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 15px;
-    box-sizing: border-box;
-    text-transform: capitalize;
-    transition: .3s linear;
-}
-
-.form button {
-    background: rgb(43, 33, 182);
-    width: 70%;
-    border: 0;
-    border-radius: 50px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 15px;
-    box-sizing: border-box;
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.form button:hover,
-.form button:active {
-    background: blue;
-    cursor: pointer;
-
-}
-
-.form .message {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    max-width: 700px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     color: white;
 }
 
-.form span {
-    color: orange;
-    cursor: pointer;
+#slogan h1 {
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
 }
 
-.form .register-form {
-    display: block;
-}
-
-.project {
-    position: relative;
-    width: 95%;
-    margin-left: 2.5%;
-    height: 100px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-}
-
-.project-image {
-    position: relative;
-    height: 100%;
-    margin-left: 15px;
-}
-
-.project-image img {
-    border-radius: 100%;
-    height: 100%;
-}
-
-.project-informasjon {
-    height: 100%;
-    color: black;
-}
+@media only screen and (max-width: 600px) {
+  }
