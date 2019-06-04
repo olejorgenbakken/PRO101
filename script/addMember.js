@@ -44,11 +44,11 @@ var membersInProject = [
 ];
 
 var memberButton = document.createElement("BUTTON");
-document.getElementById("container").appendChild(memberButton);
+document.getElementById("addMemberButton").appendChild(memberButton);
 memberButton.innerHTML = "Add member";
 
 memberButton.addEventListener("click", function(){
-    document.getElementById("addMember").style.display = "block";
+    document.getElementById("addMember").style.display = "flex";
 });
 
 document.getElementById("submitMember").addEventListener("click", function(){

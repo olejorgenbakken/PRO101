@@ -25,7 +25,7 @@ function lagTavleKnapp() {
     var wrapper = document.getElementById("lag_tavle");
     wrapper.appendChild(nyTavleKnapp);
     nyTavleKnapp.appendChild(nyTavleKnappTekst);
-    nyTavleKnappTekst.innerText = "+ tavleknapp";
+    nyTavleKnappTekst.innerText = "Lag tavle";
 }
 
 lagTavleKnapp();
