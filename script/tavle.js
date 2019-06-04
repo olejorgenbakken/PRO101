@@ -2,35 +2,26 @@ var prosjekter = [];
 
 //lag tavle
 var tavle = [];
-
-// lag liste
-var liste = [];
-
-// lag bruker
-var bruker = [];
-
-// lag kort
-var kort = [];
-
-// variabler for å telle antall lister og sette kortenes ID
-var prosjektID = 0;
 var tavleID = 0;
 
 function lagTavleKnapp() {
+    var wrapper = document.getElementById("lag_tavle");
     var nyTavleKnapp = document.createElement("div");
     var nyTavleKnappTekst = document.createElement("p");
-    nyTavleKnapp.id = "nyListeKnapp";
-    nyTavleKnappTekst.id = "nyTavleKnappX";
+    
     nyTavleKnapp.setAttribute("onclick", " return lagTavle()");
-    var wrapper = document.getElementById("lag_tavle");
+    nyTavleKnapp.id = "nyTavleKnapp";
+    nyTavleKnappTekst.id = "nyTavleKnappX";
+   
     wrapper.appendChild(nyTavleKnapp);
     nyTavleKnapp.appendChild(nyTavleKnappTekst);
+    
     nyTavleKnappTekst.innerText = "Lag tavle";
 }
 
 lagTavleKnapp();
 
-// lager en ny liste med mulighet for å lage flere kort
+// lager en ny tavle
 function lagTavle() {
 
     tavle.push({
@@ -39,26 +30,21 @@ function lagTavle() {
         antallTavler: tavleID,
     });
 
-    var wrapper = document.getElementById("lag_tavle");
-
-    console.log(wrapper);
+    var wrapper = document.getElementById("tavler");
 
     var nyTavle = document.createElement("div");
-    var nyTavleLagKortForm = document.createElement("form");
     var nyTavleTittel = document.createElement("input");
-    var slettTavle = document.createElement("input");
-    slettTavle.type = "button";
-    slettTavle.innerText = "Slett tavle";
+    var slettTavle = document.createElement("button");
+    slettTavle.textContent = "Slett tavle";
 
     nyTavle.className = "tavle";
     nyTavle.id = "tavle" + tavleID;
-    nyTavleTittel.value = tavle[tavleID].navn;
+    nyTavleTittel.value = "Ny tavle";
     slettTavle.setAttribute("onclick", " return slettTavle(" + tavleID + ")");
 
     wrapper.appendChild(nyTavle);
-    nyTavleLagKortForm.appendChild(nyTavleTittel);
+    nyTavle.appendChild(nyTavleTittel);
     nyTavle.appendChild(slettTavle);
-    nyTavle.appendChild(nyTavleLagKortForm);
 
     tavleID++;
 }

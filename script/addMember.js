@@ -44,33 +44,7 @@ var membersInProject = [
 ];
 
 var memberButton = document.createElement("BUTTON");
-document.getElementById("addMemberButton").appendChild(memberButton);
-memberButton.innerHTML = "Add member";
 
 memberButton.addEventListener("click", function(){
     document.getElementById("addMember").style.display = "flex";
-});
-
-document.getElementById("submitMember").addEventListener("click", function(){
-    var memberInput = document.getElementsByTagName("INPUT").memberName;
-    var newValue = memberInput.value;
-    for(var i = 0; i < membersInProject.length; i++) {
-        if(newValue == membersInProject[i].userName || newValue == membersInProject[i].email) {
-            alert("User already added");
-            memberInput.value = "";
-            return;
-        }
-    }
-    for(var i = 0; i < registreredUsers.length; i++){
-        if(newValue === registreredUsers[i].userName || newValue === registreredUsers[i].email) {
-            membersInProject.push(registreredUsers[i]);
-            console.log(membersInProject);
-            var createElement = document.createElement("P");
-            memberInput.value = "";
-            addMember.appendChild(createElement).innerHTML = newValue;
-            alert("Member added");
-            return;
-        }
-    }
-    alert("Wrong name");
 });

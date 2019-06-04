@@ -124,6 +124,7 @@ nav li {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 20px;
 }
 
 #container input,button {
@@ -143,11 +144,11 @@ nav li {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #memberSelection p {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -158,3 +159,77 @@ nav li {
     border-radius: 20px;
 }
 
+#wrapper {
+    display: block;
+    width: 95%;
+    max-width: 1000px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+#lag_tavle {
+    width: 100%;
+}
+
+#nyTavleKnapp {
+    width: 95%;
+    background-color: red;
+    border-radius: 10px;
+    padding: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#nyTavleKnapp p{
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#tavler {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tavle {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 200px;
+    max-width: 500px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 3px solid red;
+}
+
+.tavle input, button {
+    padding: 10px;
+    border: none;
+    font-weight: 700;
+}
+
+.tavle button {
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    color: white;
+    background-color: red;
+    border-radius: 0 0 2px 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tavle input {
+    font-size: 1.2rem;
+    margin: 10px;
+    background-color: transparent;
+    text-align: center;
+}
