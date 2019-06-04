@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -15,12 +15,15 @@ h1 {
 }
 
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 h3 {
     font-size: 1rem;
-    font-weight: 700;
+}
+
+p {
+    font-size: .9rem;
 }
 
 a {
@@ -59,7 +62,7 @@ header {
 #logo {
     position: relative;
     height: 100%;
-    left: 40px;
+    margin-left: 40px;
 }
 
 #logo img {
@@ -168,6 +171,111 @@ form span:hover {
 
 #register {
     display: none;
+}
+
+.title h2 {
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.project {
+    position: relative;
+    width: 200px;
+    padding:15px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin: 10px;
+}
+
+.project img {
+    height: 25px;
+    width: 25px;
+    border-radius: 30px;
+}
+
+.project-title, .project-maker, .project-created {
+    align-items: center;
+}
+
+.project-title, .project-maker, .project-desc, .project-created {
+    display: flex;
+    flex-direction: row;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.project p {
+    margin-left: 10px;
+}
+
+.bg-red {
+    background: rgb(122,4,4);
+    background: linear-gradient(20deg, rgba(122,4,4,1) 0%, rgba(252,69,69,1) 100%); 
+}
+.red {
+    color: rgba(168, 10, 10, 0.8);
+}
+.bg-orange {
+    background: rgb(211, 133, 30);
+    background: linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%); 
+}
+.orange {
+    color: rgba(243, 149, 42, 0.8);
+}
+.bg-green {
+    background: rgb(63, 133, 16);
+    background: linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%); 
+}
+.green {
+    color: rgba(52, 141, 24, 0.8);
+}
+
+.project-title {
+    width: calc(100% - 5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.project-title h2{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 10px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.project-maker {
+    font-weight: 600;
+    padding-top: 30px;
+    text-transform: capitalize;
+}
+
+.project-desc img, .project-created img {
+    opacity: 0.8;
+}
+
+.project-created {
+    font-weight: 600;
+}
+
+.project-members img {
+    margin-right: -17px;
+    background-color: yellowgreen;
+    border: 3px solid white;
 }
 
 @media only screen and (max-width: 470px) {
