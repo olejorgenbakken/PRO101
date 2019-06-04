@@ -39,7 +39,9 @@ function lagTavle() {
 
     nyTavle.className = "tavle";
     nyTavle.id = "tavle" + tavleID;
-    nyTavleTittel.value = "Ny tavle";
+    nyTavleTittel.setAttribute("value", "Ny tavle");
+    console.log(nyTavleTittel.value);
+    nyTavleTittel.type = "text";
     slettTavle.setAttribute("onclick", " return slettTavle(" + tavleID + ")");
 
     wrapper.appendChild(nyTavle);
