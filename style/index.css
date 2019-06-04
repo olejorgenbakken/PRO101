@@ -23,6 +23,11 @@ h3 {
     font-weight: 700;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 span {
     font-size: inherit;
 }
@@ -35,7 +40,7 @@ header {
     position: absolute;
     z-index: 1;
 }
-/*
+
 .shape {
     z-index: -1;
     position: absolute;
@@ -48,9 +53,9 @@ header {
     height: 900px;
     border-radius: 100%;
     background: rgb(58,134,180);
-    background: linear-gradient(0deg, rgba(58,134,180,1) 70%, rgb(100, 252, 69) 100%); 
+    background: linear-gradient(0deg, rgb(0, 157, 255) 70%, rgb(60, 184, 35) 100%); 
 }
-*/
+
 #logo {
     position: relative;
     height: 100%;
