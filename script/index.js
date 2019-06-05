@@ -22,11 +22,11 @@ function showRegister() {
 var featureContainer = document.getElementById("feature");
 var featureInfoContainer = document.getElementById("feature-info");
 
-var feature = ["Time limits", "Be responsible", "idk...", ""];
+var feature = ["Time limits", "Be responsible", "Important tasks first", ""];
 
 var featureInfo = ["Set time limits for when a task should be completed", 
                     "Add people to a task to let them know they're the person for the job", 
-                    "Flere features på kort?"];
+                    "Set the importance of tasks to signify what's urgent"];
 var i = 0;
 
 function showFeatures() {

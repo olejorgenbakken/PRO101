@@ -1,57 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
-}
-
 body {
     background: rgb(213,0,0);
-    background: linear-gradient(70deg, rgba(213,0,0,1) 0%, rgba(8,81,164,1) 47%, rgba(0,0,0,1) 100%); }
-
-h1 {
-    font-size: 3rem;
+    background: linear-gradient(70deg, rgba(213,0,0,1) 0%, rgba(8,81,164,1) 47%, rgba(0,0,0,1) 100%); 
 }
 
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1rem;
-}
-
-p {
-    font-size: .9rem;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-span {
-    font-size: inherit;
-}
-
-header {
-    width: 100%;
-    height: 80px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    position: absolute;
-    z-index: 1;
-}
-
-#logo {
-    position: relative;
-    height: 100%;
-    margin-left: 40px;
-}
-
-#logo img {
-    height: 100%;
-}
 
 .row {
     width: 100%;
@@ -317,8 +268,12 @@ form span:hover {
     color: white;
 }
 
+#features-boards {
+    padding-left: 20px;
+}
+
 .feature {
-    width: 400px;
+    width: 500px;
 }
 
 .feature, .feature-info {
@@ -338,8 +293,9 @@ form span:hover {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 900px;
+    width: 800px;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    transform: scale(.9);
 }
 
 .table-header {
@@ -391,7 +347,7 @@ form span:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 280px;
+    min-width: 280px;
     background-color: white;
     border-radius: 5px;
     max-height: 650px;
@@ -408,7 +364,8 @@ form span:hover {
     padding-right: 2.5%;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 #row-project-features {
@@ -424,6 +381,7 @@ form span:hover {
     display: flex;
     flex-direction: column;
     padding-bottom: 15px;
+    transform: scale(.8);
 }
 
 .projects-header {
@@ -507,49 +465,4 @@ form span:hover {
     background-color: white;
     border: 3px solid white;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-@media only screen and (max-width: 470px) {
-    header {
-        height: 60px;
-        text-align: center;
-    }
-    #logo {
-        left: 0;
-    }
-    #slogan {
-        margin-bottom: 10px;
-    }
-    #slogan h1 {
-        font-size: 2rem;
-    }
-
-    .card-and-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #features-cards {
-        min-height: 200px;
-    }
-
-    .features {
-        margin-left: 2.5%;
-        width: 95%;
-    }
-
-    .feature h1 {
-        font-size: 2.5rem;
-    }
-
-    .feature, .feature-info {
-        transition: 1s ease;
-        width: auto;
-        align-items: flex-start;
-    }
-
-    #row-card-features {
-        flex-direction: column;
-    }
 }
