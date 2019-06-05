@@ -1,0 +1,91 @@
+.projects {
+    width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.projects-header {
+    width: 100%;
+    background: rgb(255,100,100);
+    background: linear-gradient(48deg, rgba(255,100,100,1) 0%, rgba(235,255,125,1) 100%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 50px;
+    padding-top: 130px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.projects-header h3 {
+    font-size: 1.4rem;
+}
+
+#profile-image {
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    background-color: white;
+    border: 3px solid white;
+}
+
+.projects-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+.project {
+    width: 48%;
+    max-width: 400px;
+    min-width: 250px;
+    height: 200px;
+    background-image: url("https://images.unsplash.com/photo-1509593419605-143becfcbae9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.project-title h3{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+}
+
+.project-members {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.project-members:hover > img {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.project-members img {
+    width: 23px;
+    height: 23px;
+    border-radius: 30px;
+    transition: .3s ease-in-out;
+    margin-left: -8px;
+    margin-right: -8px;
+    background-color: white;
+    border: 3px solid white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
