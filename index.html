@@ -17,10 +17,9 @@
         </div>
     </header>
     <div id="fill-screen">
-        <div id="logo-shape" class="shape"></div>
         <div class="row">
             <div id="slogan">
-                <h1 id="slogan-text">Make your group project</br> more <span class="txt-yellow">structured</span>,
+                <h1 id="slogan-text">Make your group card</br> more <span class="txt-yellow">structured</span>,
                     more <span class="txt-yellow">creative</span>,
                     more <span class="txt-yellow">fun</span></h1>
             </div>
@@ -32,7 +31,7 @@
                 <input type="text" placeholder="Username" />
                 <input type="password" placeholder="Password" />
                 <input type="email" placeholder="E-mail" />
-                <button><a href="prosjekt.html">Create account</a></button>
+                <button><a href="card.html">Create account</a></button>
 
                 <p class="message">Already registered? <span class="txt-yellow" onclick="return showLogin()">Log
                         in</span>
@@ -43,7 +42,7 @@
             <form class="login-form" id="login">
                 <input type="text" placeholder="Username">
                 <input type="password" placeholder="Password">
-                <button><a href="prosjekt.html">Log in</a></button>
+                <button><a href="card.html">Log in</a></button>
                 <p class="message">Not registered? <span class="txt-yellow"
                         onclick="return showRegister()">Register</span>
                 </p>
@@ -55,88 +54,335 @@
             <h2>Features</h2>
         </div>
     </div>
-    <div class="row">
-        <div id="projects">
-            <div class="project">
-                <div class="prosjekt-info">
-                    <div class="project-title bg-green">
-                        <h2>Get dog</h2>
-                    </div>
-                    <div class="project-maker">
-                        <img
-                            src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
-                        <p>Mom</p>
-                    </div>
-                    <div class="project-desc">
-                        <img src="assets/img/desc.png">
-                        <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
-                    </div>
-                    <div class="project-created">
-                        <img src="assets/img/tidsfrist.svg">
-                        <p class="green">Tidsfrist</p>
-                    </div>
-                    <div class="project-members">
-                        <img src="assets/img/profile.png">
-                        <img
-                            src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
-                        <img src="assets/img/profile.png">
-                    </div>
-                </div>
-            </div>
-            <div class="project">
-                <div class="prosjekt-info">
-                    <div class="project-title bg-orange">
-                        <h2>Get dog</h2>
-                    </div>
-                    <div class="project-maker">
-                        <img
-                            src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
-                        <p>Mom</p>
-                    </div>
-                    <div class="project-desc">
-                        <img src="assets/img/desc.png">
-                        <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
-                    </div>
-                    <div class="project-created">
-                        <img src="assets/img/tidsfrist.svg">
-                        <p class="orange">Tidsfrist</p>
-                    </div>
-                    <div class="project-members">
-                        <img src="assets/img/profile.png">
-                        <img
-                            src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
-                        <img src="assets/img/profile.png">
+    <div class="row" id="row-card-features">
+        <div class="card-and-info">
+            <div id="cards-wrapper">
+                <div class="card" id="card-1">
+                    <div class="card-info">
+                        <div class="card-title bg-green">
+                            <h2>Get dog</h2>
+                        </div>
+                        <div class="card-maker">
+                            <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                            <p>Mom</p>
+                        </div>
+                        <div class="card-desc">
+                            <img src="assets/img/desc.png">
+                            <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                        </div>
+                        <div class="card-created">
+                            <img src="assets/img/tidsfrist.svg">
+                            <p class="green">Tidsfrist</p>
+                        </div>
+                        <div class="card-members">
+                            <img src="assets/img/profile.png">
+                            <img
+                                src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                            <img src="assets/img/profile.png">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="project">
-                <div class="prosjekt-info">
-                    <div class="project-title bg-red">
-                        <h2>Get dog</h2>
+                <div class="card" id="card-2">
+                    <div class="card-info">
+                        <div class="card-title bg-orange">
+                            <h2>Get dog</h2>
+                        </div>
+                        <div class="card-maker">
+                            <img
+                                src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                            <p>Mom</p>
+                        </div>
+                        <div class="card-desc">
+                            <img src="assets/img/desc.png">
+                            <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                        </div>
+                        <div class="card-created">
+                            <img src="assets/img/tidsfrist.svg">
+                            <p class="orange">Tidsfrist</p>
+                        </div>
+                        <div class="card-members">
+                            <img src="assets/img/profile.png">
+                            <img
+                                src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                            <img src="assets/img/profile.png">
+                        </div>
                     </div>
-                    <div class="project-maker">
-                        <img
-                            src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
-                        <p>Mom</p>
-                    </div>
-                    <div class="project-desc">
-                        <img src="assets/img/desc.png">
-                        <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
-                    </div>
-                    <div class="project-created">
-                        <img src="assets/img/tidsfrist.svg">
-                        <p class="red">Tidsfrist</p>
-                    </div>
-                    <div class="project-members">
-                        <img src="assets/img/profile.png">
-                        <img
-                            src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
-                        <img src="assets/img/profile.png">
+                </div>
+                <div class="card" id="card-3">
+                    <div class="card-info">
+                        <div class="card-title bg-red">
+                            <h2>Get dog</h2>
+                        </div>
+                        <div class="card-maker">
+                            <img
+                                src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                            <p>Mom</p>
+                        </div>
+                        <div class="card-desc">
+                            <img src="assets/img/desc.png">
+                            <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                        </div>
+                        <div class="card-created">
+                            <img src="assets/img/tidsfrist.svg">
+                            <p class="red">Tidsfrist</p>
+                        </div>
+                        <div class="card-members">
+                            <img src="assets/img/profile.png">
+                            <img
+                                src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                            <img src="assets/img/profile.png">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="features-cards" class="features">
+            <div class="feature">
+                <h3>Cards</h3>
+                <h1 id="feature">Time limits</h1>
+            </div>
+            <div class="feature-info">
+                <p id="feature-info">Set time limits for when a task should be completed</p>
+            </div>
+
+        </div>
     </div>
+
+    <div class="row" id="row-boards-features">
+        <div class="card-and-info">
+            <div class="table">
+                <div class="table-header">
+                    <h2>Board</h2>
+                    <div class="table-members">
+                        <img src="assets/img/profile.png">
+                        <img
+                            src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                        <img src="assets/img/profile.png">
+                        <img src="assets/img/profile.png">
+                        <img
+                            src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                        <img src="assets/img/profile.png">
+                    </div>
+                </div>
+                <div class="list-container">
+                    <div class="list">
+                        <div class="list-header">
+                            <h3>To do</h3>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list">
+                        <div class="list-header">
+                            <h3>Doing</h3>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list">
+                        <div class="list-header">
+                            <h3>Done</h3>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-info">
+                                <div class="card-title bg-red">
+                                    <h2>Get dog</h2>
+                                </div>
+                                <div class="card-maker">
+                                    <img
+                                        src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-female-alt-icon.png">
+                                    <p>Mom</p>
+                                </div>
+                                <div class="card-desc">
+                                    <img src="assets/img/desc.png">
+                                    <p>En labrador elns? Dummy tekst for å sjekke bredden</p>
+                                </div>
+                                <div class="card-created">
+                                    <img src="assets/img/tidsfrist.svg">
+                                    <p class="red">Tidsfrist</p>
+                                </div>
+                                <div class="card-members">
+                                    <img src="assets/img/profile.png">
+                                    <img
+                                        src="https://i.pinimg.com/736x/ed/53/a4/ed53a49aa65e20872c59f7f490805f3f--love-kiss-a-kiss.jpg">
+                                    <img src="assets/img/profile.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="features-boards" class="features">
+            <div class="feature">
+                <h3>Boards</h3>
+                <h1 id="feature">Time limits</h1>
+            </div>
+            <div class="feature-info">
+                <p id="feature-info">Set time limits for when a task should be completed</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" id="row-project-features">
+            <div class="project-and-info">
+                <div class="projects">
+                    <div class="projects-header">
+                        <div id="profile-image">
+                            <img src="assets/img/profile.png">
+                        </div>
+                        <h3>User</h3>
+                    </div>
+
+                    <div class="projects-wrapper">
+                        <div class="project">
+                            <div class="project-title">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="features-projects" class="features">
+                <div class="feature">
+                    <h3>projects</h3>
+                    <h1 id="feature">Get organized</h1>
+                </div>
+                <div class="feature-info">
+                    <p id="feature-info">Put together groups of friends to keep up with tasks</p>
+                </div>
+    
+            </div>
+        </div>
     <script src="script/index.js"></script>
 </body>
 

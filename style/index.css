@@ -6,9 +6,8 @@
 }
 
 body {
-    background: rgb(58,134,180);
-    background: linear-gradient(70deg, rgba(58,134,180,1) 0%, rgba(29,49,253,1) 61%, rgba(252,69,69,1) 100%); 
-}
+    background: rgb(213,0,0);
+    background: linear-gradient(70deg, rgba(213,0,0,1) 0%, rgba(8,81,164,1) 47%, rgba(0,0,0,1) 100%); }
 
 h1 {
     font-size: 3rem;
@@ -42,21 +41,6 @@ header {
     padding-bottom: 20px;
     position: absolute;
     z-index: 1;
-}
-
-.shape {
-    z-index: -1;
-    position: absolute;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-}
-#logo-shape {
-    top: -600px;
-    left: -600px;
-    width: 900px;
-    height: 900px;
-    border-radius: 100%;
-    background: rgb(58,134,180);
-    background: linear-gradient(0deg, rgb(0, 157, 255) 70%, rgb(60, 184, 35) 100%); 
 }
 
 #logo {
@@ -131,28 +115,31 @@ form {
 }
 
 form input, button {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
     border-radius: 20px;
-    padding: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     border: none;
+    width: 100%;
 }
 
 form input {
     background-color: white;
+    text-align: center;
 }
 
 form button {
     text-transform: uppercase;
     font-weight: 700;
-    background-color: blue;
-    transition: .1s ease;
+    background: blue;
+    transition: .2s ease;
     color: white;
     cursor: pointer;
 }
 
 form button:hover {
-    background-color: darkblue;
+    background: darkblue;
 }
 
 form span {
@@ -181,7 +168,35 @@ form span:hover {
     text-transform: uppercase;
 }
 
-.project {
+.card-and-info {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#cards-wrapper {
+    position: relative;
+    width: 600px;
+    height: 55vh;
+}
+
+#card-1, #card-2, #card-3 {
+    position: absolute;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+#card-2 {
+    left: 120px;
+    top: 60px;
+    z-index: 2;
+}
+
+#card-3 {
+    left: 240px;
+    top: 120px;
+    z-index: 2;
+}
+
+.card {
     position: relative;
     width: 200px;
     padding:15px;
@@ -193,24 +208,43 @@ form span:hover {
     margin: 10px;
 }
 
-.project img {
+.card-maker img, .card-desc img, .card-created img {
     height: 25px;
     width: 25px;
     border-radius: 30px;
 }
 
-.project-title, .project-maker, .project-created {
+.card-members {
+    cursor: default;
+}
+
+.card-members:hover > img {
+    margin-right: -5px;
+}
+
+.card-members img {
+    height: 20px;
+    width: 20px;
+    transition: .3s ease-in-out;
+    margin-right: -15px;
+    background-color: yellowgreen;
+    border: 3px solid white;
+    border-radius: 30px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.card-title, .card-maker, .card-created {
     align-items: center;
 }
 
-.project-title, .project-maker, .project-desc, .project-created {
+.card-title, .card-maker, .card-desc, .card-created {
     display: flex;
     flex-direction: row;
     margin-top: 14px;
     margin-bottom: 14px;
 }
 
-.project p {
+.card p {
     margin-left: 10px;
 }
 
@@ -236,7 +270,7 @@ form span:hover {
     color: rgba(52, 141, 24, 0.8);
 }
 
-.project-title {
+.card-title {
     width: calc(100% - 5px);
     position: absolute;
     top: 0;
@@ -248,7 +282,7 @@ form span:hover {
     border-radius: 5px 5px 0 0;
 }
 
-.project-title h2{
+.card-title h2{
     padding-top: 3px;
     padding-bottom: 3px;
     font-size: 1.2rem;
@@ -258,24 +292,174 @@ form span:hover {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.project-maker {
+.card-maker {
     font-weight: 600;
     padding-top: 30px;
     text-transform: capitalize;
 }
 
-.project-desc img, .project-created img {
+.card-desc img, .card-created img {
     opacity: 0.8;
 }
 
-.project-created {
+.card-created {
     font-weight: 600;
 }
 
-.project-members img {
-    margin-right: -17px;
-    background-color: yellowgreen;
+.features {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.feature {
+    width: 400px;
+}
+
+.feature, .feature-info {
+    transition: 1s ease;
+}
+
+.feature h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .9rem;
+}
+
+.table {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+}
+
+.table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgb(255,253,112);
+    background: linear-gradient(297deg, rgba(255,253,112,1) 0%, rgba(252,69,69,1) 100%);
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.table-members {
+    cursor: default;
+    position: absolute;
+    right: 15px;
+}
+
+.table-members:hover > img {
+    margin-left: 0px;
+}
+
+.table-members img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    transition: .3s ease-in-out;
+    margin-left: -17px;
+    background-color: white;
     border: 3px solid white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    width: 100%;
+    overflow: auto;
+}
+
+.list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    background-color: white;
+    border-radius: 5px;
+    max-height: 650px;
+    overflow: auto;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+    margin: 15px;
+    padding-bottom: 5px;
+    background-color: rgb(250, 250, 250);
+}
+
+.list-header {
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+}
+
+#features-boards {
+    margin-left: 30px;
+}
+
+.projects {
+    width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.projects-header {
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#profile-image {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    border-radius: 100px;
+    background-color: white;
+    border: 3px solid white;
+}
+
+#profile-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.projects-wrapper {
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+.project {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
 
 @media only screen and (max-width: 470px) {
@@ -291,5 +475,34 @@ form span:hover {
     }
     #slogan h1 {
         font-size: 2rem;
+    }
+
+    .card-and-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #features-cards {
+        min-height: 200px;
+    }
+
+    .features {
+        margin-left: 2.5%;
+        width: 95%;
+    }
+
+    .feature h1 {
+        font-size: 2.5rem;
+    }
+
+    .feature, .feature-info {
+        transition: 1s ease;
+        width: auto;
+        align-items: flex-start;
+    }
+
+    #row-card-features {
+        flex-direction: column;
     }
 }
