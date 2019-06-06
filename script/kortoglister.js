@@ -113,7 +113,7 @@ function lagListe() {
     // men den fungerer for now...)
     var radioButtonContainer = document.createElement("form");
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 7; i++) {
         nyListeLagKortForm.id = "lagKortListe" + listeID;
         nyListeLagKortForm.className = "create-list";
         radioButtonContainer.id = "radioButtonContainer" + listeID;
@@ -123,7 +123,7 @@ function lagListe() {
         nyListeLagKortInput.id = i;
         nyListeLagKortForm.appendChild(radioButtonContainer);
 
-        if (nyListeLagKortInput.id == 9) {
+        if (nyListeLagKortInput.id == 6) {
             nyListeLagKortInput.id = "leggTilKort" + listeID;
             nyListeLagKortInput.value = "Add card";
             nyListeLagKortInput.type = "button";
@@ -132,31 +132,7 @@ function lagListe() {
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         }
 
-        if (nyListeLagKortInput.id == 8) {
-            nyListeLagKortInput.id = "cardPriorityUrgent" + listeID;
-            nyListeLagKortInput.value = "Urgent";
-            nyListeLagKortInput.type = "radio";
-            nyListeLagKortInput.className = "cardPriority";
-            radioButtonContainer.appendChild(nyListeLagKortInput);
-        }
-
-        if (nyListeLagKortInput.id == 7) {
-            nyListeLagKortInput.id = "cardPriorityMiddle" + listeID;
-            nyListeLagKortInput.value = "Medium Urgent";
-            nyListeLagKortInput.type = "radio";
-            nyListeLagKortInput.className = "cardPriority";
-            radioButtonContainer.appendChild(nyListeLagKortInput);
-        }
-
-        if (nyListeLagKortInput.id == 6) {
-            nyListeLagKortInput.id = "cardPriorityCommon" + listeID;
-            nyListeLagKortInput.value = "Not Urgent";
-            nyListeLagKortInput.type = "radio";
-            nyListeLagKortInput.className = "cardPriority";
-            radioButtonContainer.appendChild(nyListeLagKortInput);
-        }
-
-        if (nyListeLagKortInput.id == 5) {
+        else if (nyListeLagKortInput.id == 5) {
             nyListeLagKortInput.id = "slettListe" + listeID;
             nyListeLagKortInput.value = "x";
             nyListeLagKortInput.type = "button";
@@ -217,6 +193,7 @@ function openDialog(event) {
     childNodes[4].style.display = "none";
     childNodes[5].style.display = "block";
     childNodes[6].style.display = "none";
+<<<<<<< HEAD
 }
 
 function removeDialog(event){
@@ -232,6 +209,8 @@ function removeDialog(event){
         childNodes[6].style.display = "block";
         event.target.remove();
     }
+=======
+>>>>>>> 4993709e8584869020a8452ba298f4fa86551d95
 }
 
 function closeDialog(event) {
@@ -259,6 +238,75 @@ function slettListe(listeID) {
 // lag et card. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
 // i lag liste funksjonen
 function lagKort(listeID) {
+    var priorityForm = document.createElement("div");
+    priorityForm.id = "priority-card-" + cardID;
+    priorityForm.className = "card-priority-picker";
+        
+    var priorityUrgentDiv = document.createElement("div");
+    priorityUrgentDiv.className = "priority-container";
+    priorityUrgentDiv.id = "urgent" + cardID;
+    var priorityUrgent = document.createElement("input");
+    var priorityUrgentLbl = document.createElement("label");
+    priorityUrgentLbl.innerText = "!!!";
+    priorityUrgentLbl.setAttribute("for", ("card-priority-urgent" + cardID));
+    priorityUrgent.id = "card-priority-urgent" + cardID;
+    priorityUrgent.value = "Urgent";
+    priorityUrgent.type = "radio";
+    priorityUrgent.name = "priority";
+    priorityUrgent.className = "card-priority";
+    priorityUrgent.setAttribute("onchange", "changeToUrgent(" + cardID + ")");
+    priorityUrgentDiv.appendChild(priorityUrgent);
+    priorityUrgentDiv.appendChild(priorityUrgentLbl);
+    
+    var priorityMiddleDiv = document.createElement("div");
+    priorityMiddleDiv.className = "priority-container";
+    priorityMiddleDiv.id = "middle" + cardID;
+    var priorityMiddle = document.createElement("input");
+    var priorityMiddleLbl = document.createElement("label");
+    priorityMiddleLbl.innerText = "!!";
+    priorityMiddleLbl.setAttribute("for", ("card-priority-middle" + cardID))
+    priorityMiddle.id = "card-priority-middle" + cardID;
+    priorityMiddle.value = "Middle";
+    priorityMiddle.type = "radio";
+    priorityMiddle.name = "priority";
+    priorityMiddle.className = "card-priority";
+    priorityMiddle.setAttribute("onchange", "changeToMiddle(" + cardID + ")");
+    priorityMiddleDiv.appendChild(priorityMiddle);
+    priorityMiddleDiv.appendChild(priorityMiddleLbl);
+
+    var priorityLowDiv = document.createElement("div");
+    priorityLowDiv.className = "priority-container";
+    priorityLowDiv.id = "low" + cardID;
+    var priorityLow = document.createElement("input");
+    var priorityLowLbl = document.createElement("label");
+    priorityLowLbl.innerText = "!";
+    priorityLowLbl.setAttribute("for", ("card-priority-low" + cardID))
+    priorityLow.id = "card-priority-low" + cardID;
+    priorityLow.value = "Low";
+    priorityLow.type = "radio";
+    priorityLow.name = "priority";
+    priorityLow.className = "card-priority";
+    priorityLow.setAttribute("onchange", "changeToLow(" + cardID + ")");
+    priorityLowDiv.appendChild(priorityLow);
+    priorityLowDiv.appendChild(priorityLowLbl);
+
+    var priorityNoneDiv = document.createElement("div");
+    priorityNoneDiv.className = "priority-container";
+    priorityNoneDiv.id = "none" + cardID;
+    var priorityNone = document.createElement("input");
+    var priorityNoneLbl = document.createElement("label");
+    priorityNoneLbl.innerText = "None";
+    priorityNoneLbl.setAttribute("for", ("card-priority-none" + cardID))
+    priorityNone.id = "card-priority-none" + cardID;
+    priorityNone.value = "Low";
+    priorityNone.type = "radio";
+    priorityNone.name = "priority";
+    priorityNone.className = "card-priority";
+    priorityNone.setAttribute("checked", "true");
+    priorityNone.setAttribute("onchange", "changeToNone(" + cardID + ")");
+    priorityNoneDiv.appendChild(priorityNone);
+    priorityNoneDiv.appendChild(priorityNoneLbl);
+
     var listePosisjon = document.getElementById("liste" + listeID);
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
@@ -323,8 +371,6 @@ function lagKort(listeID) {
     nyttKortMedlemmerbutton.value = "add member";
     nyttKortMedlemmerbutton.className = "add-member"
 
-
-
     nyttKortMedlemmerOption.id = "option";
 
     nyttKortMedlemmer.id = "selectingMembers" + cardID;
@@ -335,7 +381,6 @@ function lagKort(listeID) {
     nyttKortLagd.className = "card-created";
     nyttKortTidsfrist.className = "card-deadline";
     slettKort.setAttribute("onclick", " return slettKort(" + cardID + ")");
-
 
     listePosisjon.appendChild(nyttKort);
     nyttKort.appendChild(nyttKortHeader);
@@ -349,10 +394,6 @@ function lagKort(listeID) {
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerbutton);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerIKortDiv);
-
-
-
-
 
     for (var j = 0; j < membersInProject.length; j++) {
 
@@ -371,7 +412,11 @@ function lagKort(listeID) {
     nyttKortFooter.appendChild(nyttKortForrigeListe);
     nyttKortFooter.appendChild(nyttKortNesteListe);
     nyttKortFooter.appendChild(slettKort);
-
+    priorityForm.appendChild(priorityUrgentDiv);
+    priorityForm.appendChild(priorityMiddleDiv);
+    priorityForm.appendChild(priorityLowDiv);
+    priorityForm.appendChild(priorityNoneDiv);
+    nyttKortHeader.appendChild(priorityForm);
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
     var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
@@ -387,16 +432,14 @@ function lagKort(listeID) {
         brukere: [],
     });
 
-
-
     nyttKortHeaderTekst.value = card[cardID].navn;
     nyttKortBeskrivelseTekst.innerText = card[cardID].description;
     nyttKortLagdTekst.innerText = "Lagd: \n" + card[cardID].lagd;
     nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + card[cardID].tidsfrist;
     slettKort.value = "slett card";
     slettKort.className = "lukkKort";
+    
     cardID++;
-
 }
 
 function removeMember(event) {
@@ -404,6 +447,60 @@ function removeMember(event) {
     
 }
 
+<<<<<<< HEAD
+=======
+/*function getSelectedCard(event){
+    console.log(event.target);
+    console.log(event.target.parentNode.id);
+}*/
+
+function changeToNone(cardID) {
+    var newBackground = document.getElementById("card-tittel" + cardID);
+    newBackground.style.background = "blue";
+    
+    var urgent = document.getElementById("urgent" + cardID);
+    var middle = document.getElementById("middle" + cardID);
+    var low = document.getElementById("low" + cardID);
+
+    urgent.style.display = "none";
+    middle.style.display = "none";
+    low.style.display = "none";
+}
+function changeToLow(cardID) {
+    var newBackground = document.getElementById("card-tittel" + cardID);
+    newBackground.style.background = "linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%)";
+    var urgent = document.getElementById("urgent" + cardID);
+    var middle = document.getElementById("middle" + cardID);
+    var none = document.getElementById("none" + cardID);
+
+    urgent.style.display = "none";
+    middle.style.display = "none";
+    none.style.display = "none";
+}
+function changeToMiddle(cardID) {
+    var newBackground = document.getElementById("card-tittel" + cardID);
+    newBackground.style.background = "linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%)";
+    var urgent = document.getElementById("urgent" + cardID);
+    var low = document.getElementById("low" + cardID);
+    var none = document.getElementById("none" + cardID);
+
+    urgent.style.display = "none";
+    low.style.display = "none";
+    none.style.display = "none";
+}
+function changeToUrgent(cardID) {
+    var newBackground = document.getElementById("card-tittel" + cardID);
+    newBackground.style.background = "linear-gradient(20deg, rgba(122, 4, 4, 1) 0%, rgba(252, 69, 69, 1) 100%)";
+    var middle = document.getElementById("middle" + cardID);
+    var low = document.getElementById("low" + cardID);
+    var none = document.getElementById("none" + cardID);
+
+    middle.style.display = "none";
+    low.style.display = "none";
+    none.style.display = "none";
+}
+
+>>>>>>> 4993709e8584869020a8452ba298f4fa86551d95
 function getSelectedValue(cardID) {
 
     for (var z = 0; z < card.length; z++) {
