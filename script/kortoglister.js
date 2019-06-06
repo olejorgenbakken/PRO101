@@ -125,7 +125,7 @@ function lagListe() {
 
         if (nyListeLagKortInput.id == 9) {
             nyListeLagKortInput.id = "leggTilKort" + listeID;
-            nyListeLagKortInput.value = "Legg til card";
+            nyListeLagKortInput.value = "Add card";
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.className = "leggTilKort";
             nyListeLagKortInput.setAttribute("onclick", "openDialog(event)");
@@ -175,10 +175,12 @@ function lagListe() {
             nyListeLagKortInput.type = "date";
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         } else if (nyListeLagKortInput.id == 2) {
-            nyListeLagKortInput.id = "nyttKortBeskrivelse" + listeID;
-            nyListeLagKortInput.placeholder = "Beskrivelse";
-            nyListeLagKortInput.type = "text";
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
+            var newCardDescription = document.createElement("textarea");
+            newCardDescription.id = "nyttKortBeskrivelse" + listeID;
+            newCardDescription.placeholder = "Beskrivelse";
+            newCardDescription.type = "text";
+            newCardDescription.className = "card-desc";
+            nyListeLagKortForm.appendChild(newCardDescription);
         } else if (nyListeLagKortInput.id == 1) {
             nyListeLagKortInput.id = "nyttKortNavn" + listeID;
             nyListeLagKortInput.placeholder = "Tittel";
@@ -205,9 +207,15 @@ function openDialog(event) {
     thisDialog.parentNode.classList.add("openDialog");
     thisDialog.parentNode.parentNode.appendChild(overlay);
     var childNodes = thisDialog.parentNode.childNodes;
-    childNodes.forEach(el => {
-        el.style.display = "block";
-    });
+    childNodes[0].style.display = "block";
+    childNodes[1].style.display = "block";
+    childNodes[2].style.display = "block";
+    childNodes[3].style.display = "block";
+    childNodes[4].style.display = "none";
+    childNodes[5].style.display = "block";
+    childNodes[6].style.display = "none";
+
+    console.log(childNodes);
 }
 
 function closeDialog(event) {
@@ -216,10 +224,12 @@ function closeDialog(event) {
     overlay.remove();
     var childNodes = dialog.childNodes;
     childNodes[0].style.display = "none";
-    childNodes[1].style.display = "none";
+    childNodes[1].style.display = "block";
     childNodes[2].style.display = "none";
     childNodes[3].style.display = "none";
-    childNodes[4].style.display = "none";
+    childNodes[4].style.display = "block";
+    childNodes[5].style.display = "none";
+    childNodes[6].style.display = "block";
 
     dialog.classList.remove("openDialog");
 }
@@ -239,7 +249,7 @@ function lagKort(listeID) {
     var nyttKortHeader = document.createElement("div");
     var nyttKortHeaderTekst = document.createElement("input");
     var nyttKortBeskrivelse = document.createElement("div");
-    var nyttKortBeskrivelseTekst = document.createElement("input");
+    var nyttKortBeskrivelseTekst = document.createElement("textarea");
     var nyttKortNesteListe = document.createElement("input");
     var nyttKortForrigeListe = document.createElement("input");
     var nyttKortFooter = document.createElement("div");
@@ -266,9 +276,9 @@ function lagKort(listeID) {
     nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + cardID + ")");
     nyttKortHeaderTekst.id = "card-tittel-tekst" + cardID;
     nyttKortBeskrivelse.className = "card-desc";
-    nyttKortBeskrivelse.id = "card-beskrivelse" + cardID;
+    nyttKortBeskrivelse.id = "card-description" + cardID;
     nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + cardID + ")");
-    nyttKortBeskrivelseTekst.id = "card-beskrivelse-tekst" + cardID;
+    nyttKortBeskrivelseTekst.id = "card-description-tekst" + cardID;
     nyttKortBeskrivelseTekst.placeholder = "Beskrivelse";
 
     nyttKortNesteListe.type = "button";
@@ -353,7 +363,7 @@ function lagKort(listeID) {
     card.push({
         id: cardID,
         navn: nyttKortHeaderTekstInput,
-        beskrivelse: nyttKortBeskrivelseInput,
+        description: nyttKortBeskrivelseInput,
         listePosisjon: liste[listeID].id,
         lagd: getTime("date"),
         tidsfrist: nyttKortTidsfristTekstInput,
@@ -363,7 +373,7 @@ function lagKort(listeID) {
 
 
     nyttKortHeaderTekst.value = card[cardID].navn;
-    nyttKortBeskrivelseTekst.value = card[cardID].beskrivelse;
+    nyttKortBeskrivelseTekst.value = card[cardID].description;
     nyttKortLagdTekst.innerText = "Lagd: \n" + card[cardID].lagd;
     nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + card[cardID].tidsfrist;
     slettKort.value = "slett card";
@@ -438,7 +448,7 @@ function slettKort(cardID) {
     card.parentNode.removeChild(card);
 }
 
-// redigerer cardenes tittel og beskrivelse
+// redigerer cardenes tittel og description
 function redigerListeTittel(listeID) {
     listeTittelContainer = document.getElementById("nyKortTittel" + listeID);
     liste[listeID].navn = listeTittelContainer.value;
@@ -450,6 +460,6 @@ function redigerTittel(cardID) {
 }
 
 function redigerBeskrivelse(cardID) {
-    cardBeskrivelseContiner = document.getElementById("card-beskrivelse-tekst" + cardID);
-    card[cardID].beskrivelse = cardBeskrivelseContiner.value;
+    cardBeskrivelseContiner = document.getElementById("card-description-tekst" + cardID);
+    card[cardID].description = cardBeskrivelseContiner.value;
 }

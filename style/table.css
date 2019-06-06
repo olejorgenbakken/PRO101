@@ -162,7 +162,7 @@ wrapper {
     flex-direction: column;
 }
 
-.card-desc input {
+.card-desc textarea {
     border: none;
     width: 100%;
     color: black;
@@ -314,51 +314,8 @@ select {
     content: "Hei" !important;
 }
 
-
-[id*="project"] input{
-    width: 100%;
-    height: 40px;
-}
-
-[id*="project"] input::placeholder{
-    text-align: center;
-}
-
-[id*="project"] input:first-of-type{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 100px;
-    border: none;
-}
-
-[id*="project"] input:nth-of-type(2){
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: none;
-}
-
-[id*="lagKortListe"] input {
-    display: none;
-}
-
-[id*="lagKortListe"] input:last-of-type {
+.slettListe {
     display: block;
-}
-
-[id*="radioButtonContainer"] {
-    display: none !important;
-}
-
-.openDialog [id*="radioButtonContainer"] {
-    display: block !important;
-}
-
-[id*="nyKortTittel"] {
-    display: block;
-}
-
-[id*="slettListe"] {
-    display: block !important;
 }
 
 #overlay {
@@ -366,13 +323,15 @@ select {
     height: 100vh;
     z-index: 998;
     position: fixed;
+    background: rgba(0,0,0,0.7);
     top: 0;
     left: 0;
 }
 
 .openDialog {
+    background: red;
     width: 500px;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     top: 50%;
     left: 50%;
@@ -380,15 +339,10 @@ select {
     box-shadow: 0px 0px 10px black;
 }
 
-.openDialog input[value="Legg til kort"] {
-    display: none !important;
+.openDialog .slettListe{
+    display: none;
 }
 
-.openDialog * {
-    display: block;
-    width: 100%;
-}
-
-.make-card-container input {
-    display: block;
+.nyttKortInput, .make-card-container {
+    display: none;
 }
