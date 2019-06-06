@@ -100,7 +100,12 @@ form button:hover {
     background: darkblue;
 }
 
-form span {
+form button a {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+form button span {
     cursor: pointer;
     transition: .2s ease;
 }
