@@ -364,10 +364,8 @@ function getSelectedValue(cardID) {
                 nyttcardMedlemmerTekst.innerText = card[z].brukere[k];
                 nyttcardMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
                 membersContainer.appendChild(nyttcardMedlemmerTekst);
-                console.log(card[z].brukere[k]);
                 //membersContainer.id.appendChild(nyttcardMedlemmerTekst);
             }
-            console.log(card);
             //console.log(nyttKortMedlemmerIKortDiv);
             //nyttKortMedlemmerIKortDiv.appendChild(membersContainer);
         }

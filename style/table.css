@@ -154,18 +154,47 @@ wrapper {
     order: 5;
 }
 
+.card-member-select input {
+    width: 100%;
+    margin-top: 3px;
+    background-color: blue;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: white;
+}
+
 .card-members {
+    padding-left: 0;
+    margin-left: 0;
+    flex-wrap: wrap;
     order: 6;
+    align-content: space-around
 }
 
 .card-members p {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background: blue;
     border-radius: 20px;
     color: white;
+}
+
+select {
+    -webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none; 
+   border: 1px solid black;
+   max-height: 80px;
+   width: 100%;
+   overflow: auto;
+}
+
+.member-select::-webkit-scrollbar-thumb {
+    background-color: #000000;
 }
 
 .card-created {
