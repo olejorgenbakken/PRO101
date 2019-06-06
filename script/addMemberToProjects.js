@@ -1,4 +1,4 @@
- for(var i = 0; i < membersInProject.length; i++) {
+for(var i = 0; i < membersInProject.length; i++) {
     var option = document.createElement("P");
     var selection = document.getElementById("memberSelection");
     var selectMember = document.createElement("INPUT");
