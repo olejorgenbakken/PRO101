@@ -270,23 +270,6 @@ function lagKort(listeID) {
     priorityLowDiv.appendChild(priorityLow);
     priorityLowDiv.appendChild(priorityLowLbl);
 
-    var priorityNoneDiv = document.createElement("div");
-    priorityNoneDiv.className = "priority-container";
-    priorityNoneDiv.id = "none" + cardID;
-    var priorityNone = document.createElement("input");
-    var priorityNoneLbl = document.createElement("label");
-    priorityNoneLbl.innerText = "None";
-    priorityNoneLbl.setAttribute("for", ("card-priority-none" + cardID))
-    priorityNone.id = "card-priority-none" + cardID;
-    priorityNone.value = "Low";
-    priorityNone.type = "radio";
-    priorityNone.name = "priority";
-    priorityNone.className = "card-priority";
-    priorityNone.setAttribute("checked", "true");
-    priorityNone.setAttribute("onchange", "changeToNone(" + cardID + ")");
-    priorityNoneDiv.appendChild(priorityNone);
-    priorityNoneDiv.appendChild(priorityNoneLbl);
-
     var listePosisjon = document.getElementById("liste" + listeID);
     var nyttKort = document.createElement("div");
     var nyttKortHeader = document.createElement("div");
@@ -393,7 +376,6 @@ function lagKort(listeID) {
     priorityForm.appendChild(priorityUrgentDiv);
     priorityForm.appendChild(priorityMiddleDiv);
     priorityForm.appendChild(priorityLowDiv);
-    priorityForm.appendChild(priorityNoneDiv);
     nyttKortHeader.appendChild(priorityForm);
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
@@ -430,18 +412,6 @@ function removeMember(event) {
     console.log(event.target.parentNode.id);
 }*/
 
-function changeToNone(cardID) {
-    var newBackground = document.getElementById("card-tittel" + cardID);
-    newBackground.style.background = "blue";
-    
-    var urgent = document.getElementById("urgent" + cardID);
-    var middle = document.getElementById("middle" + cardID);
-    var low = document.getElementById("low" + cardID);
-
-    urgent.style.display = "none";
-    middle.style.display = "none";
-    low.style.display = "none";
-}
 function changeToLow(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%)";
