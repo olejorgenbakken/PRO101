@@ -26,17 +26,42 @@ wrapper {
 }
 
 #lister {
+    position: relative;
     background: rgb(85,134,255);
     background: linear-gradient(48deg, rgba(85,134,255,1) 0%, rgba(57,255,186,1) 100%); 
     padding-left: 5px;
     position: relative;
     padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: row;
 }
 
+.slettListe {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    padding:10px;
+    border: none;
+    border-radius: 0 5px 0 0;
+    background-color: red;
+    color: white;
+}
+
+.leggTilKort {
+    background: blue;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
 .liste {
-    min-width: 300px;
+    position: relative;
+    width: 320px;
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -53,6 +78,7 @@ wrapper {
     color: white;
     font-weight: 700;
     font-size: 1.4rem;
+    padding-bottom: 20px;
 }
 
 .card {
@@ -136,7 +162,7 @@ wrapper {
     flex-direction: column;
 }
 
-.card-desc input {
+.card-desc textarea {
     border: none;
     width: 100%;
     color: black;
@@ -149,7 +175,7 @@ wrapper {
 
 .card-member-select {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
 }
 
@@ -159,24 +185,30 @@ wrapper {
 }
 
 .card-member-select {
-    order: 5;
+    text-transform: capitalize;
+    order: 7;
 }
 
 .card-member-select input {
     width: 100%;
-    margin-top: 3px;
+    font-weight: 600;
     background-color: blue;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: white;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    text-transform: uppercase;
 }
 
 .card-members {
+    width: 100%;
     padding-left: 0;
-    margin-left: 0;
+    padding-right: 0;
+    display: flex;
     flex-wrap: wrap;
     order: 6;
-    align-content: space-around
+    align-items: center;
 }
 
 .card-members p {
@@ -192,17 +224,33 @@ wrapper {
 }
 
 select {
+    border-radius: 5px 5px 0 0;
     -webkit-appearance: none; 
    -moz-appearance: none;
    appearance: none; 
-   border: 1px solid black;
-   max-height: 80px;
+   border: 2px solid blue;
+   max-height: 170px;
+   padding-bottom: 1px;
+   padding-top: 1px;
    width: 100%;
-   overflow: auto;
+   overflow: hidden;
+}
+
+.member-select {
+    order: 3;
+}
+
+.add-member {
+    order: 2;
+}
+
+.members {
+    order: 1;
 }
 
 .card-created {
-    order: 7;
+    order: 5;
+    padding-top: 0;
 }
 
 .card-created h3 {
@@ -210,63 +258,64 @@ select {
 }
 
 .card-footer {
+    position: relative;
     order: 8;
+    width: 100%;
+    padding: 0;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-footer input {
+    border: 1px solid blue;
+    font-size: .9rem;
 }
 
 .card p {
     margin-left: 10px;
 }
 
+.forrige-liste, .neste-liste, .lukkKort {
+    width: 33.3%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    background: rgb(220,220,220);
+    transition: .3s ease;
+    font-weight: 600;
+}
+
+.forrige-liste:hover, .neste-liste:hover {
+    background: rgb(190,190,190);
+}
+
+.forrige-liste {
+    order: 1;
+    border-radius: 0 0 0 5px;
+}
+
+.lukkKort {
+    order: 2;
+    background: red;
+    color: white;
+}
+
+.lukkKort:hover {
+    background: rgb(179, 2, 2);
+}
+
+.neste-liste {
+    order: 3;
+    border-radius: 0 0 5px 0;
+}
+
 .forrige-liste::content {
     content: "Hei" !important;
 }
 
-
-[id*="project"] input{
-    width: 100%;
-    height: 40px;
-}
-
-[id*="project"] input::placeholder{
-    text-align: center;
-}
-
-[id*="project"] input:first-of-type{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 100px;
-    border: none;
-}
-
-[id*="project"] input:nth-of-type(2){
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: none;
-}
-
-[id*="lagKortListe"] input {
-    display: none;
-    width: 100%;
-}
-
-[id*="lagKortListe"] input:last-of-type {
+.slettListe {
     display: block;
-}
-
-[id*="radioButtonContainer"] {
-    display: none !important;
-}
-
-.openDialog [id*="radioButtonContainer"] {
-    display: block !important;
-}
-
-[id*="nyKortTittel"] {
-    display: block;
-}
-
-[id*="slettListe"] {
-    display: block !important;
 }
 
 #overlay {
@@ -274,13 +323,15 @@ select {
     height: 100vh;
     z-index: 998;
     position: fixed;
+    background: rgba(0,0,0,0.7);
     top: 0;
     left: 0;
 }
 
 .openDialog {
+    background: red;
     width: 500px;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     top: 50%;
     left: 50%;
@@ -288,15 +339,10 @@ select {
     box-shadow: 0px 0px 10px black;
 }
 
-.openDialog input[value="Legg til kort"] {
-    display: none !important;
+.openDialog .slettListe{
+    display: none;
 }
 
-.openDialog * {
-    display: block;
-    width: 100%;
-}
-
-.make-card-container input {
-    display: block;
+.nyttKortInput, .make-card-container {
+    display: none;
 }
