@@ -1,0 +1,104 @@
+body {
+    background: white;
+}
+
+.project-header {
+    position: relative;
+    width: 100%;
+    background: rgb(255,100,100);
+    background: linear-gradient(48deg, rgba(255,100,100,1) 0%, rgba(235,255,125,1) 100%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0;
+    padding-bottom: 65px;
+    padding-top: 130px;
+    color: white;
+}
+
+.project-header input {
+    background: transparent;
+    text-align: center;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3)
+}
+
+.new-board-btn {
+    background: blue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 50px;
+    position: absolute;
+    cursor: pointer;
+    bottom: -20px;
+}
+
+.new-board button {
+    font-weight: 500;
+}
+
+button {
+    width: 200px;
+    border: none;
+    color: inherit;
+}
+
+.boards-wrapper {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.board {
+    position: relative;
+    width: calc(25% - 40px);
+    min-width: 200px;
+    margin: 10px;
+    height: 150px;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    background: rgb(19, 132, 224);
+}
+
+.board input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.board button {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+    background-color: red;
+    width: 100%;
+    border: none;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
