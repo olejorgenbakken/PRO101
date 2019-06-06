@@ -49,3 +49,10 @@ header {
 #logo img {
     height: 100%;
 }
+
+@media only screen and (max-width: 470px) {
+    header {
+        height: 60px;
+        text-align: center;
+    }
+}
