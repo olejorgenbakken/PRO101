@@ -38,17 +38,23 @@ function newProject() {
     var projectTitleDiv = document.createElement("div");
     var projectTitle = document.createElement("input");
     var projectMembers = document.createElement("div");
+    var projectLink = document.createElement("a");
 
     project.className = "project";
     project.id = "project" + projectID;
     projectTitleDiv.className = "project-title";
     projectMembers.className = "project-members";
 
+    projectLink.className = "project-link";
+    projectLink.setAttribute("href", "tables.html");
+    projectLink.innerText = "Go to project";
+
     projectTitle.value = "New Project";
 
     projectWrapper.appendChild(project);
     project.appendChild(projectTitleDiv);
     projectTitleDiv.appendChild(projectTitle);
+    project.appendChild(projectLink);
     project.appendChild(projectMembers);
 
     for(i = 0; i < user.length; i++) {

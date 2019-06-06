@@ -1,6 +1,7 @@
 body {
     background: rgb(213, 0, 0);
     background: linear-gradient(70deg, rgba(213, 0, 0, 1) 0%, rgba(8, 81, 164, 1) 47%, rgba(0, 0, 0, 1) 100%);
+    overflow-x: hidden;
 }
 
 
@@ -90,14 +91,14 @@ form input {
 form button {
     text-transform: uppercase;
     font-weight: 700;
-    background: blue;
+    background: orange;
     transition: .2s ease;
     color: white;
     cursor: pointer;
 }
 
 form button:hover {
-    background: darkblue;
+    background: #d18700;
 }
 
 form button a {
@@ -111,7 +112,7 @@ form button span {
 }
 
 form span:hover {
-    color: orangered;
+    color: #d18700;
 }
 
 .message {
@@ -363,7 +364,7 @@ form span:hover {
     flex-direction: row;
     flex-wrap: no-wrap;
     width: 100%;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 .list {
@@ -502,7 +503,7 @@ form span:hover {
 }
 
 .new-project-btn {
-    background: blue;
+    background: #24195C;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -530,7 +531,7 @@ footer {
     padding-bottom: 50px;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: #24195C;
     color: white;
 }
 

@@ -376,11 +376,6 @@ function removeMember(event) {
     
 }
 
-/*function getSelectedCard(event){
-    console.log(event.target);
-    console.log(event.target.parentNode.id);
-}*/
-
 function getSelectedValue(cardID) {
 
     for (var z = 0; z < card.length; z++) {
@@ -390,44 +385,46 @@ function getSelectedValue(cardID) {
 
             var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + cardID);
 
-            var nyttcardMedlemmerTekst = document.createElement("p");
-            //membersContainer.id = "members-in-card" + cardID;
+            var nyttcardMedlemmerBilde = document.createElement("img");
+            var memeberName = document.createElement("p");
             membersContainer.className = "card-members";
             for (var k = 0; k < card[z].brukere.length; k++) {
-                nyttcardMedlemmerTekst.innerText = card[z].brukere[k];
-                nyttcardMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
-                membersContainer.appendChild(nyttcardMedlemmerTekst);
-                //membersContainer.id.appendChild(nyttcardMedlemmerTekst);
+                for(var l = 0; l < membersInProject.length; l++){
+                    if(card[z].brukere[k] == membersInProject[l].userName){
+                        memeberName.innerText = card[z].brukere[k];
+                        nyttcardMedlemmerBilde.setAttribute("src", membersInProject[l].profilePic);
+                        nyttcardMedlemmerBilde.setAttribute("onclick", "removeMember(event)");
+                    }
+                }
+                membersContainer.appendChild(memeberName);
+                membersContainer.appendChild(nyttcardMedlemmerBilde);
             }
-            //console.log(nyttKortMedlemmerIKortDiv);
-            //nyttKortMedlemmerIKortDiv.appendChild(membersContainer);
         }
     }
-}
-
+};
 
 
 function nextListe(event) {
-    var thisList = event.target.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse++;
     var nextList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode;
+    var thisCard = event.target.parentNode.parentNode;
     document.getElementById(nextList).appendChild(thisCard);
 
 }
 
 function prevListe(event) {
-    var thisList = event.target.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse--;
-    var nestList = thisList.id = "liste" + parse;
+    var prevList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode;
-    document.getElementById(nestList).appendChild(thisCard);
+    var thisCard = event.target.parentNode.parentNode;
+    document.getElementById(prevList).appendChild(thisCard);
 }
 
 
