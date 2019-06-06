@@ -178,6 +178,7 @@ function lagListe() {
             var newCardDescription = document.createElement("textarea");
             newCardDescription.id = "nyttKortBeskrivelse" + listeID;
             newCardDescription.placeholder = "Beskrivelse";
+            newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
             newCardDescription.className = "card-desc";
             nyListeLagKortForm.appendChild(newCardDescription);
@@ -203,10 +204,12 @@ function lagListe() {
 function openDialog(event) {
     var overlay = document.createElement("div");
     overlay.id = "overlay";
+    overlay.setAttribute("onclick", "removeDialog(event)");
     var thisDialog = document.getElementById(event.target.id);
     thisDialog.parentNode.classList.add("openDialog");
     thisDialog.parentNode.parentNode.appendChild(overlay);
     var childNodes = thisDialog.parentNode.childNodes;
+
     childNodes[0].style.display = "block";
     childNodes[1].style.display = "block";
     childNodes[2].style.display = "block";
@@ -214,8 +217,21 @@ function openDialog(event) {
     childNodes[4].style.display = "none";
     childNodes[5].style.display = "block";
     childNodes[6].style.display = "none";
+}
 
-    console.log(childNodes);
+function removeDialog(event){
+    var childNodes = event.target.parentNode.firstChild.nextSibling.childNodes;
+    if(event.target.parentNode.childNodes[1]){
+        event.target.parentNode.childNodes[1].classList.remove("openDialog");
+        childNodes[0].style.display = "none";
+        childNodes[1].style.display = "none";
+        childNodes[2].style.display = "none";
+        childNodes[3].style.display = "none";
+        childNodes[4].style.display = "none";
+        childNodes[5].style.display = "none";
+        childNodes[6].style.display = "block";
+        event.target.remove();
+    }
 }
 
 function closeDialog(event) {
@@ -224,7 +240,7 @@ function closeDialog(event) {
     overlay.remove();
     var childNodes = dialog.childNodes;
     childNodes[0].style.display = "none";
-    childNodes[1].style.display = "block";
+    childNodes[1].style.display = "none";
     childNodes[2].style.display = "none";
     childNodes[3].style.display = "none";
     childNodes[4].style.display = "block";
@@ -238,7 +254,6 @@ function closeDialog(event) {
 function slettListe(listeID) {
     var liste = document.getElementById("liste" + listeID);
     liste.remove("liste" + listeID);
-    closeDialog();
 }
 
 // lag et card. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
@@ -275,6 +290,7 @@ function lagKort(listeID) {
     nyttKortHeader.id = "card-tittel" + cardID;
     nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + cardID + ")");
     nyttKortHeaderTekst.id = "card-tittel-tekst" + cardID;
+    nyttKortBeskrivelse.setAttribute("maxLength", "150");
     nyttKortBeskrivelse.className = "card-desc";
     nyttKortBeskrivelse.id = "card-description" + cardID;
     nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + cardID + ")");
@@ -329,6 +345,7 @@ function lagKort(listeID) {
     nyttKortBeskrivelse.appendChild(nyttKortBeskrivelseTekst);
 
     nyttKort.appendChild(nyttKortMedlemmerDiv);
+    nyttKort.appendChild(nyttKortBeskrivelse);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerbutton);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerIKortDiv);
@@ -373,7 +390,7 @@ function lagKort(listeID) {
 
 
     nyttKortHeaderTekst.value = card[cardID].navn;
-    nyttKortBeskrivelseTekst.value = card[cardID].description;
+    nyttKortBeskrivelseTekst.innerText = card[cardID].description;
     nyttKortLagdTekst.innerText = "Lagd: \n" + card[cardID].lagd;
     nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + card[cardID].tidsfrist;
     slettKort.value = "slett card";

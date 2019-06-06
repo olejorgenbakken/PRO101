@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style/table.css">
+    <link id="highContrast" rel="stylesheet" type="text/css">
+    <link id="normalContrast" rel="stylesheet" type="text/css" href="style/table.css">
     <link rel="stylesheet" type="text/css" href="style/header.css">
     <link rel="stylesheet" type="text/css" href="style/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
@@ -13,6 +14,7 @@
 </head>
 
 <body>
+    <input id="contrastToggle" type="checkbox" value="High contrast" onchange="swapStyleSheet('style/highContrast.css')">
     <header>
         <div id="logo">
             <a href="index.html"><img src="assets/img/logo.png"></a>
@@ -28,7 +30,7 @@
         </div>
     </wrapper>
     <script src="script/kortoglister.js"></script>
-
+    <script src="script/highContrast.js"></script>
 </body>
 
 </html>
