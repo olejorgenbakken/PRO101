@@ -30,6 +30,8 @@ profile.appendChild(userFirstname);
 profile.appendChild(usernameText);
 document.getElementById("newProjectBtn").addEventListener("click", newProject);
 
+var projectID = 0;
+
 function newProject() {
     var projectWrapper = document.getElementById("projects-wrapper");
     var project = document.createElement("div");
@@ -38,7 +40,7 @@ function newProject() {
     var projectMembers = document.createElement("div");
 
     project.className = "project";
-    project.id = "project" + 1;
+    project.id = "project" + projectID;
     projectTitleDiv.className = "project-title";
     projectMembers.className = "project-members";
 
@@ -54,4 +56,6 @@ function newProject() {
         projectMembersImg.setAttribute("src", user[i].img);
         projectMembers.appendChild(projectMembersImg);
     }
+
+    projectID++;
 }

@@ -124,6 +124,11 @@ body {
     font-weight: 500;
 }
 
+button {
+    border: none;
+    color: inherit;
+}
+
 @media only screen and (max-width: 470px) {
     header {
         height: 60px;
