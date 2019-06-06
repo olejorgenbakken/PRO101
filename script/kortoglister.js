@@ -158,7 +158,7 @@ function lagListe() {
 
         if (nyListeLagKortInput.id == 5) {
             nyListeLagKortInput.id = "slettListe" + listeID;
-            nyListeLagKortInput.value = "slett liste";
+            nyListeLagKortInput.value = "x";
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.className = "slettListe";
             nyListeLagKortInput.setAttribute("onclick", " return slettListe(" + listeID + ")");
@@ -287,14 +287,15 @@ function lagKort(listeID) {
     nyttKortForrigeListe.id = "card-forrige-liste" + cardID;
 
     nyttKortMedlemmerDiv.className = "card-member-select";
-    nyttKortMedlemmerIKortDiv.className = "Medlemer";
+    nyttKortMedlemmerIKortDiv.className = "members";
 
     nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + cardID;
     nyttKortMedlemmerIKortDiv.id = "nyttKortMedlemmerIKort" + cardID;
 
     nyttKortMedlemmer.setAttribute("size", membersInProject.length);
     nyttKortMedlemmerbutton.setAttribute("type", "button");
-    nyttKortMedlemmerbutton.value = "add medlem";
+    nyttKortMedlemmerbutton.value = "add member";
+    nyttKortMedlemmerbutton.className = "add-member"
 
 
 
@@ -408,25 +409,25 @@ function getSelectedValue(cardID) {
 
 
 function nextListe(event) {
-    var thisList = event.target.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse++;
     var nextList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode;
+    var thisCard = event.target.parentNode.parentNode;
     document.getElementById(nextList).appendChild(thisCard);
 
 }
 
 function prevListe(event) {
-    var thisList = event.target.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse--;
     var nestList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode;
+    var thisCard = event.target.parentNode.parentNode;
     document.getElementById(nestList).appendChild(thisCard);
 }
 
