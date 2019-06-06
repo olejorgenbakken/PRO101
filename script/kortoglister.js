@@ -253,7 +253,7 @@ function lagKort(listeID) {
     nyttKortNesteListe.id = "card-neste-list" + cardID;
     nyttKortForrigeListe.id = "card-forrige-liste" + cardID;
 
-    nyttKortMedlemmerDiv.className = "card-members";
+    nyttKortMedlemmerDiv.className = "card-member-select";
     nyttKortMedlemmerIKortDiv.className = "Medlemer";
 
     nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + cardID;
@@ -267,7 +267,8 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerOption.id = "option";
 
-    nyttKortMedlemmer.setAttribute("id", "selectingMemebers");
+    nyttKortMedlemmer.id = "selectingMembers" + cardID;
+    nyttKortMedlemmer.className = "member-select";
     nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue("+ cardID +")");
 
     nyttKortFooter.className = "card-footer";

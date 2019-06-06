@@ -90,23 +90,48 @@ wrapper {
 
 .card-title,
 .card-maker,
+.card-member-select,
 .card-desc,
 .card-members,
 .card-created,
 .card-deadline,
 .card-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 14px;
-    margin-bottom: 14px;
 }
 
 .card-title {
+    border-radius: 5px 5px 0 0;
     order: 1;
+    background: blue;
+}
+
+.card-title input {
+    width: 100%;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .card-desc {
+    order: 2;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-desc input {
+    border: none;
+    width: 100%;
+    color: black;
     order: 2;
 }
 
@@ -114,20 +139,41 @@ wrapper {
     order: 3;
 }
 
-.card-deadline {
-    order: 4;
+.card-member-select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.card-members {
+.card-deadline {
+    order: 4;
+    width: 95%;
+}
+
+.card-member-select {
     order: 5;
 }
 
-.card-created {
+.card-members {
     order: 6;
 }
 
-.card-footer {
+.card-members p {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: blue;
+    border-radius: 20px;
+    color: white;
+}
+
+.card-created {
     order: 7;
+}
+
+.card-footer {
+    order: 8;
 }
 
 .card p {
