@@ -1,16 +1,140 @@
-.neste_liste {
-    background-color: green;
-    width: 50%;
-    border: none;
+wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;;
+    padding-top: 140px;
+    width: 100%;
 }
 
-.forrige_liste {
-    background-color: red;
-    width: 50%;
-    border: none;
+#lag-liste {
+    position: relative;
+    padding-left: 10px;
 }
 
-.forrige_liste::content {
+#nyListeKnapp {
+    display: inline-block;
+    height: 50px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+#nyListeKnapp p {
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+
+#lister {
+    background: rgb(85,134,255);
+    background: linear-gradient(48deg, rgba(85,134,255,1) 0%, rgba(57,255,186,1) 100%); 
+    padding-left: 5px;
+    position: relative;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.liste {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.card-members img,
+.card-maker img,
+.card-desc img,
+.card-created img,
+.card-deadline img {
+    height: 25px;
+    width: 25px;
+    border-radius: 30px;
+}
+
+.card-members {
+    cursor: default;
+}
+
+.card-members:hover>img {
+    margin-right: -5px;
+}
+
+.card-members img {
+    height: 20px;
+    width: 20px;
+    transition: .3s ease-in-out;
+    margin-right: -15px;
+    background-color: yellowgreen;
+    border: 3px solid white;
+    border-radius: 30px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-title,
+.card-maker,
+.card-desc,
+.card-members,
+.card-created,
+.card-deadline,
+.card-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.card-title {
+    order: 1;
+}
+
+.card-desc {
+    order: 2;
+}
+
+.card-maker {
+    order: 3;
+}
+
+.card-deadline {
+    order: 4;
+}
+
+.card-members {
+    order: 5;
+}
+
+.card-created {
+    order: 6;
+}
+
+.card-footer {
+    order: 7;
+}
+
+.card p {
+    margin-left: 10px;
+}
+
+.forrige-liste::content {
     content: "Hei" !important;
 }
 
@@ -32,7 +156,6 @@
 }
 
 [id*="project"] input:nth-of-type(2){
-    background-color: red;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
@@ -67,14 +190,12 @@
     width: 100vw;
     height: 100vh;
     z-index: 998;
-    background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
 }
 
 .openDialog {
-    background-color: red;
     width: 500px;
     position: absolute;
     z-index: 999;
