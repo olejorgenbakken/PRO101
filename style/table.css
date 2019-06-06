@@ -1,16 +1,223 @@
-.neste_liste {
-    background-color: green;
-    width: 50%;
-    border: none;
+wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;;
+    padding-top: 140px;
+    width: 100%;
 }
 
-.forrige_liste {
-    background-color: red;
-    width: 50%;
-    border: none;
+#lag-liste {
+    position: relative;
+    padding-left: 10px;
 }
 
-.forrige_liste::content {
+#nyListeKnapp {
+    display: inline-block;
+    height: 50px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+#nyListeKnapp p {
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+
+#lister {
+    background: rgb(85,134,255);
+    background: linear-gradient(48deg, rgba(85,134,255,1) 0%, rgba(57,255,186,1) 100%); 
+    padding-left: 5px;
+    position: relative;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.liste {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+}
+
+.list-title {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.card-members img,
+.card-maker img,
+.card-desc img,
+.card-created img,
+.card-deadline img {
+    height: 25px;
+    width: 25px;
+    border-radius: 30px;
+}
+
+.card-members {
+    cursor: default;
+}
+
+.card-members:hover>img {
+    margin-right: -5px;
+}
+
+.card-members img {
+    height: 20px;
+    width: 20px;
+    transition: .3s ease-in-out;
+    margin-right: -15px;
+    background-color: yellowgreen;
+    border: 3px solid white;
+    border-radius: 30px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-title,
+.card-maker,
+.card-member-select,
+.card-desc,
+.card-members,
+.card-created,
+.card-deadline,
+.card-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-title {
+    border-radius: 5px 5px 0 0;
+    order: 1;
+    background: blue;
+}
+
+.card-title input {
+    width: 100%;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card-desc {
+    order: 2;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-desc input {
+    border: none;
+    width: 100%;
+    color: black;
+    order: 2;
+}
+
+.card-maker {
+    order: 3;
+}
+
+.card-member-select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-deadline {
+    order: 4;
+    width: 95%;
+}
+
+.card-member-select {
+    order: 5;
+}
+
+.card-member-select input {
+    width: 100%;
+    margin-top: 3px;
+    background-color: blue;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: white;
+}
+
+.card-members {
+    padding-left: 0;
+    margin-left: 0;
+    flex-wrap: wrap;
+    order: 6;
+    align-content: space-around
+}
+
+.card-members p {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: blue;
+    border-radius: 20px;
+    color: white;
+}
+
+select {
+    -webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none; 
+   border: 1px solid black;
+   max-height: 80px;
+   width: 100%;
+   overflow: auto;
+}
+
+.card-created {
+    order: 7;
+}
+
+.card-created h3 {
+    font-weight: 600;
+}
+
+.card-footer {
+    order: 8;
+}
+
+.card p {
+    margin-left: 10px;
+}
+
+.forrige-liste::content {
     content: "Hei" !important;
 }
 
@@ -32,7 +239,6 @@
 }
 
 [id*="project"] input:nth-of-type(2){
-    background-color: red;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
@@ -67,14 +273,12 @@
     width: 100vw;
     height: 100vh;
     z-index: 998;
-    background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
 }
 
 .openDialog {
-    background-color: red;
     width: 500px;
     position: absolute;
     z-index: 999;

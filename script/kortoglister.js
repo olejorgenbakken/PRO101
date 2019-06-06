@@ -33,8 +33,8 @@ var tavle = [];
 // lag liste
 var liste = [];
 
-// lag kort
-var kort = [];
+// lag card
+var card = [];
 
 // Lager en wrapper med listene, og en knapp, knappen og headeren er tenkt at skal bort fra funksjonen
 // og inn i HTMLen.
@@ -45,24 +45,24 @@ function lagListeKnapp() {
     nyListeKnappTekst.id = "nyListeKnappX";
     nyListeKnapp.setAttribute("type", "button");
     nyListeKnapp.setAttribute("onclick", " return lagListe()");
-    var wrapper = document.getElementById("lag_liste");
+    var wrapper = document.getElementById("lag-liste");
     wrapper.appendChild(nyListeKnapp);
     nyListeKnapp.appendChild(nyListeKnappTekst);
-    nyListeKnappTekst.innerText = "Add list";
+    nyListeKnappTekst.innerText = "+ Add list";
 }
 
 lagListeKnapp();
 
-// variabler for å telle antall lister og sette kortenes ID
+// variabler for å telle antall lister og sette cardenes ID
 var listeID = 0;
-var kortID = 0;
+var cardID = 0;
 
-// lager en ny liste med mulighet for å lage flere kort
+// lager en ny liste med mulighet for å lage flere card
 function lagListe() {
     liste.push({
         id: listeID,
         navn: "liste" + listeID,
-        antallKort: kortID,
+        antallKort: cardID,
     });
 
     var wrapper = document.getElementById("lister");
@@ -76,7 +76,6 @@ function lagListe() {
     nyListeTittel.value = liste[listeID].navn;
 
     wrapper.appendChild(nyListe);
-    nyListe.appendChild(nyListeLagKortForm);
 
     // denne loopen lager alle fire inputene (man burde kanskje fjerne denne, og implementere den bedre
     // men den fungerer for now...)
@@ -84,6 +83,7 @@ function lagListe() {
 
     for (i = 0; i < 10; i++) {
         nyListeLagKortForm.id = "lagKortListe" + listeID;
+        nyListeLagKortForm.className = "create-list";
         radioButtonContainer.id = "radioButtonContainer" + listeID;
         radioButtonContainer.className = "make-card-container";
         var nyListeLagKortInput = document.createElement("input");
@@ -93,7 +93,7 @@ function lagListe() {
 
         if (nyListeLagKortInput.id == 9) {
             nyListeLagKortInput.id = "leggTilKort" + listeID;
-            nyListeLagKortInput.value = "Legg til kort";
+            nyListeLagKortInput.value = "Legg til card";
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.className = "leggTilKort";
             nyListeLagKortInput.setAttribute("onclick", "openDialog(event)");
@@ -134,7 +134,7 @@ function lagListe() {
         } else if (nyListeLagKortInput.id == 4) {
             nyListeLagKortInput.id = "nyKortKnapp" + listeID;
             nyListeLagKortInput.type = "button";
-            nyListeLagKortInput.value = "Lag kort";
+            nyListeLagKortInput.value = "Lag card";
             nyListeLagKortInput.setAttribute("onmouseup", " closeDialog(event)");
             nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
@@ -155,11 +155,13 @@ function lagListe() {
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         } else if (nyListeLagKortInput.id == 0) {
             nyListeLagKortInput.id = "nyKortTittel" + listeID;
+            nyListeLagKortInput.className = "list-title";
             nyListeLagKortInput.value = "Ny liste";
             nyListeLagKortInput.type = "text";
             nyListeLagKortInput.setAttribute("onkeypress", " return redigerListeTittel(" + listeID + ")");
             nyListe.appendChild(nyListeLagKortInput);
         }
+        nyListe.appendChild(nyListeLagKortForm);
     }
     listeID++;
 }
@@ -197,7 +199,7 @@ function slettListe(listeID) {
     closeDialog();
 }
 
-// lag et kort. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
+// lag et card. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
 // i lag liste funksjonen
 function lagKort(listeID) {
     var listePosisjon = document.getElementById("liste" + listeID);
@@ -224,17 +226,18 @@ function lagKort(listeID) {
     var slettKort = document.createElement("input");
     slettKort.type = "button";
 
-    nyttKort.id = "kort" + kortID;
+    nyttKort.id = "card" + cardID;
     //nyttKort.setAttribute("onclick", "getSelectedCard()");
-    nyttKort.className = "kort";
-    nyttKortHeader.className = "kort_header";
-    nyttKortHeader.id = "kort_tittel" + kortID;
-    nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + kortID + ")");
-    nyttKortHeaderTekst.id = "kort_tittel_tekst" + kortID;
-    nyttKortBeskrivelse.className = "kort_beskrivelse";
-    nyttKortBeskrivelse.id = "kort_beskrivelse" + kortID;
-    nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + kortID + ")");
-    nyttKortBeskrivelseTekst.id = "kort_beskrivelse_tekst" + kortID;
+    nyttKort.className = "card";
+    nyttKortHeader.className = "card-title";
+    nyttKortHeader.id = "card-tittel" + cardID;
+    nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + cardID + ")");
+    nyttKortHeaderTekst.id = "card-tittel-tekst" + cardID;
+    nyttKortBeskrivelse.className = "card-desc";
+    nyttKortBeskrivelse.id = "card-beskrivelse" + cardID;
+    nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + cardID + ")");
+    nyttKortBeskrivelseTekst.id = "card-beskrivelse-tekst" + cardID;
+    nyttKortBeskrivelseTekst.placeholder = "Beskrivelse";
 
     nyttKortNesteListe.type = "button";
     nyttKortForrigeListe.type = "button";
@@ -245,17 +248,17 @@ function lagKort(listeID) {
     nyttKortNesteListe.setAttribute("onclick", "nextListe(event)");
     nyttKortForrigeListe.setAttribute("onclick", "prevListe(event)");
 
-    nyttKortNesteListe.className = "neste_liste";
-    nyttKortForrigeListe.className = "forrige_liste";
+    nyttKortNesteListe.className = "neste-liste";
+    nyttKortForrigeListe.className = "forrige-liste";
 
-    nyttKortNesteListe.id = "kort_neste_list" + kortID;
-    nyttKortForrigeListe.id = "kort_forrige_liste" + kortID;
+    nyttKortNesteListe.id = "card-neste-list" + cardID;
+    nyttKortForrigeListe.id = "card-forrige-liste" + cardID;
 
-    nyttKortMedlemmerDiv.className = "nyttKortMedlemmerownDiv";
+    nyttKortMedlemmerDiv.className = "card-member-select";
     nyttKortMedlemmerIKortDiv.className = "Medlemer";
 
-    nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + kortID;
-    nyttKortMedlemmerIKortDiv.id = "nyttKortMedlemmerIKort" + kortID;
+    nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + cardID;
+    nyttKortMedlemmerIKortDiv.id = "nyttKortMedlemmerIKort" + cardID;
 
     nyttKortMedlemmer.setAttribute("size", membersInProject.length);
     nyttKortMedlemmerbutton.setAttribute("type", "button");
@@ -265,13 +268,14 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerOption.id = "option";
 
-    nyttKortMedlemmer.setAttribute("id", "selectingMemebers");
-    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue("+ kortID +")");
+    nyttKortMedlemmer.id = "selectingMembers" + cardID;
+    nyttKortMedlemmer.className = "member-select";
+    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue("+ cardID +")");
 
-    nyttKortFooter.className = "kort_footer";
-    nyttKortLagd.className = "footer_lagd";
-    nyttKortTidsfrist.className = "footer_tidsfrist";
-    slettKort.setAttribute("onclick", " return slettKort(" + kortID + ")");
+    nyttKortFooter.className = "card-footer";
+    nyttKortLagd.className = "card-created";
+    nyttKortTidsfrist.className = "card-deadline";
+    slettKort.setAttribute("onclick", " return slettKort(" + cardID + ")");
 
 
     listePosisjon.appendChild(nyttKort);
@@ -281,8 +285,6 @@ function lagKort(listeID) {
     nyttKortHeader.appendChild(nyttKortHeaderTekst);
     nyttKortBeskrivelse.appendChild(nyttKortBeskrivelseTekst);
 
-    nyttKortFooter.appendChild(nyttKortForrigeListe);
-    nyttKortFooter.appendChild(nyttKortNesteListe);
     nyttKort.appendChild(nyttKortMedlemmerDiv);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerbutton);
@@ -301,20 +303,22 @@ function lagKort(listeID) {
         nyttKortMedlemmer.appendChild(nyttKortMedlemmerOption);
     }
 
-    nyttKortFooter.appendChild(nyttKortLagd);
-    nyttKortFooter.appendChild(nyttKortBrukere);
-    nyttKortFooter.appendChild(nyttKortTidsfrist);
+    nyttKort.appendChild(nyttKortLagd);
+    nyttKort.appendChild(nyttKortBrukere);
+    nyttKort.appendChild(nyttKortTidsfrist);
     nyttKortLagd.appendChild(nyttKortLagdTekst);
     nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
-    nyttKort.appendChild(slettKort);
+    nyttKortFooter.appendChild(nyttKortForrigeListe);
+    nyttKortFooter.appendChild(nyttKortNesteListe);
+    nyttKortFooter.appendChild(slettKort);
 
 
     var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
     var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
     var nyttKortTidsfristTekstInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
 
-    kort.push({
-        id: kortID,
+    card.push({
+        id: cardID,
         navn: nyttKortHeaderTekstInput,
         beskrivelse: nyttKortBeskrivelseInput,
         listePosisjon: liste[listeID].id,
@@ -325,13 +329,13 @@ function lagKort(listeID) {
 
 
 
-    nyttKortHeaderTekst.value = kort[kortID].navn;
-    nyttKortBeskrivelseTekst.value = kort[kortID].beskrivelse;
-    nyttKortLagdTekst.innerText = "Lagd: \n" + kort[kortID].lagd;
-    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + kort[kortID].tidsfrist;
-    slettKort.value = "slett kort";
+    nyttKortHeaderTekst.value = card[cardID].navn;
+    nyttKortBeskrivelseTekst.value = card[cardID].beskrivelse;
+    nyttKortLagdTekst.innerText = "Lagd: \n" + card[cardID].lagd;
+    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + card[cardID].tidsfrist;
+    slettKort.value = "slett card";
     slettKort.className = "lukkKort";
-    kortID++;
+    cardID++;
 
 }
 
@@ -345,29 +349,24 @@ function removeMember(event) {
     console.log(event.target.parentNode.id);
 }*/
 
-function getSelectedValue(kortID) {
+function getSelectedValue(cardID) {
 
-    for (var z = 0; z < kort.length; z++) {
+    for (var z = 0; z < card.length; z++) {
         var selValue = document.getElementById("nyttKortMedlemmer" + z);
-        if (!kort[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
-            kort[z].brukere.push({
-                name: selValue.firstChild.value,
-                profilePic: kort[z].brukere,
-            });
+        if (!card[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
+            card[z].brukere.push(selValue.firstChild.value);
 
-            var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + kortID);
+            var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + cardID);
 
-            var nyttkortMedlemmerTekst = document.createElement("img");
-            //membersContainer.id = "members-in-card" + kortID;
-            membersContainer.className = "members-in-card";
-            for (var k = 0; k < kort[z].brukere.length; k++) {
-                nyttkortMedlemmerTekst.setAttribute("src") = kort[z].brukere[k];
-                nyttkortMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
-                membersContainer.appendChild(nyttkortMedlemmerTekst);
-                console.log(kort[z].brukere[k]);
-                //membersContainer.id.appendChild(nyttkortMedlemmerTekst);
+            var nyttcardMedlemmerTekst = document.createElement("p");
+            //membersContainer.id = "members-in-card" + cardID;
+            membersContainer.className = "card-members";
+            for (var k = 0; k < card[z].brukere.length; k++) {
+                nyttcardMedlemmerTekst.innerText = card[z].brukere[k];
+                nyttcardMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
+                membersContainer.appendChild(nyttcardMedlemmerTekst);
+                //membersContainer.id.appendChild(nyttcardMedlemmerTekst);
             }
-            console.log(kort);
             //console.log(nyttKortMedlemmerIKortDiv);
             //nyttKortMedlemmerIKortDiv.appendChild(membersContainer);
         }
@@ -377,47 +376,47 @@ function getSelectedValue(kortID) {
 
 
 function nextListe(event) {
-    var thisList = event.target.parentNode.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse++;
     var nextList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode.parentNode;
+    var thisCard = event.target.parentNode;
     document.getElementById(nextList).appendChild(thisCard);
 
 }
 
 function prevListe(event) {
-    var thisList = event.target.parentNode.parentNode.parentNode.id;
+    var thisList = event.target.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse--;
     var nestList = thisList.id = "liste" + parse;
 
-    var thisCard = event.target.parentNode.parentNode;
+    var thisCard = event.target.parentNode;
     document.getElementById(nestList).appendChild(thisCard);
 }
 
 
-// slett kort
-function slettKort(kortID) {
-    var kort = document.getElementById("kort" + kortID);
-    kort.parentNode.removeChild(kort);
+// slett card
+function slettKort(cardID) {
+    var card = document.getElementById("card" + cardID);
+    card.parentNode.removeChild(card);
 }
 
-// redigerer kortenes tittel og beskrivelse
+// redigerer cardenes tittel og beskrivelse
 function redigerListeTittel(listeID) {
     listeTittelContainer = document.getElementById("nyKortTittel" + listeID);
     liste[listeID].navn = listeTittelContainer.value;
 }
 
-function redigerTittel(kortID) {
-    kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
-    kort[kortID].navn = kortTittelContainer.value;
+function redigerTittel(cardID) {
+    cardTittelContainer = document.getElementById("card-tittel-tekst" + cardID);
+    card[cardID].navn = cardTittelContainer.value;
 }
 
-function redigerBeskrivelse(kortID) {
-    kortBeskrivelseContiner = document.getElementById("kort_beskrivelse_tekst" + kortID);
-    kort[kortID].beskrivelse = kortBeskrivelseContiner.value;
+function redigerBeskrivelse(cardID) {
+    cardBeskrivelseContiner = document.getElementById("card-beskrivelse-tekst" + cardID);
+    card[cardID].beskrivelse = cardBeskrivelseContiner.value;
 }
