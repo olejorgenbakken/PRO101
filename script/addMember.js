@@ -1,80 +1,88 @@
 //Firebase Config
 var registreredUsers = [
     {
-        userName: "Filip",
-        email: "filip@filip.com"
+        userName: "filip",
+        email: "filip@filip.com",
+        profilePic: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     },
     {
-        userName: "OJ",
-        email: "oj@oj.com"
+        userName: "oj",
+        email: "oj@oj.com",
+        profilePic: "https://images.unsplash.com/photo-1511200016789-e7b694d91f81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80",
+    },{
+        userName: "sofie",
+        email: "sofie@sofie.com",
+        profilePic: "https://images.unsplash.com/photo-1429552077091-836152271555?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=932&q=80",
     },
     {
-        userName: "Sofie",
-        email: "sofie@sofie.com"
+        userName: "julian",
+        email: "julian@julian.com",
+        profilePic: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     },
     {
-        userName: "Julian",
-        email: "julian@julian.com"
+        userName: "fereba",
+        email: "fereba@fereba.com",
+        profilePic: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+    },
+    {
+        userName: "micheal",
+        email: "micheal@micheal.com",
+        profilePic: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80"
     }
+
 ];
-//Legge til medlem i prosjekt
-//Implementer at admin blir automatisk pushet inn i array
 
 var membersInProject = [
-    {
-        userName: "Admin",
-        email: "admin@admin.com"
-    },
-    {
-        userName: "Filip",
-        email: "filip@filip.com"
-    },
-    {
-        userName: "OJ",
-        email: "oj@oj.com"
-    },
-    {
-        userName: "Sofie",
-        email: "sofie@sofie.com"
-    },
+   
 ];
-/*var wrapper = document.getElementById("addMember");
-var memberButton = document.createElement("BUTTON");
-memberButton.innerHTML = "Add member";
 
-function getMembersInProject(){
-    for(i = 0; i < membersInProject.length; i++){
-        var createElement = document.createElement("P");
-        wrapper.appendChild(createElement).innerHTML = membersInProject[i].userName;
+var wrapper = document.getElementById("addMember");
+var memberButton = document.getElementById("addMemberIcon");
+memberButton.setAttribute("onclick", "submitMember()")
+var members = document.getElementById("members");
+
+var submitButton = document.getElementById("submitMemberInput");
+
+submitButton.setAttribute("onkeypress", "enterMember(event)");
+
+console.log(memberButton);
+wrapper.className = "members-in-project";
+
+wrapper.appendChild(memberButton);
+
+function enterMember(event){
+    if(submitButton.focus && event.which == 13) {
+        submitMember();
     }
 }
 
-getMembersInProject();
-
-memberButton.addEventListener("click", function(){
-    document.getElementById("addMember").style.display = "flex";
-});
-
-document.getElementById("submitMember").addEventListener("click", function(){
-    var memberInput = document.getElementsByTagName("INPUT").memberName;
+function submitMember (){
+    var memberInput = document.getElementById("submitMemberInput");
     var newValue = memberInput.value;
+
     for(var i = 0; i < membersInProject.length; i++) {
         if(newValue == membersInProject[i].userName || newValue == membersInProject[i].email) {
-            alert("User already added");
             memberInput.value = "";
+            memberInput.setAttribute("placeholder", "Member already added");
             return;
         }
     }
-    for(var i = 0; i < registreredUsers.length; i++){
-        if(newValue === registreredUsers[i].userName || newValue === registreredUsers[i].email) {
-            membersInProject.push(registreredUsers[i]);
-            console.log(membersInProject);
-            var createElement = document.createElement("P");
+
+    for(var k = 0; k < registreredUsers.length; k++){
+        if(newValue === registreredUsers[k].userName || newValue === registreredUsers[k].email) {
+            membersInProject.push(registreredUsers[k]);
+            var memberImageContainer = document.createElement("div");
+            memberImageContainer.className = "memberImageContainer";
+
+            var memberImage = document.createElement("img");
+            memberImageContainer.appendChild(memberImage)
+            memberImage.className = "memberImage";
             memberInput.value = "";
-            addMember.appendChild(createElement).innerHTML = newValue;
-            alert("Member added");
+            memberImage.setAttribute("src", registreredUsers[k].profilePic)
+            members.appendChild(memberImageContainer);
             return;
         }
     }
-    alert("Invalid username or email");
-});*/
+    memberInput.value = "";
+    memberInput.setAttribute("placeholder", "Invalid name");
+};

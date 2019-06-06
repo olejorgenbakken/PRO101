@@ -350,15 +350,18 @@ function getSelectedValue(kortID) {
     for (var z = 0; z < kort.length; z++) {
         var selValue = document.getElementById("nyttKortMedlemmer" + z);
         if (!kort[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
-            kort[z].brukere.push(selValue.firstChild.value);
+            kort[z].brukere.push({
+                name: selValue.firstChild.value,
+                profilePic: kort[z].brukere,
+            });
 
             var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + kortID);
 
-            var nyttkortMedlemmerTekst = document.createElement("p");
+            var nyttkortMedlemmerTekst = document.createElement("img");
             //membersContainer.id = "members-in-card" + kortID;
             membersContainer.className = "members-in-card";
             for (var k = 0; k < kort[z].brukere.length; k++) {
-                nyttkortMedlemmerTekst.innerText = kort[z].brukere[k];
+                nyttkortMedlemmerTekst.setAttribute("src") = kort[z].brukere[k];
                 nyttkortMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
                 membersContainer.appendChild(nyttkortMedlemmerTekst);
                 console.log(kort[z].brukere[k]);
