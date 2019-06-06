@@ -38,7 +38,7 @@ var membersInProject = [
         email: "sofie@sofie.com"
     },
 ];
-var wrapper = document.getElementById("addMember");
+/*var wrapper = document.getElementById("addMember");
 var memberButton = document.createElement("BUTTON");
 memberButton.innerHTML = "Add member";
 
@@ -77,4 +77,4 @@ document.getElementById("submitMember").addEventListener("click", function(){
         }
     }
     alert("Invalid username or email");
-});
+});*/

@@ -1,15 +1,14 @@
-
-    var nyttKort = document.createElement("div");
-    var nyttKortHeader = document.createElement("div");
-    var nyttKortHeaderTekst = document.createElement("h2");
-    var nyttKortBeskrivelse = document.createElement("div");
-    var nyttKortBeskrivelseTekst = document.createElement("p");
-    var nyttKortFooter = document.createElement("div");
-    var nyttKortLagd = document.createElement("div");
-    var nyttKortLagdTekst = document.createElement("h3");
-    var nyttKortBrukere = document.createElement("div");
-    var nyttKortTidsfrist = document.createElement("div");
-    var nyttKortTidsfristTekst = document.createElement("h3");
+var nyttKort = document.createElement("div");
+var nyttKortHeader = document.createElement("div");
+var nyttKortHeaderTekst = document.createElement("h2");
+var nyttKortBeskrivelse = document.createElement("div");
+var nyttKortBeskrivelseTekst = document.createElement("p");
+var nyttKortFooter = document.createElement("div");
+var nyttKortLagd = document.createElement("div");
+var nyttKortLagdTekst = document.createElement("h3");
+var nyttKortBrukere = document.createElement("div");
+var nyttKortTidsfrist = document.createElement("div");
+var nyttKortTidsfristTekst = document.createElement("h3");
 
 // tid og dato
 function getTime(input) {
@@ -19,9 +18,12 @@ function getTime(input) {
     var dateTime = date + '\n ' + time;
 
     switch (input) {
-        case "date": return date;
-        case "time": return time;
-        case "dateTime": return dateTime;
+        case "date":
+            return date;
+        case "time":
+            return time;
+        case "dateTime":
+            return dateTime;
     }
 }
 
@@ -89,7 +91,7 @@ function lagListe() {
         nyListeLagKortInput.id = i;
         nyListeLagKortForm.appendChild(radioButtonContainer);
 
-        if(nyListeLagKortInput.id == 9) {
+        if (nyListeLagKortInput.id == 9) {
             nyListeLagKortInput.id = "leggTilKort" + listeID;
             nyListeLagKortInput.value = "Legg til kort";
             nyListeLagKortInput.type = "button";
@@ -98,7 +100,7 @@ function lagListe() {
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         }
 
-        if(nyListeLagKortInput.id == 8) {
+        if (nyListeLagKortInput.id == 8) {
             nyListeLagKortInput.id = "cardPriorityUrgent" + listeID;
             nyListeLagKortInput.value = "Urgent";
             nyListeLagKortInput.type = "radio";
@@ -106,7 +108,7 @@ function lagListe() {
             radioButtonContainer.appendChild(nyListeLagKortInput);
         }
 
-        if(nyListeLagKortInput.id == 7) {
+        if (nyListeLagKortInput.id == 7) {
             nyListeLagKortInput.id = "cardPriorityMiddle" + listeID;
             nyListeLagKortInput.value = "Medium Urgent";
             nyListeLagKortInput.type = "radio";
@@ -114,7 +116,7 @@ function lagListe() {
             radioButtonContainer.appendChild(nyListeLagKortInput);
         }
 
-        if(nyListeLagKortInput.id == 6) {
+        if (nyListeLagKortInput.id == 6) {
             nyListeLagKortInput.id = "cardPriorityCommon" + listeID;
             nyListeLagKortInput.value = "Not Urgent";
             nyListeLagKortInput.type = "radio";
@@ -130,16 +132,14 @@ function lagListe() {
             nyListeLagKortInput.className = "slettListe";
             nyListeLagKortInput.setAttribute("onclick", " return slettListe(" + listeID + ")");
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        }
-        else if (nyListeLagKortInput.id == 4){
+        } else if (nyListeLagKortInput.id == 4) {
             nyListeLagKortInput.id = "nyKortKnapp" + listeID;
             nyListeLagKortInput.type = "button";
             nyListeLagKortInput.value = "Lag kort";
             nyListeLagKortInput.setAttribute("onmouseup", " closeDialog(event)");
             nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        }
-        else if (nyListeLagKortInput.id == 3) {
+        } else if (nyListeLagKortInput.id == 3) {
             nyListeLagKortInput.id = "nyttKortTidsfrist" + listeID;
             nyListeLagKortInput.type = "date";
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
@@ -165,7 +165,7 @@ function lagListe() {
     listeID++;
 }
 
-function openDialog(event){
+function openDialog(event) {
     var overlay = document.createElement("div");
     overlay.id = "overlay";
     var thisDialog = document.getElementById(event.target.id);
@@ -220,13 +220,13 @@ function lagKort(listeID) {
     var nyttKortMedlemmerIKortDiv = document.createElement("div");
     var nyttKortMedlemmer = document.createElement("select");
     var nyttKortMedlemmerOption = document.createElement("option");
-    var nyttKortMedlemmerbutton= document.createElement("input");
+    var nyttKortMedlemmerbutton = document.createElement("input");
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
     var slettKort = document.createElement("input");
     slettKort.type = "button";
 
-    nyttKort.id = "kort " + kortID;
+    nyttKort.id = "kort" + kortID;
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
@@ -242,7 +242,7 @@ function lagKort(listeID) {
 
     nyttKortNesteListe.value = "Neste Liste";
     nyttKortForrigeListe.value = "Forrige Liste";
-    
+
     nyttKortNesteListe.setAttribute("onclick", "nextListe(event)");
     nyttKortForrigeListe.setAttribute("onclick", "prevListe(event)");
 
@@ -254,7 +254,7 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerDiv.className = "nyttKortMedlemmerownDiv";
     nyttKortMedlemmerIKortDiv.className = "Medlemer";
-    nyttKortMedlemmer.setAttribute("size",  membersInProject.length);
+    nyttKortMedlemmer.setAttribute("size", membersInProject.length);
     nyttKortMedlemmerbutton.setAttribute("type", "button");
     nyttKortMedlemmerbutton.value = "add medlem";
 
@@ -262,8 +262,8 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerOption.id = "option";
 
-    nyttKortMedlemmer.setAttribute("id","selectingMemebers");
-    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue()");
+    nyttKortMedlemmer.setAttribute("id", "selectingMemebers");
+    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue(" + kortID + ")");
 
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
@@ -289,14 +289,14 @@ function lagKort(listeID) {
 
 
 
-    for(var j = 0; j < membersInProject.length ; j++){
+    for (var j = 0; j < membersInProject.length; j++) {
 
         var nyttKortMedlemmerOption = document.createElement("option");
         nyttKortMedlemmerOption.id = "medlem:" + j;
         nyttKortMedlemmerOption.setAttribute("value", membersInProject[j].userName);
         nyttKortMedlemmerOption.innerText = membersInProject[j].userName;
         nyttKortMedlemmer.appendChild(nyttKortMedlemmerOption);
-        }
+    }
 
     nyttKortFooter.appendChild(nyttKortLagd);
     nyttKortFooter.appendChild(nyttKortBrukere);
@@ -330,39 +330,37 @@ function lagKort(listeID) {
     slettKort.className = "lukkKort";
     kortID++;
 
-    kortID++;
-
 }
-function removeMember(event){
-        event.target.remove();
-    }
 
-function getSelectedValue() {
-    console.log(kortID);
+function removeMember(event) {
+    event.target.remove();
+}
+
+function getSelectedValue(kortID) {
     var selValue = document.getElementById("selectingMemebers");
-    console.log(selValue.value);
-
-    console.log(typeof (selValue));
-    console.log(selValue);
-        for(var z = 0; z < kort.length; z++){
-            if(!kort[z].brukere.includes(selValue.value) && selValue.value !== "" ){
+    for (var z = 0; z < kort.length; z++) {
+        if (!kort[z].brukere.includes(selValue.value) && selValue.value !== "") {
             console.log(kort[z]);
             kort[z].brukere.push(selValue.value);
-        var nyttkortMedlemmerTekst = document.createElement("p");
-        var tmp2 = document.getElementById("memberText");
-        for(var k = 0; k < kort[z].brukere.length; k++){
-            nyttkortMedlemmerTekst.innerText = kort[z].brukere[k];
-            nyttkortMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
-            tmp2.appendChild(nyttkortMedlemmerTekst);
-        }
 
+            var nyttkortMedlemmerTekst = document.createElement("p");
+            var wrapper = document.getElementById("kort" + kortID);
+            var tmp2 = document.createElement("div");
+            tmp2.id = "members-in-card" + kortID;
+            tmp2.className = "members-in-card";
+            for (var k = 0; k < kort[z].brukere.length; k++) {
+                nyttkortMedlemmerTekst.innerText = kort[z].brukere[k];
+                nyttkortMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
+                tmp2.appendChild(nyttkortMedlemmerTekst);
+            }
+            wrapper.appendChild(tmp2);
         }
     }
 }
 
 
 
-function nextListe(event){
+function nextListe(event) {
     var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
@@ -374,7 +372,7 @@ function nextListe(event){
 
 }
 
-function prevListe(event){
+function prevListe(event) {
     var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
@@ -397,6 +395,7 @@ function redigerListeTittel(listeID) {
     listeTittelContainer = document.getElementById("nyKortTittel" + listeID);
     liste[listeID].navn = listeTittelContainer.value;
 }
+
 function redigerTittel(kortID) {
     kortTittelContainer = document.getElementById("kort_tittel_tekst" + kortID);
     kort[kortID].navn = kortTittelContainer.value;
