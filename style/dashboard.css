@@ -161,6 +161,26 @@ right: 0;
     cursor: pointer;
 }
 
+#lister {
+    display: flex;
+}
+
+.neste_liste {
+    background-color: green;
+    width: 50%;
+    border: none;
+}
+
+.forrige_liste {
+    background-color: red;
+    width: 50%;
+    border: none;
+}
+
+.forrige_liste::content {
+    content: "Hei" !important;
+}
+
 
 [id*="project"] input{
     width: 100%;
@@ -183,4 +203,63 @@ right: 0;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
+}
+
+[id*="lagKortListe"] input {
+    display: none;
+    width: 100%;
+}
+
+[id*="lagKortListe"] input:last-of-type {
+    display: block;
+}
+
+[id*="radioButtonContainer"] {
+    display: none !important;
+}
+
+.openDialog [id*="radioButtonContainer"] {
+    display: block !important;
+}
+
+[id*="nyKortTittel"] {
+    display: block;
+}
+
+[id*="slettListe"] {
+    display: block !important;
+}
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.openDialog {
+    background-color: red;
+    width: 500px;
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px black;
+}
+
+.openDialog input[value="Legg til kort"] {
+    display: none !important;
+}
+
+.openDialog * {
+    display: block;
+    width: 100%;
+}
+
+.make-card-container input {
+    display: block;
 }
