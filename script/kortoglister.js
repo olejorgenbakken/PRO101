@@ -155,6 +155,7 @@ function lagListe() {
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         } else if (nyListeLagKortInput.id == 0) {
             nyListeLagKortInput.id = "nyKortTittel" + listeID;
+            nyListeLagKortInput.className = "list-title";
             nyListeLagKortInput.value = "Ny liste";
             nyListeLagKortInput.type = "text";
             nyListeLagKortInput.setAttribute("onkeypress", " return redigerListeTittel(" + listeID + ")");
