@@ -38,15 +38,11 @@ var membersInProject = [
 
 var wrapper = document.getElementById("addMember");
 var memberButton = document.getElementById("addMemberIcon");
-memberButton.setAttribute("onclick", "submitMember()")
 var members = document.getElementById("members");
 
 var submitButton = document.getElementById("submitMemberInput");
 
-submitButton.setAttribute("onkeypress", "enterMember(event)");
-
 console.log(memberButton);
-wrapper.className = "members-in-project";
 
 wrapper.appendChild(memberButton);
 

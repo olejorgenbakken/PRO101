@@ -16,9 +16,9 @@
         <div id="logo">
             <a href="index.html"><img src="assets/img/logo.png"></a>
         </div>
-        <div id="addMember">
-                <img id="addMemberIcon" alt="Add member" src="assets/img/icon.svg">
-                <input placeholder="Search name or email" id="submitMemberInput">
+        <div class="members-in-project" id="addMember">
+                <img id="addMemberIcon" onclick="submitMember()" alt="Add member" src="assets/img/icon.svg">
+                <input onkeypress="enterMember(event)" placeholder="Search name or email" id="submitMemberInput">
             </div>
     </header>
     <div class="project">
