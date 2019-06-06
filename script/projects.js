@@ -36,7 +36,7 @@ function newProject() {
     var projectWrapper = document.getElementById("projects-wrapper");
     var project = document.createElement("div");
     var projectTitleDiv = document.createElement("div");
-    var projectTitle = document.createElement("h3");
+    var projectTitle = document.createElement("input");
     var projectMembers = document.createElement("div");
 
     project.className = "project";
@@ -44,7 +44,7 @@ function newProject() {
     projectTitleDiv.className = "project-title";
     projectMembers.className = "project-members";
 
-    projectTitle.innerText = "New Project";
+    projectTitle.value = "New Project";
 
     projectWrapper.appendChild(project);
     project.appendChild(projectTitleDiv);
