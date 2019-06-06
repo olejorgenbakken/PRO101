@@ -33,17 +33,23 @@ function lagBoard() {
     var newBoard = document.createElement("div");
     var newBoardTitle = document.createElement("input");
     var deleteBoard = document.createElement("button");
+    var boardLink = document.createElement("a");
+
     deleteBoard.innerText = "Delete board";
 
     newBoard.className = "board";
     newBoard.id = "board" + boardID;
     newBoardTitle.className = "board-title";
     newBoardTitle.value = "New Board";
+    boardLink.className = "board-link";
+    boardLink.setAttribute("href", "lister.html");
+    boardLink.innerText = "Go to Table";
     deleteBoard.setAttribute("onclick", " return deleteBoard(" + boardID + ")");
 
     wrapper.appendChild(newBoard);
     newBoard.appendChild(newBoardTitle);
     newBoard.appendChild(deleteBoard);
+    newBoard.appendChild(boardLink);
 
     boardID++;
 }
