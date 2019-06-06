@@ -437,10 +437,6 @@ function changeToLow(cardID) {
     var urgent = document.getElementById("urgent" + cardID);
     var middle = document.getElementById("middle" + cardID);
     var none = document.getElementById("none" + cardID);
-
-    urgent.style.display = "none";
-    middle.style.display = "none";
-    none.style.display = "none";
 }
 function changeToMiddle(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
@@ -448,10 +444,6 @@ function changeToMiddle(cardID) {
     var urgent = document.getElementById("urgent" + cardID);
     var low = document.getElementById("low" + cardID);
     var none = document.getElementById("none" + cardID);
-
-    urgent.style.display = "none";
-    low.style.display = "none";
-    none.style.display = "none";
 }
 function changeToUrgent(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
@@ -459,10 +451,6 @@ function changeToUrgent(cardID) {
     var middle = document.getElementById("middle" + cardID);
     var low = document.getElementById("low" + cardID);
     var none = document.getElementById("none" + cardID);
-
-    middle.style.display = "none";
-    low.style.display = "none";
-    none.style.display = "none";
 }
 
 function getSelectedValue(cardID) {
