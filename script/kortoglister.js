@@ -121,7 +121,6 @@ function lagListe() {
             nyListeLagKortInput.value = "Not Urgent";
             nyListeLagKortInput.type = "radio";
             nyListeLagKortInput.className = "cardPriority";
-            console.log(nyListeLagKortInput.id);
             radioButtonContainer.appendChild(nyListeLagKortInput);
         }
 
@@ -179,17 +178,14 @@ function openDialog(event) {
 
 function closeDialog(event) {
     var dialog = document.getElementById(event.target.parentNode.id);
-    console.log(dialog);
     var overlay = document.getElementById("overlay");
     overlay.remove();
     var childNodes = dialog.childNodes;
-    console.log(childNodes);
     childNodes[0].style.display = "none";
     childNodes[1].style.display = "none";
     childNodes[2].style.display = "none";
     childNodes[3].style.display = "none";
     childNodes[4].style.display = "none";
-    console.log(childNodes[5].childNodes);
 
     dialog.classList.remove("openDialog");
 }
@@ -216,17 +212,20 @@ function lagKort(listeID) {
     var nyttKortLagd = document.createElement("div");
     var nyttKortLagdTekst = document.createElement("h3");
     var nyttKortBrukere = document.createElement("div");
+
     var nyttKortMedlemmerDiv = document.createElement("div");
     var nyttKortMedlemmerIKortDiv = document.createElement("div");
     var nyttKortMedlemmer = document.createElement("select");
     var nyttKortMedlemmerOption = document.createElement("option");
     var nyttKortMedlemmerbutton = document.createElement("input");
+    
     var nyttKortTidsfrist = document.createElement("div");
     var nyttKortTidsfristTekst = document.createElement("h3");
     var slettKort = document.createElement("input");
     slettKort.type = "button";
 
     nyttKort.id = "kort" + kortID;
+    //nyttKort.setAttribute("onclick", "getSelectedCard()");
     nyttKort.className = "kort";
     nyttKortHeader.className = "kort_header";
     nyttKortHeader.id = "kort_tittel" + kortID;
@@ -254,6 +253,10 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerDiv.className = "nyttKortMedlemmerownDiv";
     nyttKortMedlemmerIKortDiv.className = "Medlemer";
+
+    nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + kortID;
+    nyttKortMedlemmerIKortDiv.id = "nyttKortMedlemmerIKort" + kortID;
+
     nyttKortMedlemmer.setAttribute("size", membersInProject.length);
     nyttKortMedlemmerbutton.setAttribute("type", "button");
     nyttKortMedlemmerbutton.value = "add medlem";
@@ -263,7 +266,7 @@ function lagKort(listeID) {
     nyttKortMedlemmerOption.id = "option";
 
     nyttKortMedlemmer.setAttribute("id", "selectingMemebers");
-    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue(" + kortID + ")");
+    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue("+ kortID +")");
 
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
@@ -272,7 +275,6 @@ function lagKort(listeID) {
 
 
     listePosisjon.appendChild(nyttKort);
-    console.log(listePosisjon);
     nyttKort.appendChild(nyttKortHeader);
     nyttKort.appendChild(nyttKortBeskrivelse);
     nyttKort.appendChild(nyttKortFooter);
@@ -284,6 +286,7 @@ function lagKort(listeID) {
     nyttKort.appendChild(nyttKortMedlemmerDiv);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
     nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerbutton);
+    nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerIKortDiv);
 
 
 
@@ -334,26 +337,36 @@ function lagKort(listeID) {
 
 function removeMember(event) {
     event.target.remove();
+    
 }
 
+/*function getSelectedCard(event){
+    console.log(event.target);
+    console.log(event.target.parentNode.id);
+}*/
+
 function getSelectedValue(kortID) {
-    var selValue = document.getElementById("selectingMemebers");
+
     for (var z = 0; z < kort.length; z++) {
-        if (!kort[z].brukere.includes(selValue.value) && selValue.value !== "") {
-            console.log(kort[z]);
-            kort[z].brukere.push(selValue.value);
+        var selValue = document.getElementById("nyttKortMedlemmer" + z);
+        if (!kort[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
+            kort[z].brukere.push(selValue.firstChild.value);
+
+            var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + kortID);
 
             var nyttkortMedlemmerTekst = document.createElement("p");
-            var wrapper = document.getElementById("kort" + kortID);
-            var tmp2 = document.createElement("div");
-            tmp2.id = "members-in-card" + kortID;
-            tmp2.className = "members-in-card";
+            //membersContainer.id = "members-in-card" + kortID;
+            membersContainer.className = "members-in-card";
             for (var k = 0; k < kort[z].brukere.length; k++) {
                 nyttkortMedlemmerTekst.innerText = kort[z].brukere[k];
                 nyttkortMedlemmerTekst.setAttribute("onclick", "removeMember(event)");
-                tmp2.appendChild(nyttkortMedlemmerTekst);
+                membersContainer.appendChild(nyttkortMedlemmerTekst);
+                console.log(kort[z].brukere[k]);
+                //membersContainer.id.appendChild(nyttkortMedlemmerTekst);
             }
-            wrapper.appendChild(tmp2);
+            console.log(kort);
+            //console.log(nyttKortMedlemmerIKortDiv);
+            //nyttKortMedlemmerIKortDiv.appendChild(membersContainer);
         }
     }
 }
