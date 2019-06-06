@@ -73,13 +73,6 @@ function lagListe() {
     nyListe.id = "liste" + listeID;
     nyListeTittel.value = liste[listeID].navn;
 
-    /*
-    nyListe.setAttribute("ondragover", "dragOver(event)");
-    nyListe.setAttribute("ondragenter", "dragEnter(event)");
-    nyListe.setAttribute("ondragleave", "dragLeave(event)");
-    nyListe.setAttribute("ondrop", "dragDrop(event)");
-    */
-
     wrapper.appendChild(nyListe);
     nyListe.appendChild(nyListeLagKortForm);
 
@@ -170,7 +163,6 @@ function lagListe() {
         }
     }
     listeID++;
-    console.log(listeID);
 }
 
 function openDialog(event){
@@ -188,7 +180,6 @@ function openDialog(event){
 function closeDialog(event) {
     var dialog = document.getElementById(event.target.parentNode.id);
     console.log(dialog);
-    //var childNodes = dialog.parentNode.childNodes;
     var overlay = document.getElementById("overlay");
     overlay.remove();
     var childNodes = dialog.childNodes;
@@ -199,10 +190,7 @@ function closeDialog(event) {
     childNodes[3].style.display = "none";
     childNodes[4].style.display = "none";
     console.log(childNodes[5].childNodes);
-    /*console.log(childNodes);
-    childNodes.forEach(el =>{
-        el.style.display = "none";
-    });*/
+
     dialog.classList.remove("openDialog");
 }
 
@@ -274,9 +262,9 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerOption.id = "option";
 
-    console.log(nyttKortMedlemmerOption);
     nyttKortMedlemmer.setAttribute("id","selectingMemebers");
     nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue()");
+
     nyttKortFooter.className = "kort_footer";
     nyttKortLagd.className = "footer_lagd";
     nyttKortTidsfrist.className = "footer_tidsfrist";
@@ -370,17 +358,6 @@ function getSelectedValue() {
 
         }
     }
-
-        /*for(var z = 0; z < membersInCard.length; z++){
-
-        if(!membersInCard.includes(selValue.value)) {
-        //tmp2.appendChild(nyttkortMedlemmerTekst);
-        nyttkortMedlemmerTekst.innerText = membersInCard[z];
-        }else {
-            alert("hei");
-        }
-    }*/
-
 }
 
 
