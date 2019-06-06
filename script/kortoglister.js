@@ -193,7 +193,6 @@ function openDialog(event) {
     childNodes[4].style.display = "none";
     childNodes[5].style.display = "block";
     childNodes[6].style.display = "none";
-<<<<<<< HEAD
 }
 
 function removeDialog(event){
@@ -209,8 +208,6 @@ function removeDialog(event){
         childNodes[6].style.display = "block";
         event.target.remove();
     }
-=======
->>>>>>> 4993709e8584869020a8452ba298f4fa86551d95
 }
 
 function closeDialog(event) {
@@ -429,8 +426,6 @@ function removeMember(event) {
     
 }
 
-<<<<<<< HEAD
-=======
 /*function getSelectedCard(event){
     console.log(event.target);
     console.log(event.target.parentNode.id);
@@ -470,7 +465,6 @@ function changeToUrgent(cardID) {
     none.style.display = "none";
 }
 
->>>>>>> 4993709e8584869020a8452ba298f4fa86551d95
 function getSelectedValue(cardID) {
 
     for (var z = 0; z < card.length; z++) {
