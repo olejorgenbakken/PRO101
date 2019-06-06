@@ -266,7 +266,7 @@ function lagKort(listeID) {
 
     nyttKortMedlemmerDiv.className = "nyttKortMedlemmerownDiv";
     nyttKortMedlemmerIKortDiv.className = "Medlemer";
-    nyttKortMedlemmer.setAttribute("size",  "5");
+    nyttKortMedlemmer.setAttribute("size",  membersInProject.length);
     nyttKortMedlemmerbutton.setAttribute("type", "button");
     nyttKortMedlemmerbutton.value = "add medlem";
 
@@ -309,11 +309,6 @@ function lagKort(listeID) {
         nyttKortMedlemmerOption.innerText = membersInProject[j].userName;
         nyttKortMedlemmer.appendChild(nyttKortMedlemmerOption);
         }
-
-
-
-
-
 
     nyttKortFooter.appendChild(nyttKortLagd);
     nyttKortFooter.appendChild(nyttKortBrukere);
