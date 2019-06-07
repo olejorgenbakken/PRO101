@@ -7,6 +7,6 @@ function swapStyleSheet(styleSheet) {
         normalContrast.setAttribute("href", "");
     }else {
         highContrast.setAttribute("href", "");
-        normalContrast.setAttribute("href", "style/table.css");
+        normalContrast.setAttribute("href", "style/users.css");
     }
 }
