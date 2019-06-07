@@ -37,6 +37,9 @@ header {
     height: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: absolute;
     z-index: 1;
 }
@@ -52,7 +55,13 @@ header {
 
 @media only screen and (max-width: 470px) {
     header {
-        height: 60px;
+        height: 100px;
+        flex-direction: column;
         text-align: center;
+    }
+
+    #logo {
+        height: 60px;
+        margin-bottom: 20px;
     }
 }

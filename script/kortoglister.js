@@ -13,7 +13,7 @@ var nyttKortTidsfristTekst = document.createElement("h3");
 // tid og dato
 function getTime(input) {
     var today = new Date();
-    var date = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+    var date = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
     var time = today.getHours() + "." + today.getMinutes() + "." + today.getSeconds();
     var dateTime = date + '\n ' + time;
 
@@ -160,8 +160,7 @@ function lagListe() {
             nyListeLagKortForm.appendChild(newCardDescription);
         } else if (nyListeLagKortInput.id == 1) {
             nyListeLagKortInput.id = "nyttKortNavn" + listeID;
-            nyListeLagKortInput.placeholder = "Tittel";
-            nyListeLagKortInput.value = "Gjøremål";
+            nyListeLagKortInput.placeholder = "Title";
             nyListeLagKortInput.type = "text";
             nyListeLagKortForm.appendChild(nyListeLagKortInput);
         } else if (nyListeLagKortInput.id == 0) {
@@ -318,6 +317,7 @@ function lagKort(listeID) {
     nyttKortHeader.id = "card-tittel" + cardID;
     nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + cardID + ")");
     nyttKortHeaderTekst.id = "card-tittel-tekst" + cardID;
+    nyttKortHeaderTekst.placeholder = "Title";
     nyttKortBeskrivelse.setAttribute("maxLength", "150");
     nyttKortBeskrivelse.className = "card-desc";
     nyttKortBeskrivelse.id = "card-description" + cardID;
@@ -360,6 +360,7 @@ function lagKort(listeID) {
     nyttKortFooter.className = "card-footer";
     nyttKortLagd.className = "card-created";
     nyttKortTidsfrist.className = "card-deadline";
+    nyttKortTidsfrist.id = "card-deadline" + cardID;
     slettKort.setAttribute("onclick", " return slettKort(" + cardID + ")");
 
     listePosisjon.appendChild(nyttKort);
@@ -413,8 +414,8 @@ function lagKort(listeID) {
 
     nyttKortHeaderTekst.value = card[cardID].navn;
     nyttKortBeskrivelseTekst.innerText = card[cardID].description;
-    nyttKortLagdTekst.innerText = "Lagd: \n" + card[cardID].lagd;
-    nyttKortTidsfristTekst.innerText = "Tidsfrist: \n" + card[cardID].tidsfrist;
+    nyttKortLagdTekst.innerText = "Card created the: " + card[cardID].lagd;
+    nyttKortTidsfristTekst.innerText = "Deadline: " + card[cardID].tidsfrist;
     slettKort.value = "slett card";
     slettKort.className = "lukkKort";
     
@@ -422,7 +423,9 @@ function lagKort(listeID) {
 }
 
 function removeMember(event) {
-    event.target.remove();
+    var thisMember = event.target;
+    thisMember.nextSibling.remove();
+    thisMember.remove();
     
 }
 
@@ -434,23 +437,20 @@ function removeMember(event) {
 function changeToLow(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%)";
-    var urgent = document.getElementById("urgent" + cardID);
-    var middle = document.getElementById("middle" + cardID);
-    var none = document.getElementById("none" + cardID);
+    var deadline = document.getElementById("card-deadline" + cardID);
+    deadline.style.color = "green";
 }
 function changeToMiddle(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%)";
-    var urgent = document.getElementById("urgent" + cardID);
-    var low = document.getElementById("low" + cardID);
-    var none = document.getElementById("none" + cardID);
+    var deadline = document.getElementById("card-deadline" + cardID);
+    deadline.style.color = "orange";
 }
 function changeToUrgent(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(122, 4, 4, 1) 0%, rgba(252, 69, 69, 1) 100%)";
-    var middle = document.getElementById("middle" + cardID);
-    var low = document.getElementById("low" + cardID);
-    var none = document.getElementById("none" + cardID);
+    var deadline = document.getElementById("card-deadline" + cardID);
+    deadline.style.color = "red";
 }
 
 function getSelectedValue(cardID) {
@@ -465,17 +465,21 @@ function getSelectedValue(cardID) {
             var nyttcardMedlemmerBilde = document.createElement("img");
             var memeberName = document.createElement("p");
             membersContainer.className = "card-members";
+            var memberContainer = document.createElement("div");
+            memberContainer.className ="card-member";
             for (var k = 0; k < card[z].brukere.length; k++) {
                 for(var l = 0; l < membersInProject.length; l++){
                     if(card[z].brukere[k] == membersInProject[l].userName){
                         memeberName.innerText = card[z].brukere[k];
+                        memberContainer.id = k;
+                        memberContainer.setAttribute("onclick", "removeMember(event)");
                         nyttcardMedlemmerBilde.setAttribute("src", membersInProject[l].profilePic);
-                        nyttcardMedlemmerBilde.setAttribute("onclick", "removeMember(event)");
                     }
                 }
-                membersContainer.appendChild(memeberName);
-                membersContainer.appendChild(nyttcardMedlemmerBilde);
             }
+            memberContainer.appendChild(memeberName);
+            memberContainer.appendChild(nyttcardMedlemmerBilde);
+            membersContainer.appendChild(memberContainer);
         }
     }
 };

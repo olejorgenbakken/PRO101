@@ -1,43 +1,96 @@
 wrapper {
     display: flex;
-    flex-direction: column;
-    position: relative;;
+    flex-direction: row;
+    position: relative;
     padding-top: 140px;
-    width: 100%;
+    padding-left: 20px;
+    overflow: auto;
+    min-height: calc(100vh - 140px);
+}
+
+header {
+    background: rgb(255, 253, 112);
+    background: linear-gradient(297deg, rgba(255, 253, 112, 1) 0%, rgba(252, 69, 69, 1) 100%);
+    justify-content: space-between;
+}
+
+#high-contrast input {
+    width: 20px;
+}
+
+.board-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.board-info h3 {
+    justify-self: right;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.board-title {
+    background-color: transparent;
+    color: white;
+    font-size: 1.8rem;
+    border: none;
+    font-weight: 700;
+}
+
+.board-members {
+    cursor: default;
+    right: 15px;
+}
+
+.board-members:hover>img {
+    margin-left: 0px;
+}
+
+.board-members img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    transition: .3s ease-in-out;
+    margin-left: -17px;
+    background-color: white;
+    border: 3px solid white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 #lag-liste {
     position: relative;
-    padding-left: 10px;
 }
 
 #nyListeKnapp {
-    display: inline-block;
-    height: 50px;
+    cursor: pointer;
+    padding: 10px;
     background-color: black;
     border-radius: 50px;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 #nyListeKnapp p {
-    padding: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
     color: white;
 }
 
 #lister {
     position: relative;
-    background: rgb(85,134,255);
-    background: linear-gradient(48deg, rgba(85,134,255,1) 0%, rgba(57,255,186,1) 100%); 
-    padding-left: 5px;
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
     display: flex;
     flex-direction: row;
+    margin-left: -10px;
+
 }
 
 .slettListe {
+    cursor: pointer;
     position: absolute;
     right: 0;
     top: 0;
@@ -50,7 +103,8 @@ wrapper {
 }
 
 .leggTilKort {
-    background: blue;
+    cursor: pointer;
+    background: black;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -75,7 +129,7 @@ wrapper {
 .list-title {
     background: transparent;
     border: none;
-    color: white;
+    color: black;
     font-weight: 700;
     font-size: 1.4rem;
     padding-bottom: 20px;
@@ -115,7 +169,7 @@ wrapper {
     height: 20px;
     width: 20px;
     transition: .3s ease-in-out;
-    margin-right: -15px;
+    margin-right: 0px;
     background-color: yellowgreen;
     border: 3px solid white;
     border-radius: 30px;
@@ -132,9 +186,9 @@ wrapper {
 .card-footer {
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
     display: block;
     flex-direction: row;
     align-items: center;
@@ -156,9 +210,45 @@ wrapper {
     font-weight: 700;
 }
 
+.nyttKortInput {
+    border: none;
+    border-radius: 0;
+    order: 1;
+    width: 290px;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.openDialog .card-desc{
+    border-top: 1px solid black;
+    width: 290px;
+    padding: 5px;
+}
+
+.openDialog input[type="button"] {
+    cursor: pointer;
+    width: 300px;
+    background-color: blue;
+    margin-bottom: 0;
+    color: white;
+    border-radius: 0 0 3px 3px;
+    transition: .3s ease;
+}
+
+.openDialog input[type="button"]:hover {
+    background-color: black;
+}
+
+.openDialog input[type="date"]{
+    cursor: pointer;
+}
+
 .card-desc {
     order: 2;
-    min-height: 100px;
     display: block;
     flex-direction: column;
 }
@@ -182,20 +272,35 @@ wrapper {
     align-items: flex-start;
 }
 
+.card-member {
+    background-color: blue;
+    position: relative;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.card-member img{
+    border: none;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+}
+
 .card-deadline {
+    cursor: default;
     order: 4;
     width: 95%;
 }
 
 .card-member-select {
     text-transform: capitalize;
-    order: 7;
+    order: 6;
 }
 
 .card-member-select input {
     width: 100%;
     font-weight: 600;
-    background-color: blue;
+    background-color: black;
     padding-top: 5px;
     padding-bottom: 5px;
     color: white;
@@ -206,24 +311,21 @@ wrapper {
 
 .card-members {
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+    padding:0;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    order: 6;
-    align-items: center;
+    justify-content: space-between;
+    order: 5;
+
 }
 
 .card-members p {
-    padding-left: 15px;
-    padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background: blue;
-    border-radius: 20px;
     color: white;
+    padding-left: 3px;
+    padding-right: 35px;
 }
 
 select {
@@ -231,19 +333,25 @@ select {
     -webkit-appearance: none; 
    -moz-appearance: none;
    appearance: none; 
-   border: 2px solid blue;
+   border: 2px solid black;
    max-height: 170px;
-   padding-bottom: 1px;
-   padding-top: 1px;
    width: 100%;
    overflow: hidden;
 }
 
+option {
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-left: 2px;
+}
+
 .member-select {
+    margin-top: 5px;
     order: 3;
 }
 
 .add-member {
+    cursor: pointer;
     order: 2;
 }
 
@@ -252,12 +360,18 @@ select {
 }
 
 .card-created {
-    order: 5;
-    padding-top: 0;
+    cursor: default;
+    order: 7;
+    padding: 0;
+    padding-left: 2.5%;
+    padding-top: 5px;
+
 }
 
 .card-created h3 {
+    font-size: .8rem;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .card-footer {
@@ -338,14 +452,15 @@ select {
 }
 
 .openDialog {
-    background: red;
-    width: 500px;
+    background: white;
+    width: 300px;
     position: fixed;
     z-index: 999;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0px 0px 10px black;
+    border-radius: 3px;
 }
 
 .openDialog .slettListe{
@@ -407,4 +522,5 @@ select {
     border-radius: 30px;
     font-size: .9rem;
     font-weight: 600;
+    cursor: pointer;
 }
