@@ -1,5 +1,5 @@
-//Firebase Config
-var registreredUsers = [
+//Array containing the objects that make up the users that have registered 
+var registeredUsers = [
     {
         userName: "filip",
         email: "filip@filip.com",
@@ -31,31 +31,30 @@ var registreredUsers = [
     }
 
 ];
-
+//Array containing the members that are in the current project
 var membersInProject = [
    
 ];
-
+//variables that build the "add member" button and appends it to a wrapper
 var wrapper = document.getElementById("addMember");
 var memberButton = document.getElementById("addMemberIcon");
 var members = document.getElementById("members");
-
 var submitButton = document.getElementById("submitMemberInput");
-
-console.log(memberButton);
-
 wrapper.appendChild(memberButton);
 
+//Function that allows for the user to press the "Enter" key to add members through the addmember button
 function enterMember(event){
     if(submitButton.focus && event.which == 13) {
         submitMember();
     }
 }
+//Function that implements adding members to a project.
 
 function submitMember (){
     var memberInput = document.getElementById("submitMemberInput");
     var newValue = memberInput.value;
 
+    //checks if the inputted user is already in the project and stops them getting added again
     for(var i = 0; i < membersInProject.length; i++) {
         if(newValue == membersInProject[i].userName || newValue == membersInProject[i].email) {
             memberInput.value = "";
@@ -63,10 +62,11 @@ function submitMember (){
             return;
         }
     }
-
-    for(var k = 0; k < registreredUsers.length; k++){
-        if(newValue === registreredUsers[k].userName || newValue === registreredUsers[k].email) {
-            membersInProject.push(registreredUsers[k]);
+    // if the user is not already in the project and it also a valid user
+    // it pushes the data pertaining to that user into the membersInProject array
+    for(var k = 0; k < registeredUsers.length; k++){
+        if(newValue === registeredUsers[k].userName || newValue === registeredUsers[k].email) {
+            membersInProject.push(registeredUsers[k]);
             var memberImageContainer = document.createElement("div");
             memberImageContainer.className = "memberImageContainer";
 
@@ -74,11 +74,12 @@ function submitMember (){
             memberImageContainer.appendChild(memberImage)
             memberImage.className = "memberImage";
             memberInput.value = "";
-            memberImage.setAttribute("src", registreredUsers[k].profilePic)
+            memberImage.setAttribute("src", registeredUsers[k].profilePic)
             members.appendChild(memberImageContainer);
             return;
         }
     }
+    //If the user doesnt exist
     memberInput.value = "";
     memberInput.setAttribute("placeholder", "Invalid name");
 };

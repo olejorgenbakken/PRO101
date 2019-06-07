@@ -1,26 +1,29 @@
+//array that contains projects
 var project = [{
     name: "Trip to somewhere"
 }];
 
-//lag board
+//Array that contains the board objects
 var board = [];
 
+//variable we use to set the unique ID of each of the boards
 var boardID = 0;
+//builds the "new board" button
+var newBoardButton = document.getElementById("newBoardBtn");    
+newBoardButton.setAttribute("onclick", " return createBoard()");
 
-var newBoardKnapp = document.getElementById("newBoardBtn");    
-newBoardKnapp.setAttribute("onclick", " return lagBoard()");
-
+//builds the project title and header, and appends it to a wrapper
 var projectTitleWrp = document.getElementById("project-header");
 var projectTitle = document.createElement("input");
 projectTitle.className = "project-title";
 projectTitle.id = "project-title";
 projectTitle.type ="textarea";
 projectTitle.value = project[0].name;
-
 projectTitleWrp.appendChild(projectTitle);
 
-// lager en new liste med mulighet for å lage flere kort
-function lagBoard() {
+//This function builds the boards and pushes them into the "board" array
+//Start
+function createBoard() {
 
     board.push({
         id: boardID,
@@ -53,8 +56,9 @@ function lagBoard() {
 
     boardID++;
 }
+//End
 
-// delete board
+// this function makes it possible to delete the boards i the project
 function deleteBoard(boardID) {
     var board = document.getElementById("board" + boardID);
     board.remove("board" + boardID);

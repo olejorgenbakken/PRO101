@@ -1,14 +1,14 @@
-var nyttKort = document.createElement("div");
-var nyttKortHeader = document.createElement("div");
-var nyttKortHeaderTekst = document.createElement("h2");
-var nyttKortBeskrivelse = document.createElement("div");
-var nyttKortBeskrivelseTekst = document.createElement("p");
-var nyttKortFooter = document.createElement("div");
-var nyttKortLagd = document.createElement("div");
-var nyttKortLagdTekst = document.createElement("h3");
-var nyttKortBrukere = document.createElement("div");
-var nyttKortTidsfrist = document.createElement("div");
-var nyttKortTidsfristTekst = document.createElement("h3");
+var newCard = document.createElement("div");
+var newCardHeader = document.createElement("div");
+var newCardHeaderText = document.createElement("h2");
+var newCardDescription = document.createElement("div");
+var newCardDescriptionText = document.createElement("p");
+var newCardFooter = document.createElement("div");
+var newCardMade = document.createElement("div");
+var newCardMadeText = document.createElement("h3");
+var newCardUsers = document.createElement("div");
+var newCardDeadline = document.createElement("div");
+var newCardDeadlineText = document.createElement("h3");
 
 // tid og dato
 function getTime(input) {
@@ -59,127 +59,123 @@ var membersInProject = [
     }
 ];
 
-//lag tavle
-var tavle = [];
+//lag table
+var table = [];
 
-// lag liste
-var liste = [];
+// lag list
+var list = [];
 
 // lag card
 var card = [];
 
 // Lager en wrapper med listene, og en knapp, knappen og headeren er tenkt at skal bort fra funksjonen
 // og inn i HTMLen.
-function lagListeKnapp() {
-    var nyListeKnapp = document.createElement("div");
-    var nyListeKnappTekst = document.createElement("p");
-    nyListeKnapp.id = "nyListeKnapp";
-    nyListeKnappTekst.id = "nyListeKnappX";
-    nyListeKnapp.setAttribute("type", "button");
-    nyListeKnapp.setAttribute("onclick", " return lagListe()");
+function createListButton() {
+    var newListButton = document.createElement("div");
+    var newListButtonText = document.createElement("p");
+    newListButton.id = "nyListeKnapp";
+    newListButtonText.id = "nyListeKnappX";
+    newListButton.setAttribute("type", "button");
+    newListButton.setAttribute("onclick", " return createList()");
     var wrapper = document.getElementById("lag-liste");
-    wrapper.appendChild(nyListeKnapp);
-    nyListeKnapp.appendChild(nyListeKnappTekst);
-    nyListeKnappTekst.innerText = "+ Add list";
+    
+    wrapper.appendChild(newListButton);
+    newListButton.appendChild(newListButtonText);
+    newListButtonText.innerText = "+ Add list";
 }
 
-lagListeKnapp();
+createListButton();
 
 // variabler for å telle antall lister og sette cardenes ID
 var listeID = 0;
 var cardID = 0;
 
-// lager en ny liste med mulighet for å lage flere card
-function lagListe() {
-    liste.push({
+// lager en ny list med mulighet for å lage flere card
+function createList() {
+    list.push({
         id: listeID,
-        navn: "liste" + listeID,
+        name: "list" + listeID,
         antallKort: cardID,
     });
 
     var wrapper = document.getElementById("lister");
 
-    var nyListe = document.createElement("div");
-    var nyListeLagKortForm = document.createElement("form");
-    var nyListeTittel = document.createElement("input");
+    var newList = document.createElement("div");
+    var newListCreateCardForm = document.createElement("form");
+    var nyListTittel = document.createElement("input");
 
-    nyListe.className = "liste";
-    nyListe.id = "liste" + listeID;
-    nyListeTittel.value = liste[listeID].navn;
+    newList.className = "liste";
+    newList.id = "liste" + listeID;
+    nyListTittel.value = list[listeID].name;
 
-    wrapper.appendChild(nyListe);
+    wrapper.appendChild(newList);
 
     // denne loopen lager alle fire inputene (man burde kanskje fjerne denne, og implementere den bedre
     // men den fungerer for now...)
     var radioButtonContainer = document.createElement("form");
 
     for (i = 0; i < 7; i++) {
-        nyListeLagKortForm.id = "lagKortListe" + listeID;
-        nyListeLagKortForm.className = "create-list";
+        newListCreateCardForm.id = "lagKortListe" + listeID;
+        newListCreateCardForm.className = "create-list";
         radioButtonContainer.id = "radioButtonContainer" + listeID;
         radioButtonContainer.className = "make-card-container";
-        var nyListeLagKortInput = document.createElement("input");
-        nyListeLagKortInput.className = "nyttKortInput";
-        nyListeLagKortInput.id = i;
-        nyListeLagKortForm.appendChild(radioButtonContainer);
+        var newListCreateCardInput = document.createElement("input");
+        newListCreateCardInput.className = "nyttKortInput";
+        newListCreateCardInput.id = i;
+        newListCreateCardForm.appendChild(radioButtonContainer);
 
-        if (nyListeLagKortInput.id == 6) {
-            nyListeLagKortInput.id = "leggTilKort" + listeID;
-            nyListeLagKortInput.value = "Add card";
-            nyListeLagKortInput.type = "button";
-            nyListeLagKortInput.className = "leggTilKort";
-            nyListeLagKortInput.setAttribute("onclick", "openDialog(event)");
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
+        if (newListCreateCardInput.id == 6) {
+            newListCreateCardInput.id = "leggTilKort" + listeID;
+            newListCreateCardInput.value = "Add card";
+            newListCreateCardInput.type = "button";
+            newListCreateCardInput.className = "leggTilKort";
+            newListCreateCardInput.setAttribute("onclick", "openDialog(event)");
+            newListCreateCardForm.appendChild(newListCreateCardInput);
         }
 
-        else if (nyListeLagKortInput.id == 5) {
-            nyListeLagKortInput.id = "slettListe" + listeID;
-            nyListeLagKortInput.value = "x";
-            nyListeLagKortInput.type = "button";
-            nyListeLagKortInput.className = "slettListe";
-            nyListeLagKortInput.setAttribute("onclick", " return slettListe(" + listeID + ")");
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        } else if (nyListeLagKortInput.id == 4) {
-            nyListeLagKortInput.id = "nyKortKnapp" + listeID;
-            nyListeLagKortInput.type = "button";
-            nyListeLagKortInput.value = "Lag card";
-            nyListeLagKortInput.setAttribute("onmouseup", " closeDialog(event)");
-            nyListeLagKortInput.setAttribute("onclick", " return lagKort(" + listeID + ")");
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        } else if (nyListeLagKortInput.id == 3) {
-            nyListeLagKortInput.id = "nyttKortTidsfrist" + listeID;
-            nyListeLagKortInput.type = "date";
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        } else if (nyListeLagKortInput.id == 2) {
+        else if (newListCreateCardInput.id == 5) {
+            newListCreateCardInput.id = "slettListe" + listeID;
+            newListCreateCardInput.value = "x";
+            newListCreateCardInput.type = "button";
+            newListCreateCardInput.className = "slettListe";
+            newListCreateCardInput.setAttribute("onclick", " return removeList(" + listeID + ")");
+            newListCreateCardForm.appendChild(newListCreateCardInput);
+        } else if (newListCreateCardInput.id == 4) {
+            newListCreateCardInput.id = "nyKortKnapp" + listeID;
+            newListCreateCardInput.type = "button";
+            newListCreateCardInput.value = "Lag card";
+            newListCreateCardInput.setAttribute("onmouseup", " closeDialog(event)");
+            newListCreateCardInput.setAttribute("onclick", " return createCard(" + listeID + ")");
+            newListCreateCardForm.appendChild(newListCreateCardInput);
+        } else if (newListCreateCardInput.id == 3) {
+            newListCreateCardInput.id = "nyttKortTidsfrist" + listeID;
+            newListCreateCardInput.type = "date";
+            newListCreateCardForm.appendChild(newListCreateCardInput);
+        } else if (newListCreateCardInput.id == 2) {
             var newCardDescription = document.createElement("textarea");
             newCardDescription.id = "nyttKortBeskrivelse" + listeID;
             newCardDescription.placeholder = "Beskrivelse";
             newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
             newCardDescription.className = "card-desc";
-            nyListeLagKortForm.appendChild(newCardDescription);
-        } else if (nyListeLagKortInput.id == 1) {
-            nyListeLagKortInput.id = "nyttKortNavn" + listeID;
-            nyListeLagKortInput.placeholder = "Title";
-            nyListeLagKortInput.type = "text";
-            nyListeLagKortForm.appendChild(nyListeLagKortInput);
-        } else if (nyListeLagKortInput.id == 0) {
-            nyListeLagKortInput.id = "nyKortTittel" + listeID;
-            nyListeLagKortInput.className = "list-title";
-            nyListeLagKortInput.value = "Ny liste";
-            nyListeLagKortInput.type = "text";
-            nyListeLagKortInput.setAttribute("onkeypress", " return redigerListeTittel(" + listeID + ")");
-            nyListe.appendChild(nyListeLagKortInput);
+            newListCreateCardForm.appendChild(newCardDescription);
+        } else if (newListCreateCardInput.id == 1) {
+            newListCreateCardInput.id = "nyttKortNavn" + listeID;
+            newListCreateCardInput.placeholder = "Title";
+            newListCreateCardInput.type = "text";
+            newListCreateCardForm.appendChild(newListCreateCardInput);
+        } else if (newListCreateCardInput.id == 0) {
+            newListCreateCardInput.id = "nyKortTittel" + listeID;
+            newListCreateCardInput.className = "list-title";
+            newListCreateCardInput.value = "Ny list";
+            newListCreateCardInput.type = "text";
+            newListCreateCardInput.setAttribute("onkeypress", " return changeListTittle(" + listeID + ")");
+            newList.appendChild(newListCreateCardInput);
         }
-        nyListe.appendChild(nyListeLagKortForm);
+        newList.appendChild(newListCreateCardForm);
     }
     listeID++;
 
-    if(document.querySelectorAll(".liste").length > 4) {
-        var currentWidth = window.outerWidth;
-        document.body.style.overflowX = "visible";
-        document.getElementById("lister").style.width = currentWidth + 390 + "px";
-    }
 }
 
 function openDialog(event) {
@@ -233,19 +229,15 @@ function closeDialog(event) {
 }
 
 // slett lister
-function slettListe(listeID) {
-    if(document.querySelectorAll(".liste").length < 4){
-        document.getElementById("lister").style.width = window.innerWidth + "px";
-        document.body.style.overflowX = "hidden";
-    }
+function removeList(listeID) {
 
-    var liste = document.getElementById("liste" + listeID);
-    liste.remove("liste" + listeID);
+    var list = document.getElementById("liste" + listeID);
+    list.remove("liste" + listeID);
 }
 
 // lag et card. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
-// i lag liste funksjonen
-function lagKort(listeID) {
+// i lag list funksjonen
+function createCard(listeID) {
     var priorityForm = document.createElement("div");
     priorityForm.id = "priority-card-" + cardID;
     priorityForm.className = "card-priority-picker";
@@ -298,138 +290,137 @@ function lagKort(listeID) {
     priorityLowDiv.appendChild(priorityLow);
     priorityLowDiv.appendChild(priorityLowLbl);
 
-    var listePosisjon = document.getElementById("liste" + listeID);
-    var nyttKort = document.createElement("div");
-    var nyttKortHeader = document.createElement("div");
-    var nyttKortHeaderTekst = document.createElement("input");
-    var nyttKortBeskrivelse = document.createElement("div");
-    var nyttKortBeskrivelseTekst = document.createElement("textarea");
-    var nyttKortNesteListe = document.createElement("input");
-    var nyttKortForrigeListe = document.createElement("input");
-    var nyttKortFooter = document.createElement("div");
-    var nyttKortLagd = document.createElement("div");
-    var nyttKortLagdTekst = document.createElement("h3");
-    var nyttKortBrukere = document.createElement("div");
+    var listPosition = document.getElementById("liste" + listeID);
+    var newCard = document.createElement("div");
+    var newCardHeader = document.createElement("div");
+    var newCardHeaderText = document.createElement("input");
+    var newCardDescription = document.createElement("div");
+    var newCardDescriptionText = document.createElement("textarea");
+    var newCardNextList = document.createElement("input");
+    var newCardPrevList = document.createElement("input");
+    var newCardFooter = document.createElement("div");
+    var newCardMade = document.createElement("div");
+    var newCardMadeText = document.createElement("h3");
+    var newCardUsers = document.createElement("div");
 
-    var nyttKortMedlemmerDiv = document.createElement("div");
-    var nyttKortMedlemmerIKortDiv = document.createElement("div");
-    var nyttKortMedlemmer = document.createElement("select");
-    var nyttKortMedlemmerOption = document.createElement("option");
-    var nyttKortMedlemmerbutton = document.createElement("input");
+    var newCardMembersDiv = document.createElement("div");
+    var newCardMembersInCard = document.createElement("div");
+    var newCardMembers = document.createElement("select");
+    var newCardMembersOption = document.createElement("option");
+    var newCardMembersButton = document.createElement("input");
     
-    var nyttKortTidsfrist = document.createElement("div");
-    var nyttKortTidsfristTekst = document.createElement("h3");
-    var slettKort = document.createElement("input");
-    slettKort.type = "button";
+    var newCardDeadline = document.createElement("div");
+    var newCardDeadlineText = document.createElement("h3");
+    var removeCard = document.createElement("input");
+    removeCard.type = "button";
 
-    nyttKort.id = "card" + cardID;
-    //nyttKort.setAttribute("onclick", "getSelectedCard()");
-    nyttKort.className = "card";
-    nyttKortHeader.className = "card-title";
-    nyttKortHeader.id = "card-tittel" + cardID;
-    nyttKortHeader.setAttribute("onkeypress", " return redigerTittel(" + cardID + ")");
-    nyttKortHeaderTekst.id = "card-tittel-tekst" + cardID;
-    nyttKortHeaderTekst.placeholder = "Title";
-    nyttKortBeskrivelse.setAttribute("maxLength", "150");
-    nyttKortBeskrivelse.className = "card-desc";
-    nyttKortBeskrivelse.id = "card-description" + cardID;
-    nyttKortBeskrivelse.setAttribute("onkeypress", " return redigerBeskrivelse(" + cardID + ")");
-    nyttKortBeskrivelseTekst.id = "card-description-tekst" + cardID;
-    nyttKortBeskrivelseTekst.placeholder = "Beskrivelse";
+    newCard.id = "card" + cardID;
+    newCard.className = "card";
+    newCardHeader.className = "card-title";
+    newCardHeader.id = "card-tittel" + cardID;
+    newCardHeader.setAttribute("onkeypress", " return changeTittle(" + cardID + ")");
+    newCardHeaderText.id = "card-tittel-tekst" + cardID;
+    newCardHeaderText.placeholder = "Title";
+    newCardDescription.setAttribute("maxLength", "150");
+    newCardDescription.className = "card-desc";
+    newCardDescription.id = "card-description" + cardID;
+    newCardDescription.setAttribute("onkeypress", " return changeDescription(" + cardID + ")");
+    newCardDescriptionText.id = "card-description-tekst" + cardID;
+    newCardDescriptionText.placeholder = "Beskrivelse";
 
-    nyttKortNesteListe.type = "button";
-    nyttKortForrigeListe.type = "button";
+    newCardNextList.type = "button";
+    newCardPrevList.type = "button";
 
-    nyttKortNesteListe.value = ">";
-    nyttKortForrigeListe.value = "<";
+    newCardNextList.value = ">";
+    newCardPrevList.value = "<";
 
-    nyttKortNesteListe.setAttribute("onclick", "nextListe(event)");
-    nyttKortForrigeListe.setAttribute("onclick", "prevListe(event)");
+    newCardNextList.setAttribute("onclick", "nextListe(event)");
+    newCardPrevList.setAttribute("onclick", "prevListe(event)");
 
-    nyttKortNesteListe.className = "neste-liste";
-    nyttKortForrigeListe.className = "forrige-liste";
+    newCardNextList.className = "neste-liste";
+    newCardPrevList.className = "forrige-liste";
 
-    nyttKortNesteListe.id = "card-neste-list" + cardID;
-    nyttKortForrigeListe.id = "card-forrige-liste" + cardID;
+    newCardNextList.id = "card-neste-liste" + cardID;
+    newCardPrevList.id = "card-forrige-liste" + cardID;
 
-    nyttKortMedlemmerDiv.className = "card-member-select";
-    nyttKortMedlemmerIKortDiv.className = "members";
+    newCardMembersDiv.className = "card-member-select";
+    newCardMembersInCard.className = "members";
 
-    nyttKortMedlemmerDiv.id = "nyttKortMedlemmer" + cardID;
-    nyttKortMedlemmerIKortDiv.id = "nyttKortMedlemmerIKort" + cardID;
+    newCardMembersDiv.id = "newCardMembers" + cardID;
+    newCardMembersInCard.id = "nyttKortMedlemmerIKort" + cardID;
 
-    nyttKortMedlemmer.setAttribute("size", membersInProject.length);
-    nyttKortMedlemmerbutton.setAttribute("type", "button");
-    nyttKortMedlemmerbutton.value = "add member";
-    nyttKortMedlemmerbutton.className = "add-member"
+    newCardMembers.setAttribute("size", membersInProject.length);
+    newCardMembersButton.setAttribute("type", "button");
+    newCardMembersButton.value = "add member";
+    newCardMembersButton.className = "add-member"
 
-    nyttKortMedlemmerOption.id = "option";
+    newCardMembersOption.id = "option";
 
-    nyttKortMedlemmer.id = "selectingMembers" + cardID;
-    nyttKortMedlemmer.className = "member-select";
-    nyttKortMedlemmerbutton.setAttribute("onclick", "getSelectedValue("+ cardID +")");
+    newCardMembers.id = "selectingMembers" + cardID;
+    newCardMembers.className = "member-select";
+    newCardMembersButton.setAttribute("onclick", "getSelectedValue("+ cardID +")");
 
-    nyttKortFooter.className = "card-footer";
-    nyttKortLagd.className = "card-created";
-    nyttKortTidsfrist.className = "card-deadline";
-    nyttKortTidsfrist.id = "card-deadline" + cardID;
-    slettKort.setAttribute("onclick", " return slettKort(" + cardID + ")");
+    newCardFooter.className = "card-footer";
+    newCardMade.className = "card-created";
+    newCardDeadline.className = "card-deadline";
+    newCardDeadline.id = "card-deadline" + cardID;
+    removeCard.setAttribute("onclick", " return removeCard(" + cardID + ")");
 
-    listePosisjon.appendChild(nyttKort);
-    nyttKort.appendChild(nyttKortHeader);
-    nyttKort.appendChild(nyttKortBeskrivelse);
-    nyttKort.appendChild(nyttKortFooter);
-    nyttKortHeader.appendChild(nyttKortHeaderTekst);
-    nyttKortBeskrivelse.appendChild(nyttKortBeskrivelseTekst);
+    listPosition.appendChild(newCard);
+    newCard.appendChild(newCardHeader);
+    newCard.appendChild(newCardDescription);
+    newCard.appendChild(newCardFooter);
+    newCardHeader.appendChild(newCardHeaderText);
+    newCardDescription.appendChild(newCardDescriptionText);
 
-    nyttKort.appendChild(nyttKortMedlemmerDiv);
-    nyttKort.appendChild(nyttKortBeskrivelse);
-    nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmer);
-    nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerbutton);
-    nyttKortMedlemmerDiv.appendChild(nyttKortMedlemmerIKortDiv);
+    newCard.appendChild(newCardMembersDiv);
+    newCard.appendChild(newCardDescription);
+    newCardMembersDiv.appendChild(newCardMembers);
+    newCardMembersDiv.appendChild(newCardMembersButton);
+    newCardMembersDiv.appendChild(newCardMembersInCard);
 
     for (var j = 0; j < membersInProject.length; j++) {
 
-        var nyttKortMedlemmerOption = document.createElement("option");
-        nyttKortMedlemmerOption.id = "medlem:" + j;
-        nyttKortMedlemmerOption.setAttribute("value", membersInProject[j].userName);
-        nyttKortMedlemmerOption.innerText = membersInProject[j].userName;
-        nyttKortMedlemmer.appendChild(nyttKortMedlemmerOption);
+        var newCardMembersOption = document.createElement("option");
+        newCardMembersOption.id = "medlem:" + j;
+        newCardMembersOption.setAttribute("value", membersInProject[j].userName);
+        newCardMembersOption.innerText = membersInProject[j].userName;
+        newCardMembers.appendChild(newCardMembersOption);
     }
 
-    nyttKort.appendChild(nyttKortLagd);
-    nyttKort.appendChild(nyttKortBrukere);
-    nyttKort.appendChild(nyttKortTidsfrist);
-    nyttKortLagd.appendChild(nyttKortLagdTekst);
-    nyttKortTidsfrist.appendChild(nyttKortTidsfristTekst);
-    nyttKortFooter.appendChild(nyttKortForrigeListe);
-    nyttKortFooter.appendChild(nyttKortNesteListe);
-    nyttKortFooter.appendChild(slettKort);
+    newCard.appendChild(newCardMade);
+    newCard.appendChild(newCardUsers);
+    newCard.appendChild(newCardDeadline);
+    newCardMade.appendChild(newCardMadeText);
+    newCardDeadline.appendChild(newCardDeadlineText);
+    newCardFooter.appendChild(newCardPrevList);
+    newCardFooter.appendChild(newCardNextList);
+    newCardFooter.appendChild(removeCard);
     priorityForm.appendChild(priorityUrgentDiv);
     priorityForm.appendChild(priorityMiddleDiv);
     priorityForm.appendChild(priorityLowDiv);
-    nyttKortHeader.appendChild(priorityForm);
+    newCardHeader.appendChild(priorityForm);
 
-    var nyttKortHeaderTekstInput = document.getElementById("nyttKortNavn" + listeID).value;
-    var nyttKortBeskrivelseInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
-    var nyttKortTidsfristTekstInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
+    var newCardHeaderTextInput = document.getElementById("nyttKortNavn" + listeID).value;
+    var newCardDescriptionInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
+    var newCardDeadlineInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
 
     card.push({
         id: cardID,
-        navn: nyttKortHeaderTekstInput,
-        description: nyttKortBeskrivelseInput,
-        listePosisjon: liste[listeID].id,
+        name: newCardHeaderTextInput,
+        description: newCardDescriptionInput,
+        listPosition: list[listeID].id,
         lagd: getTime("date"),
-        tidsfrist: nyttKortTidsfristTekstInput,
+        deadline: newCardDeadlineInput,
         brukere: [],
     });
 
-    nyttKortHeaderTekst.value = card[cardID].navn;
-    nyttKortBeskrivelseTekst.innerText = card[cardID].description;
-    nyttKortLagdTekst.innerText = "Card created on the " + card[cardID].lagd;
-    nyttKortTidsfristTekst.innerText = "Deadline: " + card[cardID].tidsfrist;
-    slettKort.value = "delete";
-    slettKort.className = "lukkKort";
+    newCardHeaderText.value = card[cardID].name;
+    newCardDescriptionText.innerText = card[cardID].description;
+    newCardMadeText.innerText = "Card created on the " + card[cardID].lagd;
+    newCardDeadlineText.innerText = "Deadline: " + card[cardID].deadline;
+    removeCard.value = "delete";
+    removeCard.className = "lukkKort";
     
     cardID++;
 }
@@ -440,11 +431,6 @@ function removeMember(event) {
     thisMember.remove();
     
 }
-
-/*function getSelectedCard(event){
-    console.log(event.target);
-    console.log(event.target.parentNode.id);
-}*/
 
 function changeToLow(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
@@ -507,29 +493,29 @@ function changeToUrgent(cardID) {
 function getSelectedValue(cardID) {
 
     for (var z = 0; z < card.length; z++) {
-        var selValue = document.getElementById("nyttKortMedlemmer" + z);
+        var selValue = document.getElementById("newCardMembers" + z);
         if (!card[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
             card[z].brukere.push(selValue.firstChild.value);
 
             var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + cardID);
 
-            var nyttcardMedlemmerBilde = document.createElement("img");
-            var memeberName = document.createElement("p");
+            var newCardMemberPic = document.createElement("img");
+            var memberName = document.createElement("p");
             membersContainer.className = "card-members";
             var memberContainer = document.createElement("div");
             memberContainer.className ="card-member";
             for (var k = 0; k < card[z].brukere.length; k++) {
                 for(var l = 0; l < membersInProject.length; l++){
                     if(card[z].brukere[k] == membersInProject[l].userName){
-                        memeberName.innerText = card[z].brukere[k];
+                        memberName.innerText = card[z].brukere[k];
                         memberContainer.id = k;
                         memberContainer.setAttribute("onclick", "removeMember(event)");
-                        nyttcardMedlemmerBilde.setAttribute("src", membersInProject[l].profilePic);
+                        newCardMemberPic.setAttribute("src", membersInProject[l].profilePic);
                     }
                 }
             }
-            memberContainer.appendChild(memeberName);
-            memberContainer.appendChild(nyttcardMedlemmerBilde);
+            memberContainer.appendChild(memberName);
+            memberContainer.appendChild(newCardMemberPic);
             membersContainer.appendChild(memberContainer);
         }
     }
@@ -538,6 +524,7 @@ function getSelectedValue(cardID) {
 
 function nextListe(event) {
     var thisList = event.target.parentNode.parentNode.parentNode.id;
+
     var string = thisList.replace("liste", "");
     var parse = parseInt(string);
     parse++;
@@ -561,23 +548,23 @@ function prevListe(event) {
 
 
 // slett card
-function slettKort(cardID) {
+function removeCard(cardID) {
     var card = document.getElementById("card" + cardID);
     card.parentNode.removeChild(card);
 }
 
 // redigerer cardenes tittel og description
-function redigerListeTittel(listeID) {
-    listeTittelContainer = document.getElementById("nyKortTittel" + listeID);
-    liste[listeID].navn = listeTittelContainer.value;
+function changeListTittle(listeID) {
+    listTittleContainer = document.getElementById("nyKortTittel" + listeID);
+    list[listeID].name = listTittleContainer.value;
 }
 
-function redigerTittel(cardID) {
-    cardTittelContainer = document.getElementById("card-tittel-tekst" + cardID);
-    card[cardID].navn = cardTittelContainer.value;
+function changeTittle(cardID) {
+    cardTittleContainer = document.getElementById("card-tittel-tekst" + cardID);
+    card[cardID].name = cardTittleContainer.value;
 }
 
-function redigerBeskrivelse(cardID) {
-    cardBeskrivelseContiner = document.getElementById("card-description-tekst" + cardID);
-    card[cardID].description = cardBeskrivelseContiner.value;
+function changeDescription(cardID) {
+    cardDescriptionContainer = document.getElementById("card-description-tekst" + cardID);
+    card[cardID].description = cardDescriptionContainer.value;
 }
