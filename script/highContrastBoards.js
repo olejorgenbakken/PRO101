@@ -7,6 +7,6 @@ function swapStyleSheet(styleSheet) {
         normalContrast.setAttribute("href", "");
     }else {
         highContrast.setAttribute("href", "");
-        normalContrast.setAttribute("href", "style/project.css");
+        normalContrast.setAttribute("href", "style/board.css");
     }
 }
