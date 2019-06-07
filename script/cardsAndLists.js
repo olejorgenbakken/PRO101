@@ -153,7 +153,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 4) {
             newListCreateCardInput.id = "nyKortKnapp" + listID;
             newListCreateCardInput.type = "button";
-            newListCreateCardInput.value = "Lag card";
+            newListCreateCardInput.value = "Create card";
             newListCreateCardInput.setAttribute("onmouseup", " closeDialog(event)");
             newListCreateCardInput.setAttribute("onclick", " return createCard(" + listID + ")");
             newListCreateCardForm.appendChild(newListCreateCardInput);
@@ -163,7 +163,7 @@ function createList() {
             newListCreateCardForm.appendChild(newListCreateCardInput);
         } else if (newListCreateCardInput.id == 2) {
             var newCardDescription = document.createElement("textarea");
-            newCardDescription.id = "nyttKortBeskrivelse" + listeID;
+            newCardDescription.id = "nyttKortBeskrivelse" + listID;
             newCardDescription.placeholder = "Description";
             newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
@@ -319,6 +319,7 @@ function createCard(listID) {
     var newCardMade = document.createElement("div");
     var newCardMadeText = document.createElement("h3");
     var newCardUsers = document.createElement("div");
+    var newCardMembersOption = document.createElement("option");
 
     var newCardMembersDiv = document.createElement("div");
     var newCardMembersInCard = document.createElement("div");
