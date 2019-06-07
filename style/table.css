@@ -14,8 +14,26 @@ header {
     justify-content: space-between;
 }
 
+#high-contrast {
+    width: 100vw;
+    padding: 2.5px 0;
+    background-color: black;
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+    border-bottom: 1px solid #FECC00;
+}
+
+#high-contrast label {
+    font-size: 0.8rem;
+}
+
+#high-contrast label:hover {
+    cursor: pointer;
+}
+
 #high-contrast input {
-    width: 20px;
+    display: none;
 }
 
 .board-info {

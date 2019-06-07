@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <div id="high-contrast">
+            <label><input id="contrastToggle" type="checkbox" value="High contrast"
+                onchange="swapStyleSheet('style/high-contrast-lists.css')">Høy kontrast</label>
+    </div>
     <header>
         <div id="logo">
             <a href="index.html"><img src="assets/img/logo.png"></a>
@@ -21,11 +25,6 @@
 
         <div id="board-title">
             <input id="board-title" class="board-title" type="text" value="New Board">
-        </div>
-
-        <div id="high-contrast">
-            <input id="contrastToggle" type="checkbox" value="High contrast"
-                onchange="swapStyleSheet('style/highContrast.css')">
         </div>
 
         <div class="board-info">
@@ -50,7 +49,7 @@
         </div>
     </wrapper>
     <script src="script/kortoglister.js"></script>
-    <script src="script/highContrast.js"></script>
+    <script src="script/highContrastLists.js"></script>
 </body>
 
 </html>
