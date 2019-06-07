@@ -2,6 +2,28 @@ body {
     background: white;
 }
 
+#high-contrast {
+    width: 100vw;
+    padding: 2.5px 0;
+    background-color: black;
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+    border-bottom: 1px solid #FECC00;
+}
+
+#high-contrast label {
+    font-size: 0.8rem;
+}
+
+#high-contrast label:hover {
+    cursor: pointer;
+}
+
+#high-contrast input {
+    display: none;
+}
+
 .projects {
     width: 100%;
     background: white;
