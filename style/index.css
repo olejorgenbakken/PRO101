@@ -120,6 +120,11 @@ form span:hover {
     color: white;
 }
 
+.message span {
+    cursor: pointer;
+}
+ 
+
 #register {
     display: none;
 }
