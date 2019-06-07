@@ -96,6 +96,19 @@
         padding-left: 0;
     }
 
+    .openDialog {
+        top: 85px;
+        width: 100vw;
+        border-bottom-left-radius: 10%;
+        border-bottom-right-radius: 10%;
+    }
+
+    .openDialog [id*="nyKortKnapp"]{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .card-and-info {
         display: flex;
         flex-direction: column;
