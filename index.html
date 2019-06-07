@@ -30,9 +30,9 @@
         <div class="row">
 
             <form class="register-form" id="register">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <input type="email" placeholder="E-mail" />
+                <input required type="text" placeholder="Username" />
+                <input required type="password" placeholder="Password" />
+                <input required type="email" placeholder="E-mail" />
                 <button id="signUpSuccess"><a href="projects.html">Create account</a></button>
 
                 <p class="message">Already registered? <span class="txt-yellow" onclick="return showLogin()">Log
@@ -42,8 +42,8 @@
             </form>
 
             <form class="login-form" id="login">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input required type="text" placeholder="Username">
+                <input required type="password" placeholder="Password">
                 <button id="loginSuccess"><a href="projects.html">Log in</a></button>
                 <p class="message">Not registered? <span class="txt-yellow"
                         onclick="return showRegister()">Register</span>
