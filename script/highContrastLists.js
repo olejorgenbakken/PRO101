@@ -1,3 +1,4 @@
+//this function implements changing the contrast on list.HTML page to high
 function swapStyleSheet(styleSheet) {
     var contrastToggle = document.getElementById("contrastToggle");
     var highContrast = document.getElementById("highContrast");
