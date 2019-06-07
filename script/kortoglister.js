@@ -143,7 +143,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 4) {
             newListCreateCardInput.id = "nyKortKnapp" + listeID;
             newListCreateCardInput.type = "button";
-            newListCreateCardInput.value = "Create card";
+            newListCreateCardInput.value = "Lag card";
             newListCreateCardInput.setAttribute("onmouseup", " closeDialog(event)");
             newListCreateCardInput.setAttribute("onclick", " return createCard(" + listeID + ")");
             newListCreateCardForm.appendChild(newListCreateCardInput);
