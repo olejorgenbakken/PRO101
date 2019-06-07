@@ -45,7 +45,7 @@ function createBoard() {
     newBoardTitle.className = "board-title";
     newBoardTitle.value = "New Board";
     boardLink.className = "board-link";
-    boardLink.setAttribute("href", "lister.html");
+    boardLink.setAttribute("href", "lists.html");
     boardLink.innerText = "Go to Table";
     deleteBoard.setAttribute("onclick", " return deleteBoard(" + boardID + ")");
 

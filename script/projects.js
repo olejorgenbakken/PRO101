@@ -46,7 +46,7 @@ function newProject() {
     projectMembers.className = "project-members";
 
     projectLink.className = "project-link";
-    projectLink.setAttribute("href", "tables.html");
+    projectLink.setAttribute("href", "boards.html");
     projectLink.innerText = "Go to project";
 
     projectTitle.value = "New Project";
