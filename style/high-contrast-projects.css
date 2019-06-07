@@ -37,8 +37,7 @@ body {
 .projects-header {
     position: relative;
     width: 100%;
-    background: rgb(255,100,100);
-    background: linear-gradient(48deg, rgba(255,100,100,1) 0%, rgba(235,255,125,1) 100%); 
+    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,17 +96,22 @@ body {
     align-items: center;
     margin-bottom: 20px;
     color: white;
-    background: rgb(19, 132, 224);
+    background: black;
 }
 
 .project-title input{
     background-color: transparent;
     border: none;
-    color: white;
+    color: #FECC00;
     font-weight: 600;
     text-align: center;
     font-size: 1.2rem;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.project-link {
+    color: white;
+    text-decoration: underline;
 }
 
 .project-members {
@@ -135,7 +139,7 @@ body {
 }
 
 .new-project-btn {
-    background: blue;
+    background: #FECC00;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -144,6 +148,7 @@ body {
     position: absolute;
     bottom: -25px;
     cursor: pointer;
+    color: black;
 }
 
 .new-project h3 {

@@ -340,8 +340,8 @@ function lagKort(listeID) {
     nyttKortNesteListe.type = "button";
     nyttKortForrigeListe.type = "button";
 
-    nyttKortNesteListe.value = "Neste Liste";
-    nyttKortForrigeListe.value = "Forrige Liste";
+    nyttKortNesteListe.value = ">";
+    nyttKortForrigeListe.value = "<";
 
     nyttKortNesteListe.setAttribute("onclick", "nextListe(event)");
     nyttKortForrigeListe.setAttribute("onclick", "prevListe(event)");
@@ -426,9 +426,9 @@ function lagKort(listeID) {
 
     nyttKortHeaderTekst.value = card[cardID].navn;
     nyttKortBeskrivelseTekst.innerText = card[cardID].description;
-    nyttKortLagdTekst.innerText = "Card created the: " + card[cardID].lagd;
+    nyttKortLagdTekst.innerText = "Card created on the " + card[cardID].lagd;
     nyttKortTidsfristTekst.innerText = "Deadline: " + card[cardID].tidsfrist;
-    slettKort.value = "slett card";
+    slettKort.value = "delete";
     slettKort.className = "lukkKort";
     
     cardID++;
@@ -451,18 +451,24 @@ function changeToLow(cardID) {
     newBackground.style.background = "linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%)";
     var deadline = document.getElementById("card-deadline" + cardID);
     deadline.style.color = "green";
+    var card = document.getElementById("card" + cardID);
+    card.style.border = "1px solid green";
 }
 function changeToMiddle(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%)";
     var deadline = document.getElementById("card-deadline" + cardID);
     deadline.style.color = "orange";
+    var card = document.getElementById("card" + cardID);
+    card.style.border = "1px solid orange";
 }
 function changeToUrgent(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(122, 4, 4, 1) 0%, rgba(252, 69, 69, 1) 100%)";
     var deadline = document.getElementById("card-deadline" + cardID);
     deadline.style.color = "red";
+    var card = document.getElementById("card" + cardID);
+    card.style.border = "1px solid red";
 }
 
 function getSelectedValue(cardID) {
