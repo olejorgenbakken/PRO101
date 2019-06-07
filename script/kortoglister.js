@@ -143,7 +143,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 4) {
             newListCreateCardInput.id = "nyKortKnapp" + listeID;
             newListCreateCardInput.type = "button";
-            newListCreateCardInput.value = "Lag card";
+            newListCreateCardInput.value = "Create card";
             newListCreateCardInput.setAttribute("onmouseup", " closeDialog(event)");
             newListCreateCardInput.setAttribute("onclick", " return createCard(" + listeID + ")");
             newListCreateCardForm.appendChild(newListCreateCardInput);
@@ -154,7 +154,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 2) {
             var newCardDescription = document.createElement("textarea");
             newCardDescription.id = "nyttKortBeskrivelse" + listeID;
-            newCardDescription.placeholder = "Beskrivelse";
+            newCardDescription.placeholder = "Description";
             newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
             newCardDescription.className = "card-desc";
@@ -167,7 +167,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 0) {
             newListCreateCardInput.id = "nyKortTittel" + listeID;
             newListCreateCardInput.className = "list-title";
-            newListCreateCardInput.value = "Ny list";
+            newListCreateCardInput.value = "New list";
             newListCreateCardInput.type = "text";
             newListCreateCardInput.setAttribute("onkeypress", " return changeListTittle(" + listeID + ")");
             newList.appendChild(newListCreateCardInput);
@@ -326,7 +326,7 @@ function createCard(listeID) {
     newCardDescription.id = "card-description" + cardID;
     newCardDescription.setAttribute("onkeypress", " return changeDescription(" + cardID + ")");
     newCardDescriptionText.id = "card-description-tekst" + cardID;
-    newCardDescriptionText.placeholder = "Beskrivelse";
+    newCardDescriptionText.placeholder = "Description";
 
     newCardNextList.type = "button";
     newCardPrevList.type = "button";
