@@ -175,6 +175,12 @@ function lagListe() {
         nyListe.appendChild(nyListeLagKortForm);
     }
     listeID++;
+
+    if(document.querySelectorAll(".liste").length > 4) {
+        var currentWidth = window.outerWidth;
+        document.body.style.overflowX = "visible";
+        document.getElementById("lister").style.width = currentWidth + 390 + "px";
+    }
 }
 
 function openDialog(event) {
@@ -198,12 +204,13 @@ function openDialog(event) {
 function removeDialog(event){
     var childNodes = event.target.parentNode.firstChild.nextSibling.childNodes;
     if(event.target.parentNode.childNodes[1]){
+        
         event.target.parentNode.childNodes[1].classList.remove("openDialog");
         childNodes[0].style.display = "none";
         childNodes[1].style.display = "none";
         childNodes[2].style.display = "none";
         childNodes[3].style.display = "none";
-        childNodes[4].style.display = "none";
+        childNodes[4].style.display = "block";
         childNodes[5].style.display = "none";
         childNodes[6].style.display = "block";
         event.target.remove();
@@ -228,6 +235,11 @@ function closeDialog(event) {
 
 // slett lister
 function slettListe(listeID) {
+    if(document.querySelectorAll(".liste").length < 4){
+        document.getElementById("lister").style.width = window.innerWidth + "px";
+        document.body.style.overflowX = "hidden";
+    }
+
     var liste = document.getElementById("liste" + listeID);
     liste.remove("liste" + listeID);
 }
