@@ -17,6 +17,8 @@
             <label><input id="contrastToggle" type="checkbox" value="High contrast"
                 onchange="swapStyleSheet('style/high-contrast-tables.css')">High contrast</label>
     </div>
+    
+    <!--Header-->
     <header>
         <div id="logo">
             <a href="projects.html"><img src="assets/img/logo.png"></a>
@@ -26,6 +28,9 @@
                 <input onkeypress="enterMember(event)" placeholder="Search name or email" id="submitMemberInput">
             </div>
     </header>
+    <!--/Header-->
+
+    <!--Project container-->
     <div class="project">
         <div id="members"></div>
         <div class="project-header" id="project-header">
@@ -39,6 +44,8 @@
 
         </div>
     </div>
+    <!--/Project container-->
+
     <script src="script/tables.js"></script>
     <script src="script/addMember.js"></script>
     <script src="script/highContrastTables.js"></script>
