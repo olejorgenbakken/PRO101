@@ -1,3 +1,5 @@
+//Variables that build the card HTML
+//Start
 var newCard = document.createElement("div");
 var newCardHeader = document.createElement("div");
 var newCardHeaderText = document.createElement("h2");
@@ -9,8 +11,11 @@ var newCardMadeText = document.createElement("h3");
 var newCardUsers = document.createElement("div");
 var newCardDeadline = document.createElement("div");
 var newCardDeadlineText = document.createElement("h3");
+//End
 
-// tid og dato
+
+// This function implements getting the time and date and using them to make strings
+//i allows the user to select when the deadline would be for a given card
 function getTime(input) {
     var today = new Date();
     var date = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
@@ -27,6 +32,8 @@ function getTime(input) {
     }
 }
 
+//Array containing the objects that hold the data of the users
+//that have been added to the project
 var membersInProject = [
     {
         userName: "filip",
@@ -59,17 +66,18 @@ var membersInProject = [
     }
 ];
 
-//lag table
+//Array containing the tables
 var table = [];
 
-// lag list
+// Array containing the lists
 var list = [];
 
-// lag card
+// Array containing the cards 
 var card = [];
 
-// Lager en wrapper med listene, og en knapp, knappen og headeren er tenkt at skal bort fra funksjonen
-// og inn i HTMLen.
+//this function implements using a button to create lists
+//it builds a button and sets the appropriate attributes
+// as well as appends that button to the right wrapper
 function createListButton() {
     var newListButton = document.createElement("div");
     var newListButtonText = document.createElement("p");
@@ -86,15 +94,16 @@ function createListButton() {
 
 createListButton();
 
-// variabler for å telle antall lister og sette cardenes ID
-var listeID = 0;
+//variables that counts the number of lists and cards, and sets the right id based on that
+var listID = 0;
 var cardID = 0;
 
-// lager en ny list med mulighet for å lage flere card
+
+//this function implements creating lists, that each have the ability to make their own card
 function createList() {
     list.push({
-        id: listeID,
-        name: "list" + listeID,
+        id: listID,
+        name: "list" + listID,
         antallKort: cardID,
     });
 
@@ -105,19 +114,20 @@ function createList() {
     var nyListTittel = document.createElement("input");
 
     newList.className = "liste";
-    newList.id = "liste" + listeID;
-    nyListTittel.value = list[listeID].name;
+    newList.id = "liste" + listID;
+    nyListTittel.value = list[listID].name;
 
     wrapper.appendChild(newList);
 
-    // denne loopen lager alle fire inputene (man burde kanskje fjerne denne, og implementere den bedre
-    // men den fungerer for now...)
+
     var radioButtonContainer = document.createElement("form");
 
+    //This 7 step loop with conditionals checks what id the card that was created has
+    //it sets the appropriate attributes
     for (i = 0; i < 7; i++) {
-        newListCreateCardForm.id = "lagKortListe" + listeID;
+        newListCreateCardForm.id = "lagKortListe" + listID;
         newListCreateCardForm.className = "create-list";
-        radioButtonContainer.id = "radioButtonContainer" + listeID;
+        radioButtonContainer.id = "radioButtonContainer" + listID;
         radioButtonContainer.className = "make-card-container";
         var newListCreateCardInput = document.createElement("input");
         newListCreateCardInput.className = "nyttKortInput";
@@ -125,7 +135,7 @@ function createList() {
         newListCreateCardForm.appendChild(radioButtonContainer);
 
         if (newListCreateCardInput.id == 6) {
-            newListCreateCardInput.id = "leggTilKort" + listeID;
+            newListCreateCardInput.id = "leggTilKort" + listID;
             newListCreateCardInput.value = "Add card";
             newListCreateCardInput.type = "button";
             newListCreateCardInput.className = "leggTilKort";
@@ -134,50 +144,51 @@ function createList() {
         }
 
         else if (newListCreateCardInput.id == 5) {
-            newListCreateCardInput.id = "slettListe" + listeID;
+            newListCreateCardInput.id = "slettListe" + listID;
             newListCreateCardInput.value = "x";
             newListCreateCardInput.type = "button";
             newListCreateCardInput.className = "slettListe";
-            newListCreateCardInput.setAttribute("onclick", " return removeList(" + listeID + ")");
+            newListCreateCardInput.setAttribute("onclick", " return removeList(" + listID + ")");
             newListCreateCardForm.appendChild(newListCreateCardInput);
         } else if (newListCreateCardInput.id == 4) {
-            newListCreateCardInput.id = "nyKortKnapp" + listeID;
+            newListCreateCardInput.id = "nyKortKnapp" + listID;
             newListCreateCardInput.type = "button";
             newListCreateCardInput.value = "Lag card";
             newListCreateCardInput.setAttribute("onmouseup", " closeDialog(event)");
-            newListCreateCardInput.setAttribute("onclick", " return createCard(" + listeID + ")");
+            newListCreateCardInput.setAttribute("onclick", " return createCard(" + listID + ")");
             newListCreateCardForm.appendChild(newListCreateCardInput);
         } else if (newListCreateCardInput.id == 3) {
-            newListCreateCardInput.id = "nyttKortTidsfrist" + listeID;
+            newListCreateCardInput.id = "nyttKortTidsfrist" + listID;
             newListCreateCardInput.type = "date";
             newListCreateCardForm.appendChild(newListCreateCardInput);
         } else if (newListCreateCardInput.id == 2) {
             var newCardDescription = document.createElement("textarea");
-            newCardDescription.id = "nyttKortBeskrivelse" + listeID;
+            newCardDescription.id = "nyttKortBeskrivelse" + listID;
             newCardDescription.placeholder = "Beskrivelse";
             newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
             newCardDescription.className = "card-desc";
             newListCreateCardForm.appendChild(newCardDescription);
         } else if (newListCreateCardInput.id == 1) {
-            newListCreateCardInput.id = "nyttKortNavn" + listeID;
+            newListCreateCardInput.id = "nyttKortNavn" + listID;
             newListCreateCardInput.placeholder = "Title";
             newListCreateCardInput.type = "text";
             newListCreateCardForm.appendChild(newListCreateCardInput);
         } else if (newListCreateCardInput.id == 0) {
-            newListCreateCardInput.id = "nyKortTittel" + listeID;
+            newListCreateCardInput.id = "nyKortTittel" + listID;
             newListCreateCardInput.className = "list-title";
             newListCreateCardInput.value = "Ny list";
             newListCreateCardInput.type = "text";
-            newListCreateCardInput.setAttribute("onkeypress", " return changeListTittle(" + listeID + ")");
+            newListCreateCardInput.setAttribute("onkeypress", " return changeListTittle(" + listID + ")");
             newList.appendChild(newListCreateCardInput);
         }
         newList.appendChild(newListCreateCardForm);
     }
-    listeID++;
+    listID++;
 
 }
-
+// This function builds the dialog box
+//implements opening a dialog box when a card is created
 function openDialog(event) {
     var overlay = document.createElement("div");
     overlay.id = "overlay";
@@ -196,6 +207,9 @@ function openDialog(event) {
     childNodes[6].style.display = "none";
 }
 
+//This function implements removing the nodes that make up the dialog box when the user exits the dialog
+//by clicking outside of the dialog box of the card
+//this is intended to allow the user to close the dialog box without making the card
 function removeDialog(event){
     var childNodes = event.target.parentNode.firstChild.nextSibling.childNodes;
     if(event.target.parentNode.childNodes[1]){
@@ -212,6 +226,7 @@ function removeDialog(event){
     }
 }
 
+//This function implements the closing of a card after you have confirmed the creation of the card in question
 function closeDialog(event) {
     var dialog = document.getElementById(event.target.parentNode.id);
     var overlay = document.getElementById("overlay");
@@ -228,16 +243,18 @@ function closeDialog(event) {
     dialog.classList.remove("openDialog");
 }
 
-// slett lister
-function removeList(listeID) {
+//This function implements removing a list from the board
+function removeList(listID) {
 
-    var list = document.getElementById("liste" + listeID);
-    list.remove("liste" + listeID);
+    var list = document.getElementById("liste" + listID);
+    list.remove("liste" + listID);
 }
 
-// lag et card. Denne funksjonen tar inn parametere sendt inn gjennom en onclick funksjon i knapper lagd
-// i lag list funksjonen
-function createCard(listeID) {
+
+
+//This function implements creating a card
+//it builds all of the HTML and sets the attributes and the classnames for each element.
+function createCard(listID) {
     var priorityForm = document.createElement("div");
     priorityForm.id = "priority-card-" + cardID;
     priorityForm.className = "card-priority-picker";
@@ -264,7 +281,7 @@ function createCard(listeID) {
     var priorityMiddle = document.createElement("input");
     var priorityMiddleLbl = document.createElement("label");
     priorityMiddleLbl.innerText = "!!";
-    priorityMiddleLbl.setAttribute("for", ("card-priority-middle" + cardID))
+    priorityMiddleLbl.setAttribute("for", ("card-priority-middle" + cardID));
     priorityMiddle.id = "card-priority-middle" + cardID;
     priorityMiddle.value = "Middle";
     priorityMiddle.type = "radio";
@@ -280,7 +297,7 @@ function createCard(listeID) {
     var priorityLow = document.createElement("input");
     var priorityLowLbl = document.createElement("label");
     priorityLowLbl.innerText = "!";
-    priorityLowLbl.setAttribute("for", ("card-priority-low" + cardID))
+    priorityLowLbl.setAttribute("for", ("card-priority-low" + cardID));
     priorityLow.id = "card-priority-low" + cardID;
     priorityLow.value = "Low";
     priorityLow.type = "radio";
@@ -290,7 +307,7 @@ function createCard(listeID) {
     priorityLowDiv.appendChild(priorityLow);
     priorityLowDiv.appendChild(priorityLowLbl);
 
-    var listPosition = document.getElementById("liste" + listeID);
+    var listPosition = document.getElementById("liste" + listID);
     var newCard = document.createElement("div");
     var newCardHeader = document.createElement("div");
     var newCardHeaderText = document.createElement("input");
@@ -306,7 +323,6 @@ function createCard(listeID) {
     var newCardMembersDiv = document.createElement("div");
     var newCardMembersInCard = document.createElement("div");
     var newCardMembers = document.createElement("select");
-    var newCardMembersOption = document.createElement("option");
     var newCardMembersButton = document.createElement("input");
     
     var newCardDeadline = document.createElement("div");
@@ -352,7 +368,7 @@ function createCard(listeID) {
     newCardMembers.setAttribute("size", membersInProject.length);
     newCardMembersButton.setAttribute("type", "button");
     newCardMembersButton.value = "add member";
-    newCardMembersButton.className = "add-member"
+    newCardMembersButton.className = "add-member";
 
     newCardMembersOption.id = "option";
 
@@ -401,23 +417,24 @@ function createCard(listeID) {
     priorityForm.appendChild(priorityLowDiv);
     newCardHeader.appendChild(priorityForm);
 
-    var newCardHeaderTextInput = document.getElementById("nyttKortNavn" + listeID).value;
-    var newCardDescriptionInput = document.getElementById("nyttKortBeskrivelse" + listeID).value;
-    var newCardDeadlineInput = document.getElementById("nyttKortTidsfrist" + listeID).value;
+    var newCardHeaderTextInput = document.getElementById("nyttKortNavn" + listID).value;
+    var newCardDescriptionInput = document.getElementById("nyttKortBeskrivelse" + listID).value;
+    var newCardDeadlineInput = document.getElementById("nyttKortTidsfrist" + listID).value;
 
+    //pushing the object that hold the information and data contained in each card
     card.push({
         id: cardID,
         name: newCardHeaderTextInput,
         description: newCardDescriptionInput,
-        listPosition: list[listeID].id,
-        lagd: getTime("date"),
+        listPosition: list[listID].id,
+        created: getTime("date"),
         deadline: newCardDeadlineInput,
-        brukere: [],
+        users: [],
     });
 
     newCardHeaderText.value = card[cardID].name;
     newCardDescriptionText.innerText = card[cardID].description;
-    newCardMadeText.innerText = "Card created on the " + card[cardID].lagd;
+    newCardMadeText.innerText = "Card created on the " + card[cardID].created;
     newCardDeadlineText.innerText = "Deadline: " + card[cardID].deadline;
     removeCard.value = "delete";
     removeCard.className = "lukkKort";
@@ -425,13 +442,15 @@ function createCard(listeID) {
     cardID++;
 }
 
-function removeMember(event) {
+//this function implements removing members from the card in question
+function removeMemberFromCard(event) {
     var thisMember = event.target;
     thisMember.nextSibling.remove();
     thisMember.remove();
     
 }
 
+//implements the ability for the users to set priority for a card to low
 function changeToLow(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%)";
@@ -440,6 +459,7 @@ function changeToLow(cardID) {
     var card = document.getElementById("card" + cardID);
     card.style.border = "1px solid green";
 }
+//implements the ability for the users to set priority for a card to middle
 function changeToMiddle(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%)";
@@ -448,6 +468,7 @@ function changeToMiddle(cardID) {
     var card = document.getElementById("card" + cardID);
     card.style.border = "1px solid orange";
 }
+//implements the ability for the users to set priority for a card to urgent
 function changeToUrgent(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
     newBackground.style.background = "linear-gradient(20deg, rgba(122, 4, 4, 1) 0%, rgba(252, 69, 69, 1) 100%)";
@@ -457,12 +478,16 @@ function changeToUrgent(cardID) {
     card.style.border = "1px solid red";
 }
 
+//this function implements the ability for the add member button
+//to get what is selected in the select list
+//and then pushes a member, and picture for that member into the users array in the card object
 function getSelectedValue(cardID) {
 
     for (var z = 0; z < card.length; z++) {
         var selValue = document.getElementById("newCardMembers" + z);
-        if (!card[z].brukere.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
-            card[z].brukere.push(selValue.firstChild.value);
+        //checks if the member is already in the array, and that the data is not empty
+        if (!card[z].users.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
+            card[z].users.push(selValue.firstChild.value);
 
             var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + cardID);
 
@@ -471,12 +496,12 @@ function getSelectedValue(cardID) {
             membersContainer.className = "card-members";
             var memberContainer = document.createElement("div");
             memberContainer.className ="card-member";
-            for (var k = 0; k < card[z].brukere.length; k++) {
+            for (var k = 0; k < card[z].users.length; k++) {
                 for(var l = 0; l < membersInProject.length; l++){
-                    if(card[z].brukere[k] == membersInProject[l].userName){
-                        memberName.innerText = card[z].brukere[k];
+                    if(card[z].users[k] == membersInProject[l].userName){
+                        memberName.innerText = card[z].users[k];
                         memberContainer.id = k;
-                        memberContainer.setAttribute("onclick", "removeMember(event)");
+                        memberContainer.setAttribute("onclick", "removeMemberFromCard(event)");
                         newCardMemberPic.setAttribute("src", membersInProject[l].profilePic);
                     }
                 }
@@ -486,9 +511,10 @@ function getSelectedValue(cardID) {
             membersContainer.appendChild(memberContainer);
         }
     }
-};
+}
 
-
+//this functions implements switching what list a card belongs to
+//and it removes the card from the current list and puts it into the next list
 function nextListe(event) {
     var thisList = event.target.parentNode.parentNode.parentNode.id;
 
@@ -502,6 +528,8 @@ function nextListe(event) {
 
 }
 
+////this functions implements switching what list a card belongs to
+// //and it removes the card from the current list and puts it into the previous list
 function prevListe(event) {
     var thisList = event.target.parentNode.parentNode.parentNode.id;
     var string = thisList.replace("liste", "");
@@ -513,24 +541,26 @@ function prevListe(event) {
     document.getElementById(prevList).appendChild(thisCard);
 }
 
-
-// slett card
+//this function implements removing cards from a list
 function removeCard(cardID) {
     var card = document.getElementById("card" + cardID);
     card.parentNode.removeChild(card);
 }
 
 // redigerer cardenes tittel og description
-function changeListTittle(listeID) {
-    listTittleContainer = document.getElementById("nyKortTittel" + listeID);
-    list[listeID].name = listTittleContainer.value;
+//this function implements changing the title of a list
+function changeListTittle(listID) {
+    listTittleContainer = document.getElementById("nyKortTittel" + listID);
+    list[listID].name = listTittleContainer.value;
 }
 
+//this function implements changing the title of a card
 function changeTittle(cardID) {
     cardTittleContainer = document.getElementById("card-tittel-tekst" + cardID);
     card[cardID].name = cardTittleContainer.value;
 }
 
+//this function implements changing the description of cards.
 function changeDescription(cardID) {
     cardDescriptionContainer = document.getElementById("card-description-tekst" + cardID);
     card[cardID].description = cardDescriptionContainer.value;

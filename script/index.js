@@ -1,3 +1,4 @@
+//This function implements some slight css effects on text
 function animate() {
     var element = document.getElementById("slogan");
     element.style.opacity = "1";
@@ -9,16 +10,18 @@ animate();
 var login = document.getElementById("login");
 var register = document.getElementById("register");
 
+//this function implement changing between the login and register page
 function showLogin() {
     register.style.display = "none";
     login.style.display = "block";
 }
-
+//this function implement changing between the login and register page
 function showRegister() {
     login.style.display = "none";
     register.style.display = "block";
 }
-
+//variables for getting the HTML of the index.HTML
+//start
 var featureContainer = document.getElementById("feature");
 var featureInfoContainer = document.getElementById("feature-info");
 
@@ -29,6 +32,9 @@ var featureInfo = ["Set time limits for when a task should be completed",
                     "Set the importance of tasks to signify what's urgent"];
 var i = 0;
 
+//End
+
+//this function implements showing different features based on a timer
 function showFeatures() {
     featureContainer.innerText = feature[i];
     featureInfoContainer.innerText = featureInfo[i];
@@ -41,7 +47,7 @@ function showFeatures() {
             showFeatures();
         }
     }
-};
+}
 
 function check(form) { /*function to check userid & password*/
     /*the following code checkes whether the entered userid and password are matching*/
