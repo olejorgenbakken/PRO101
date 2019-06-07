@@ -9,7 +9,7 @@
     <link id="normalContrast" rel="stylesheet" type="text/css" href="style/project.css">
     <link rel="stylesheet" type="text/css" href="style/header.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
-    <title>Username</title>
+    <title>TrellTwo | My tables</title>
 </head>
 
 <body>
@@ -17,6 +17,8 @@
             <label><input id="contrastToggle" type="checkbox" value="High contrast"
                 onchange="swapStyleSheet('style/high-contrast-tables.css')">High contrast</label>
     </div>
+
+    <!--Header-->
     <header>
         <div id="logo">
             <a href="projects.html"><img src="assets/img/logo.png"></a>
@@ -26,6 +28,9 @@
                 <input onkeypress="enterMember(event)" placeholder="Search name or email" id="submitMemberInput">
             </div>
     </header>
+    <!--/Header-->
+
+    <!--Project container-->
     <div class="project">
         <div id="members"></div>
         <div class="project-header" id="project-header">
@@ -39,6 +44,8 @@
 
         </div>
     </div>
+    <!--/Project container-->
+
     <script src="script/tables.js"></script>
     <script src="script/addMember.js"></script>
     <script src="script/highContrastTables.js"></script>
