@@ -57,6 +57,14 @@ header {
     font-weight: 700;
 }
 
+#board-title {
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .board-members {
     cursor: default;
     right: 15px;
@@ -79,6 +87,7 @@ header {
 
 #lag-liste {
     position: relative;
+    top: 75px;
 }
 
 #nyListeKnapp {
@@ -92,10 +101,12 @@ header {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    border: 2px solid #FECC00;
 }
 
 #nyListeKnapp p {
     color: #FECC00;
+    font-weight: 600;
 }
 
 #lister {

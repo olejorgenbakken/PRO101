@@ -154,7 +154,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 2) {
             var newCardDescription = document.createElement("textarea");
             newCardDescription.id = "nyttKortBeskrivelse" + listeID;
-            newCardDescription.placeholder = "Beskrivelse";
+            newCardDescription.placeholder = "Description";
             newCardDescription.setAttribute("maxLength", "150");
             newCardDescription.type = "text";
             newCardDescription.className = "card-desc";
@@ -167,7 +167,7 @@ function createList() {
         } else if (newListCreateCardInput.id == 0) {
             newListCreateCardInput.id = "nyKortTittel" + listeID;
             newListCreateCardInput.className = "list-title";
-            newListCreateCardInput.value = "Ny list";
+            newListCreateCardInput.value = "New list";
             newListCreateCardInput.type = "text";
             newListCreateCardInput.setAttribute("onkeypress", " return changeListTittle(" + listeID + ")");
             newList.appendChild(newListCreateCardInput);
@@ -326,7 +326,7 @@ function createCard(listeID) {
     newCardDescription.id = "card-description" + cardID;
     newCardDescription.setAttribute("onkeypress", " return changeDescription(" + cardID + ")");
     newCardDescriptionText.id = "card-description-tekst" + cardID;
-    newCardDescriptionText.placeholder = "Beskrivelse";
+    newCardDescriptionText.placeholder = "Description";
 
     newCardNextList.type = "button";
     newCardPrevList.type = "button";
@@ -439,6 +439,17 @@ function changeToLow(cardID) {
     deadline.style.color = "green";
     var card = document.getElementById("card" + cardID);
     card.style.border = "1px solid green";
+    var cardTitle = document.getElementById("card-tittel-tekst" + cardID);
+    cardTitle.style.color = "white";
+    var priorityLow = document.getElementById("low" + cardID);
+    priorityLow.style.border = "1px solid white";
+    priorityLow.style.color = "white";
+    var priorityMiddle = document.getElementById("middle" + cardID);
+    priorityMiddle.style.border = "1px solid white";
+    priorityMiddle.style.color = "white";
+    var priorityUrgent = document.getElementById("urgent" + cardID);
+    priorityUrgent.style.border = "1px solid white";
+    priorityUrgent.style.color = "white";
 }
 function changeToMiddle(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
@@ -447,6 +458,17 @@ function changeToMiddle(cardID) {
     deadline.style.color = "orange";
     var card = document.getElementById("card" + cardID);
     card.style.border = "1px solid orange";
+    var cardTitle = document.getElementById("card-tittel-tekst" + cardID);
+    cardTitle.style.color = "white";
+    var priorityLow = document.getElementById("low" + cardID);
+    priorityLow.style.border = "1px solid white";
+    priorityLow.style.color = "white";
+    var priorityMiddle = document.getElementById("middle" + cardID);
+    priorityMiddle.style.border = "1px solid white";
+    priorityMiddle.style.color = "white";
+    var priorityUrgent = document.getElementById("urgent" + cardID);
+    priorityUrgent.style.border = "1px solid white";
+    priorityUrgent.style.color = "white";
 }
 function changeToUrgent(cardID) {
     var newBackground = document.getElementById("card-tittel" + cardID);
@@ -455,6 +477,17 @@ function changeToUrgent(cardID) {
     deadline.style.color = "red";
     var card = document.getElementById("card" + cardID);
     card.style.border = "1px solid red";
+    var cardTitle = document.getElementById("card-tittel-tekst" + cardID);
+    cardTitle.style.color = "white";
+    var priorityLow = document.getElementById("low" + cardID);
+    priorityLow.style.border = "1px solid white";
+    priorityLow.style.color = "white";
+    var priorityMiddle = document.getElementById("middle" + cardID);
+    priorityMiddle.style.border = "1px solid white";
+    priorityMiddle.style.color = "white";
+    var priorityUrgent = document.getElementById("urgent" + cardID);
+    priorityUrgent.style.border = "1px solid white";
+    priorityUrgent.style.color = "white";
 }
 
 function getSelectedValue(cardID) {
