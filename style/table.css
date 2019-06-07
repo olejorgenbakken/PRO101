@@ -67,7 +67,7 @@ header {
 #nyListeKnapp {
     cursor: pointer;
     padding: 10px;
-    background-color: black;
+    background-color: #24195C;
     border-radius: 50px;
     width: 100px;
     display: flex;
@@ -79,6 +79,7 @@ header {
 
 #nyListeKnapp p {
     color: white;
+    font-weight: 600;
 }
 
 #lister {
@@ -104,13 +105,14 @@ header {
 
 .leggTilKort {
     cursor: pointer;
-    background: black;
+    background: #24195C;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
     border: none;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .liste {
@@ -120,10 +122,10 @@ header {
     flex-direction: column;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,1);
     margin-left: 20px;
     margin-right: 20px;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
 }
 
 .list-title {
@@ -140,9 +142,9 @@ header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: white;
     border-radius: 5px;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    background: white;
+    border: 1px solid black;
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -197,7 +199,7 @@ header {
 .card-title {
     border-radius: 5px 5px 0 0;
     order: 1;
-    background: blue;
+    background: #000000;
     position: relative;
 }
 
@@ -206,8 +208,12 @@ header {
     color: white;
     background: transparent;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
+}
+
+.card-title input::placeholder {
+    opacity: .9;
 }
 
 .nyttKortInput {
@@ -273,17 +279,18 @@ header {
 }
 
 .card-member {
-    background-color: blue;
+    background-color: #ea5b0c;
     position: relative;
     border-radius: 30px;
     font-weight: 600;
 }
 
 .card-member img{
-    border: none;
+    box-shadow: none;
+    border: 2px solid white;
     position: absolute;
-    top: 4px;
-    right: 5px;
+    top: 2.8px;
+    right: 3px;
 }
 
 .card-deadline {
@@ -300,7 +307,7 @@ header {
 .card-member-select input {
     width: 100%;
     font-weight: 600;
-    background-color: black;
+    background: #ea5b0c;
     padding-top: 5px;
     padding-bottom: 5px;
     color: white;
@@ -325,7 +332,7 @@ header {
     padding-bottom: 5px;
     color: white;
     padding-left: 3px;
-    padding-right: 35px;
+    padding-right: 37px;
 }
 
 select {
@@ -333,7 +340,7 @@ select {
     -webkit-appearance: none; 
    -moz-appearance: none;
    appearance: none; 
-   border: 2px solid black;
+   border: 2px solid #ea5b0c;
    max-height: 170px;
    width: 100%;
    overflow: hidden;
@@ -385,7 +392,8 @@ option {
 }
 
 .card-footer input {
-    border: 1px solid blue;
+    border: none;
+    border-top: 1px solid black;
     font-size: .9rem;
 }
 
@@ -409,8 +417,12 @@ option {
     font-weight: 600;
 }
 
+.forrige-liste, .neste-liste {
+    background: rgb(250,250,250);
+}
+
 .forrige-liste:hover, .neste-liste:hover {
-    background: rgb(190,190,190);
+    background: rgb(240,240,240);
 }
 
 .forrige-liste {
@@ -420,8 +432,9 @@ option {
 
 .lukkKort {
     order: 2;
-    background: red;
+    background: #e30613;
     color: white;
+    text-transform: uppercase;
 }
 
 .lukkKort:hover {
@@ -471,21 +484,6 @@ option {
     display: none;
 }
 
-.bg-red {
-    background: rgb(122, 4, 4);
-    background: linear-gradient(20deg, rgba(122, 4, 4, 1) 0%, rgba(252, 69, 69, 1) 100%);
-}
-
-.bg-orange {
-    background: rgb(211, 133, 30);
-    background: linear-gradient(20deg, rgba(243, 149, 42, 1) 0%, rgb(252, 213, 108) 100%);
-}
-
-.bg-green {
-    background: rgb(63, 133, 16);
-    background: linear-gradient(20deg, rgba(63, 133, 16, 1) 0%, rgb(170, 255, 144) 100%);
-}
-
 .card-priority-picker {
     display: flex;
     flex-direction: row;
@@ -501,24 +499,23 @@ option {
 }
 
 .priority-container {
-    width: 30px;
-    height: 30px;
-    background: black;
-    margin-top: 10px;
-    margin-right: 2px;
-    margin-left: 2px;
+    width: 25px;
+    height: 25px;
+    margin-top: 7px;
+    margin-right: 4px;
+    margin-left: 4px;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
     position: relative;
-    box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+    border: 1px solid white;
 }
 
 .card-priority-picker label {
     position: absolute;
     top: 13%;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 30px;
     font-size: .9rem;
     font-weight: 600;
