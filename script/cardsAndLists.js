@@ -520,8 +520,8 @@ function getSelectedValue(cardID) {
     for (var z = 0; z < card.length; z++) {
         var selValue = document.getElementById("newCardMembers" + z);
         //checks if the member is already in the array, and that the data is not empty
-        if (!card[z].users.includes(selValue.firstChild.value) && selValue.firstChild.value !== "") {
-            card[z].users.push(selValue.firstChild.value);
+        if (!card[z].users.includes(selValue.childNodes[0].value) && selValue.childNodes[0].value !== "") {
+            card[z].users.push(selValue.childNodes[0].value);
 
             var membersContainer = document.getElementById("nyttKortMedlemmerIKort" + cardID);
 
@@ -577,8 +577,8 @@ function prevListe(event) {
 
 //this function implements removing cards from a list
 function removeCard(cardID) {
-    var card = document.getElementById("card" + cardID);
-    card.parentNode.removeChild(card);
+    var thisCard = document.getElementById("card" + cardID);
+    thisCard.parentNode.removeChild(thisCard);
 }
 
 // redigerer cardenes tittel og description
